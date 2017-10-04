@@ -1,0 +1,47 @@
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0-beta7'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    project.ext {
+        // version numbers
+        supportLibraryVersion = '26.1.0'
+        daggerVersion = '2.11'
+        butterknifeVersion = '8.8.1'
+
+
+        // support libs
+        appcompat = "com.android.support:appcompat-v7:$supportLibraryVersion"
+
+        // reactiveX
+        rxJava = 'io.reactivex.rxjava2:rxjava:2.1.4'
+        rxAndroid = 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+        // dagger
+        dagger = "com.google.dagger:dagger:$daggerVersion"
+        daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
+
+        // butterknife
+        butterknife = "com.jakewharton:butterknife:$butterknifeVersion"
+        butterknifeCompiler = "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
+        // timber
+        timber = 'com.jakewharton.timber:timber:4.5.1'
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
