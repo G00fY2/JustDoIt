@@ -25,6 +25,7 @@ android {
 
 dependencies {
     implementation project.ext.appcompat
+    implementation project.ext.design
 
     implementation project.ext.rxJava
     implementation project.ext.rxAndroid
