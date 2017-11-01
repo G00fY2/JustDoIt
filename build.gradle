@@ -17,9 +17,11 @@ allprojects {
 
     project.ext {
         // version numbers
+        compileSdk = 27
         supportLibraryVersion = '27.0.0'
         daggerVersion = '2.12'
         butterknifeVersion = '8.8.1'
+        retrofitVersion = '2.3.0'
 
 
         // support libs
@@ -37,6 +39,14 @@ allprojects {
         // butterknife
         butterknife = "com.jakewharton:butterknife:$butterknifeVersion"
         butterknifeCompiler = "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
+        // web
+        retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+        moshiConverter = "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+        rxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+
+        // json
+        moshi = 'com.squareup.moshi:moshi:1.5.0'
 
         // timber
         timber = 'com.jakewharton.timber:timber:4.5.1'

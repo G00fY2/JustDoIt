@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion project.ext.compileSdk
     defaultConfig {
         applicationId "de.g00fy2.justdoit"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion project.ext.compileSdk
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -23,15 +22,11 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':model')
 
     implementation project.ext.appcompat
     implementation project.ext.design
 
-    implementation project.ext.rxJava
-    implementation project.ext.rxAndroid
-
-    implementation project.ext.dagger
     annotationProcessor project.ext.daggerCompiler
 
     implementation project.ext.butterknife
