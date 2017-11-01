@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion project.ext.compileSdk
+    defaultConfig {
+      minSdkVersion 19
+      targetSdkVersion project.ext.compileSdk
+      versionCode 1
+      versionName "1.0"
+    }
+    compileOptions {
+      sourceCompatibility JavaVersion.VERSION_1_8
+      targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+      release {
+        minifyEnabled false
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      }
+    }
+}
+
+dependencies {
+    api project.ext.dagger
+    annotationProcessor project.ext.daggerCompiler
+
+    api project.ext.rxJava
+    api project.ext.rxAndroid
+
+    implementation project.ext.retrofit
+    implementation project.ext.moshiConverter
+    implementation project.ext.rxJavaAdapter
+
+    implementation project.ext.moshi
+}
