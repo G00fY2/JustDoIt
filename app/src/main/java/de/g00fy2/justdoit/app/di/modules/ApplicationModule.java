@@ -1,4 +1,4 @@
-package de.g00fy2.justdoit.app.di;
+package de.g00fy2.justdoit.app.di.modules;
 
 import android.content.Context;
 import dagger.Module;

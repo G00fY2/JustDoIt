@@ -27,9 +27,10 @@ dependencies {
     api project.ext.rxJava
     api project.ext.rxAndroid
 
-    implementation project.ext.retrofit
-    implementation project.ext.moshiConverter
-    implementation project.ext.rxJavaAdapter
+    api project.ext.retrofit
+    api project.ext.moshiConverter
+    api project.ext.rxJavaAdapter
+    api project.ext.loggingInterceptor
 
     implementation project.ext.moshi
 }

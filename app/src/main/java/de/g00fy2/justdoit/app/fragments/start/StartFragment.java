@@ -18,7 +18,7 @@ import javax.inject.Inject;
 
   @Inject StartContract.StartPresenter presenter;
 
-  @BindView(R.id.start_hello_world_textview) TextView helloWorldTextView;
+  @BindView(R.id.start_current_version_textview) TextView currentVersionTextView;
 
   @Override protected void initializeViews() {
 
@@ -26,5 +26,9 @@ import javax.inject.Inject;
 
   @Override protected BasePresenter registerPresenter() {
     return presenter;
+  }
+
+  @Override public void showCurrentVersion(String currentVersion) {
+    currentVersionTextView.setText(currentVersion);
   }
 }

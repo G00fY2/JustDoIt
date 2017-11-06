@@ -1,4 +1,4 @@
-package de.g00fy2.justdoit.app.annotations;
+package de.g00fy2.justdoit.app.di.scopes;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -1,11 +1,11 @@
-package de.g00fy2.justdoit.app.di;
+package de.g00fy2.justdoit.app.di.modules;
 
 import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.Navigator;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
-import de.g00fy2.justdoit.app.annotations.PerActivity;
+import de.g00fy2.justdoit.app.di.scopes.PerActivity;
 
 /**
  * Created by Thomas Wirth on 04.10.2017.

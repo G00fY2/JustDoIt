@@ -42,6 +42,7 @@ allprojects {
 
         // web
         retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+        loggingInterceptor = 'com.squareup.okhttp3:logging-interceptor:3.9.0'
         moshiConverter = "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
         rxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 

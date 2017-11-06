@@ -6,7 +6,7 @@ import io.reactivex.Single;
 import javax.inject.Inject;
 
 /**
- * Created by Thomas on 01.11.2017.
+ * Created by Thomas Wirth on 01.11.2017.
  */
 
 public class MoshiControllerImpl implements MoshiController {

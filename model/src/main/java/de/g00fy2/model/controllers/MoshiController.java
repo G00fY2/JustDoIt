@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Thomas on 01.11.2017.
+ * Created by Thomas Wirth on 01.11.2017.
  */
 
 public interface MoshiController {

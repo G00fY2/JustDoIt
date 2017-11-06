@@ -13,5 +13,7 @@ public interface StartContract {
   }
 
   interface StartView extends BaseView {
+
+    void showCurrentVersion(String currentVersion);
   }
 }

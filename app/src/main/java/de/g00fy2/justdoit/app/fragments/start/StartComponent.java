@@ -1,8 +1,8 @@
 package de.g00fy2.justdoit.app.fragments.start;
 
 import dagger.Component;
-import de.g00fy2.justdoit.app.annotations.PerFragment;
-import de.g00fy2.justdoit.app.di.ActivityComponent;
+import de.g00fy2.justdoit.app.di.scopes.PerFragment;
+import de.g00fy2.justdoit.app.di.components.ActivityComponent;
 
 /**
  * Created by Thomas Wirth on 04.10.2017.
