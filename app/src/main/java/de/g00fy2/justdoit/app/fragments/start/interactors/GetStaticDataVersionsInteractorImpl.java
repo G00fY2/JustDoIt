@@ -1,7 +1,7 @@
 package de.g00fy2.justdoit.app.fragments.start.interactors;
 
 import de.g00fy2.justdoit.app.fragments.base.BaseInteractor;
-import de.g00fy2.model.datastores.StaticDataStore;
+import de.g00fy2.model.datastores.StaticDataDataStore;
 import io.reactivex.Single;
 import java.util.List;
 import javax.inject.Inject;
@@ -13,12 +13,12 @@ import javax.inject.Inject;
 public class GetStaticDataVersionsInteractorImpl extends BaseInteractor
     implements GetStaticDataVersionsInteractor {
 
-  @Inject StaticDataStore staticDataStore;
+  @Inject StaticDataDataStore staticDataDataStore;
 
   @Inject public GetStaticDataVersionsInteractorImpl() {
   }
 
   @Override public Single<List<String>> execute() {
-    return staticDataStore.getVersions().compose(single());
+    return staticDataDataStore.getVersions().compose(single());
   }
 }

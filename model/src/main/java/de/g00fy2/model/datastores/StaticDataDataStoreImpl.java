@@ -9,11 +9,11 @@ import javax.inject.Inject;
  * Created by Thomas Wirth on 05.11.2017.
  */
 
-public class StaticDataStoreImpl implements StaticDataStore {
+public class StaticDataDataStoreImpl implements StaticDataDataStore {
 
   @Inject StaticDataWebDataSource staticDataWebDataSource;
 
-  @Inject public StaticDataStoreImpl() {
+  @Inject public StaticDataDataStoreImpl() {
 
   }
 

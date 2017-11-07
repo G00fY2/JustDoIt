@@ -5,6 +5,8 @@ import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerFragment;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetStaticDataVersionsInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetStaticDataVersionsInteractorImpl;
+import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInteractor;
+import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInteractorImpl;
 
 /**
  * Created by Thomas Wirth on 04.10.2017.
@@ -32,5 +34,10 @@ import de.g00fy2.justdoit.app.fragments.start.interactors.GetStaticDataVersionsI
   public GetStaticDataVersionsInteractor provideGetStaticDataVersionsInteractor(
       GetStaticDataVersionsInteractorImpl getStaticDataVersionsInteractorImpl) {
     return getStaticDataVersionsInteractorImpl;
+  }
+
+  @Provides @PerFragment public GetSummonerByNameInteractor provideGetSummonerByNameInteractor(
+      GetSummonerByNameInteractorImpl getSummonerByNameInteractorImpl) {
+    return getSummonerByNameInteractorImpl;
   }
 }

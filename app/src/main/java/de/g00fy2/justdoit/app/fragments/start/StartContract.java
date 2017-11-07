@@ -10,6 +10,8 @@ import de.g00fy2.justdoit.app.fragments.base.BaseView;
 public interface StartContract {
 
   interface StartPresenter extends BasePresenter {
+
+    void searchSummoner(String summonerName);
   }
 
   interface StartView extends BaseView {
