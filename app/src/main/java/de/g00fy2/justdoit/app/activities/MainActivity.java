@@ -9,9 +9,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import butterknife.BindView;
+import com.bumptech.glide.Glide;
 import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.annotations.Layout;
+import de.g00fy2.justdoit.app.utils.APIUtils;
+import de.g00fy2.model.models.Summoner;
 
 /**
  * Created by Thomas Wirth on 04.10.2017.
@@ -66,5 +71,19 @@ import de.g00fy2.justdoit.app.annotations.Layout;
 
   @Override public View getFragmentContainer() {
     return fragmentContainer;
+  }
+
+  public void setNavigationDrawerHeaderData(Summoner summoner) {
+    if (summoner != null) {
+      Glide.with(this)
+          .load(APIUtils.generateProfileIconUrl(summoner.profileIconId))
+          .into((ImageView) navigationView.findViewById(
+              R.id.navigation_header_summoner_icon_imageview));
+      ((TextView) navigationView.findViewById(
+          R.id.navigation_header_summoner_name_textview)).setText(summoner.name);
+      ((TextView) navigationView.findViewById(
+          R.id.navigation_header_summoner_level_textview)).setText(
+          "Level " + String.valueOf(summoner.summonerLevel));
+    }
   }
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+  <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignBottom="@id/nav_view_header_container"
+      android:layout_alignEnd="@id/nav_view_header_container"
+      android:layout_alignStart="@id/nav_view_header_container"
+      android:layout_alignTop="@+id/nav_view_header_container"
+      android:scaleType="centerCrop"
+      android:src="@color/colorAccent"
+      />
+  <LinearLayout
+      android:id="@+id/nav_view_header_container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingBottom="16dp"
+      android:paddingEnd="16dp"
+      android:paddingStart="16dp"
+      android:paddingTop="40dp"
+      >
+    <ImageView
+        android:id="@+id/navigation_header_summoner_icon_imageview"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:src="@android:color/white"
+        />
+    <TextView
+        android:id="@+id/navigation_header_summoner_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Summoner"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        />
+    <TextView
+        android:id="@+id/navigation_header_summoner_level_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Level 30"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        />
+  </LinearLayout>
+
+</RelativeLayout>

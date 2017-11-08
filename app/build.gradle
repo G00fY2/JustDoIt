@@ -32,5 +32,8 @@ dependencies {
     implementation project.ext.butterknife
     annotationProcessor project.ext.butterknifeCompiler
 
+    implementation project.ext.glide
+    annotationProcessor project.ext.glideCompiler
+
     implementation project.ext.timber
 }

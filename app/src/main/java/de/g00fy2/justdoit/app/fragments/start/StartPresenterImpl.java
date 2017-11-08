@@ -35,9 +35,9 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
   }
 
   @Override public void searchSummoner(String summonerName) {
-    bind(getSummonerByNameInteractor.execute(summonerName)
-        .subscribe(
-            summoner -> snackbarController.showSuccess(summoner.name + " was found!"),
-            errorController::onError));
+    bind(getSummonerByNameInteractor.execute(summonerName).subscribe(summoner -> {
+      view.setDefaultSummoner(summoner);
+      snackbarController.showSuccess(summoner.name + " was found!");
+    }, errorController::onError));
   }
 }

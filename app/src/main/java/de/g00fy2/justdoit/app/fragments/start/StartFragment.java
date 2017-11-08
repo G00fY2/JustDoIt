@@ -5,10 +5,12 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.g00fy2.justdoit.R;
+import de.g00fy2.justdoit.app.activities.MainActivity;
 import de.g00fy2.justdoit.app.annotations.Layout;
 import de.g00fy2.justdoit.app.annotations.Title;
 import de.g00fy2.justdoit.app.fragments.base.BaseFragment;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenter;
+import de.g00fy2.model.models.Summoner;
 import javax.inject.Inject;
 
 /**
@@ -37,5 +39,9 @@ import javax.inject.Inject;
 
   @Override public void showCurrentVersion(String currentVersion) {
     currentVersionTextView.setText(currentVersion);
+  }
+
+  @Override public void setDefaultSummoner(Summoner summoner){
+    ((MainActivity) getBaseActivity()).setNavigationDrawerHeaderData(summoner);
   }
 }
