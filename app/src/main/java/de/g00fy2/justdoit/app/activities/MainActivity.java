@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.annotations.Layout;
 import de.g00fy2.justdoit.app.utils.APIUtils;
@@ -77,6 +78,7 @@ import de.g00fy2.model.models.Summoner;
     if (summoner != null) {
       Glide.with(this)
           .load(APIUtils.generateProfileIconUrl(summoner.profileIconId))
+          .apply(RequestOptions.circleCropTransform())
           .into((ImageView) navigationView.findViewById(
               R.id.navigation_header_summoner_icon_imageview));
       ((TextView) navigationView.findViewById(
