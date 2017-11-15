@@ -3,8 +3,10 @@ package de.g00fy2.justdoit.app.fragments.start;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
+import de.g00fy2.justdoit.app.fragments.start.interactors.GetAccountMatchlistInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetStaticDataVersionsInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInteractor;
+import de.g00fy2.model.models.Summoner;
 import javax.inject.Inject;
 
 /**
@@ -17,12 +19,15 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
 
   @Inject GetStaticDataVersionsInteractor getStaticDataVersionsInteractor;
   @Inject GetSummonerByNameInteractor getSummonerByNameInteractor;
+  @Inject GetAccountMatchlistInteractor getAccountMatchlistInteractor;
   @Inject ErrorController errorController;
   @Inject SnackbarController snackbarController;
 
   @Inject public StartPresenterImpl() {
 
   }
+
+  private Summoner lastSummoner;
 
   @Override public void onResume() {
     super.onResume();
@@ -36,8 +41,22 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
 
   @Override public void searchSummoner(String summonerName) {
     bind(getSummonerByNameInteractor.execute(summonerName).subscribe(summoner -> {
+      lastSummoner = summoner;
+      view.activateMatchsearch(true);
       view.setDefaultSummoner(summoner);
       snackbarController.showSuccess(summoner.name + " was found!");
-    }, errorController::onError));
+    }, throwable -> {
+      view.activateMatchsearch(false);
+      errorController.onError(throwable);
+    }));
+  }
+
+  @Override public void searchMatches() {
+    if (lastSummoner != null) {
+      String accountId = Long.toString(lastSummoner.accountId);
+      bind(getAccountMatchlistInteractor.execute(accountId)
+          .subscribe(matchlist -> snackbarController.showSuccess(
+              "Last lane: " + matchlist.matches.get(0).lane), errorController::onError));
+    }
   }
 }

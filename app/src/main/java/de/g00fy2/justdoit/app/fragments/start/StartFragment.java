@@ -24,9 +24,14 @@ import javax.inject.Inject;
 
   @BindView(R.id.summoner_name_edittext) EditText summonerNameEditText;
   @BindView(R.id.start_current_version_textview) TextView currentVersionTextView;
+  @BindView(R.id.search_matches_textview) TextView searchMatchesTextView;
 
   @OnClick(R.id.search_summoner_textview) void onSearchSummonerClick() {
     presenter.searchSummoner(summonerNameEditText.getText().toString());
+  }
+
+  @OnClick(R.id.search_matches_textview) void onSearchMatchesClick() {
+    presenter.searchMatches();
   }
 
   @Override protected void initializeViews() {
@@ -41,7 +46,12 @@ import javax.inject.Inject;
     currentVersionTextView.setText(currentVersion);
   }
 
-  @Override public void setDefaultSummoner(Summoner summoner){
+  @Override public void setDefaultSummoner(Summoner summoner) {
     ((MainActivity) getBaseActivity()).setNavigationDrawerHeaderData(summoner);
+  }
+
+  @Override public void activateMatchsearch(boolean activate) {
+    searchMatchesTextView.setEnabled(activate);
+    searchMatchesTextView.setAlpha(activate ? 1f : 0.5f);
   }
 }

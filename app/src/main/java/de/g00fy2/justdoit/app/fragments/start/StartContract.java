@@ -13,6 +13,8 @@ public interface StartContract {
   interface StartPresenter extends BasePresenter {
 
     void searchSummoner(String summonerName);
+
+    void searchMatches();
   }
 
   interface StartView extends BaseView {
@@ -20,5 +22,7 @@ public interface StartContract {
     void showCurrentVersion(String currentVersion);
 
     void setDefaultSummoner(Summoner summmoner);
+
+    void activateMatchsearch(boolean activate);
   }
 }

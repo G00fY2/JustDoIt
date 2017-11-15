@@ -29,6 +29,18 @@
         android:text="Search"
         android:textColor="@android:color/white"
         />
+    <TextView
+        android:id="@+id/search_matches_textview"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:alpha="0.5"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="Matches"
+        android:textColor="@android:color/white"
+        />
   </LinearLayout>
   <TextView
       android:id="@+id/start_current_version_textview"

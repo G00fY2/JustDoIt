@@ -35,7 +35,7 @@ import timber.log.Timber;
   @Provides @Singleton public OkHttpClient provideOkHttpClient() {
     OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder().addInterceptor(chain -> {
       Request request = chain.request();
-      HttpUrl url = request.url().newBuilder().addQueryParameter("api_key", "value").build();
+      HttpUrl url = request.url().newBuilder().addQueryParameter("api_key", "RGAPI-0bdcfbe4-a63c-46b1-ab38-f6bb959249de").build();
       request = request.newBuilder().url(url).build();
       return chain.proceed(request);
     });

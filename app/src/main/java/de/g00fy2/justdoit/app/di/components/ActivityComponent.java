@@ -12,6 +12,7 @@ import de.g00fy2.justdoit.app.di.modules.DataModule;
 import de.g00fy2.justdoit.app.di.modules.TransformerModule;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
 import de.g00fy2.model.controllers.MoshiController;
+import de.g00fy2.model.datastores.MatchlistDataStore;
 import de.g00fy2.model.datastores.StaticDataDataStore;
 import de.g00fy2.model.datastores.SummonerDataStore;
 
@@ -20,8 +21,8 @@ import de.g00fy2.model.datastores.SummonerDataStore;
  */
 
 @PerActivity @Component(modules = {
-    ActivityModule.class, DataModule.class, ControllerModule.class, TransformerModule.class },
-    dependencies = ApplicationComponent.class) public interface ActivityComponent {
+    ActivityModule.class, DataModule.class, ControllerModule.class, TransformerModule.class
+}, dependencies = ApplicationComponent.class) public interface ActivityComponent {
 
   BaseActivity baseActivity();
 
@@ -42,4 +43,6 @@ import de.g00fy2.model.datastores.SummonerDataStore;
   StaticDataDataStore staticDataStore();
 
   SummonerDataStore summonerDataStore();
+
+  MatchlistDataStore matchlistDataStore();
 }
