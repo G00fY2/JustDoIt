@@ -20,4 +20,37 @@ public class Participant {
   public int deaths;
   public int assists;
 
+  @Override public String toString() {
+    return "Participant{"
+        + "participantId="
+        + participantId
+        + ", summonerName='"
+        + summonerName
+        + '\''
+        + ", accountId="
+        + accountId
+        + ", profileIcon="
+        + profileIcon
+        + ", championId="
+        + championId
+        + ", teamId="
+        + teamId
+        + ", win='"
+        + win
+        + '\''
+        + ", spell1Id="
+        + spell1Id
+        + ", spell2Id="
+        + spell2Id
+        + ", lane='"
+        + lane
+        + '\''
+        + ", kills="
+        + kills
+        + ", deaths="
+        + deaths
+        + ", assists="
+        + assists
+        + '}';
+  }
 }

@@ -21,4 +21,34 @@ public class Match {
 
   public List<Participant> participants;
 
+  @Override public String toString() {
+    return "Match{"
+        + "seasonId="
+        + seasonId
+        + ", queueId="
+        + queueId
+        + ", gameId="
+        + gameId
+        + ", gameVersion='"
+        + gameVersion
+        + '\''
+        + ", platformId='"
+        + platformId
+        + '\''
+        + ", gameMode='"
+        + gameMode
+        + '\''
+        + ", mapId="
+        + mapId
+        + ", gameType='"
+        + gameType
+        + '\''
+        + ", gameDuration="
+        + gameDuration
+        + ", gameCreation="
+        + gameCreation
+        + ", participants="
+        + participants
+        + '}';
+  }
 }

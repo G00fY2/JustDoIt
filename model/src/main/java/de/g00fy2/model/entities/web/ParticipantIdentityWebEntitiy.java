@@ -8,4 +8,13 @@ public class ParticipantIdentityWebEntitiy {
 
   public PlayerWebEntity player;
   public Integer participantId;
+
+  @Override public String toString() {
+    return "ParticipantIdentityWebEntitiy{"
+        + "player="
+        + player
+        + ", participantId="
+        + participantId
+        + '}';
+  }
 }
