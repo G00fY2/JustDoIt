@@ -1,9 +1,9 @@
 package de.g00fy2.justdoit.app.fragments.start.interactors;
 
 import de.g00fy2.justdoit.app.fragments.base.BaseInteractor;
-import de.g00fy2.model.datastores.MatchlistDataStore;
-import de.g00fy2.model.models.Matchlist;
-import io.reactivex.Single;
+import de.g00fy2.model.datastores.MatchDataStore;
+import de.g00fy2.model.models.Match;
+import io.reactivex.Observable;
 import javax.inject.Inject;
 
 /**
@@ -13,13 +13,14 @@ import javax.inject.Inject;
 public class GetAccountMatchlistInteractorImpl extends BaseInteractor
     implements GetAccountMatchlistInteractor {
 
-  @Inject MatchlistDataStore matchlistDataStore;
+  @Inject MatchDataStore matchDataStore;
 
   @Inject public GetAccountMatchlistInteractorImpl() {
 
   }
 
-  @Override public Single<Matchlist> execute(String accountId) {
-    return matchlistDataStore.getMatchlistByAccountId(accountId).compose(single());
+  @Override public Observable<Match> execute(String accountId) {
+    // return only 10 matches to avoid rate limit atm
+    return matchDataStore.getMatchesByAccountId(accountId, 10).compose(observable());
   }
 }

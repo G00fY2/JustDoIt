@@ -27,6 +27,7 @@ allprojects {
         // support libs
         appcompat = "com.android.support:appcompat-v7:$supportLibraryVersion"
         design = "com.android.support:design:$supportLibraryVersion"
+        annotations = "com.android.support:support-annotations:$supportLibraryVersion"
 
         // reactiveX
         rxJava = 'io.reactivex.rxjava2:rxjava:2.1.6'

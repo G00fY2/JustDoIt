@@ -21,6 +21,8 @@ android {
 }
 
 dependencies {
+    api project.ext.annotations
+
     api project.ext.dagger
     annotationProcessor project.ext.daggerCompiler
 

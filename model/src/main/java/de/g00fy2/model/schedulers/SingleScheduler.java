@@ -13,6 +13,8 @@ import io.reactivex.schedulers.Schedulers;
 public class SingleScheduler<T> implements SingleTransformer<T, T> {
 
   @Override public SingleSource<T> apply(Single<T> upstream) {
-    return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    return upstream.subscribeOn(Schedulers.io())
+        .unsubscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread());
   }
 }

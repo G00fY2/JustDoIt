@@ -3,14 +3,14 @@ package de.g00fy2.justdoit.app.di.modules;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
-import de.g00fy2.model.datasources.web.MatchlistWebDataSource;
-import de.g00fy2.model.datasources.web.MatchlistWebDataSourceImpl;
+import de.g00fy2.model.datasources.web.MatchWebDataSource;
+import de.g00fy2.model.datasources.web.MatchWebDataSourceImpl;
 import de.g00fy2.model.datasources.web.StaticDataWebDataSource;
 import de.g00fy2.model.datasources.web.StaticDataWebDataSourceImpl;
 import de.g00fy2.model.datasources.web.SummonerWebDataSource;
 import de.g00fy2.model.datasources.web.SummonerWebDataSourceImpl;
-import de.g00fy2.model.datastores.MatchlistDataStore;
-import de.g00fy2.model.datastores.MatchlistDataStoreImpl;
+import de.g00fy2.model.datastores.MatchDataStore;
+import de.g00fy2.model.datastores.MatchDataStoreImpl;
 import de.g00fy2.model.datastores.StaticDataDataStore;
 import de.g00fy2.model.datastores.StaticDataDataStoreImpl;
 import de.g00fy2.model.datastores.SummonerDataStore;
@@ -34,9 +34,9 @@ import de.g00fy2.model.datastores.SummonerDataStoreImpl;
     return summonerWebDataSourceImpl;
   }
 
-  @Provides @PerActivity public MatchlistWebDataSource provideMatchlistWebDataSourceImpl(
-      MatchlistWebDataSourceImpl matchlistWebDataSourceImpl) {
-    return matchlistWebDataSourceImpl;
+  @Provides @PerActivity public MatchWebDataSource provideMatchWebDataSourceImpl(
+      MatchWebDataSourceImpl matchWebDataSourceImpl) {
+    return matchWebDataSourceImpl;
   }
 
   // DataStores
@@ -52,7 +52,7 @@ import de.g00fy2.model.datastores.SummonerDataStoreImpl;
   }
 
   @Provides @PerActivity
-  public MatchlistDataStore provideMatchlistDataStore(MatchlistDataStoreImpl matchlistDataStoreImpl) {
-    return matchlistDataStoreImpl;
+  public MatchDataStore provideMatchDataStore(MatchDataStoreImpl matchDataStoreImpl) {
+    return matchDataStoreImpl;
   }
 }

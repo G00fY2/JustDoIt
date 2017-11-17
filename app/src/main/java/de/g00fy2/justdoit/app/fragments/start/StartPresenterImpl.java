@@ -8,6 +8,7 @@ import de.g00fy2.justdoit.app.fragments.start.interactors.GetStaticDataVersionsI
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInteractor;
 import de.g00fy2.model.models.Summoner;
 import javax.inject.Inject;
+import timber.log.Timber;
 
 /**
  * Created by Thomas Wirth on 04.10.2017.
@@ -55,8 +56,8 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
     if (lastSummoner != null) {
       String accountId = Long.toString(lastSummoner.accountId);
       bind(getAccountMatchlistInteractor.execute(accountId)
-          .subscribe(matchlist -> snackbarController.showSuccess(
-              "Last lane: " + matchlist.matches.get(0).lane), errorController::onError));
+          .subscribe(match -> Timber.d("Game duration: " + Long.toString(match.gameDuration)),
+              errorController::onError, () -> Timber.d("onCompleted")));
     }
   }
 }

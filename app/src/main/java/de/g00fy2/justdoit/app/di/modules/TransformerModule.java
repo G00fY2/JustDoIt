@@ -3,6 +3,8 @@ package de.g00fy2.justdoit.app.di.modules;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
+import de.g00fy2.model.transformers.MatchTransformer;
+import de.g00fy2.model.transformers.MatchTransformerImpl;
 import de.g00fy2.model.transformers.MatchlistTransformer;
 import de.g00fy2.model.transformers.MatchlistTransformerImpl;
 import de.g00fy2.model.transformers.SummonerTransformer;
@@ -22,5 +24,10 @@ import de.g00fy2.model.transformers.SummonerTransformerImpl;
   @Provides @PerActivity public MatchlistTransformer provideMatchlistTransformer(
       MatchlistTransformerImpl matchlistTransformerImpl) {
     return matchlistTransformerImpl;
+  }
+
+  @Provides @PerActivity
+  public MatchTransformer provideMatchTransformer(MatchTransformerImpl matchTransformerImpl) {
+    return matchTransformerImpl;
   }
 }

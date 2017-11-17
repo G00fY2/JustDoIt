@@ -1,7 +1,7 @@
 package de.g00fy2.justdoit.app.fragments.start.interactors;
 
-import de.g00fy2.model.models.Matchlist;
-import io.reactivex.Single;
+import de.g00fy2.model.models.Match;
+import io.reactivex.Observable;
 
 /**
  * Created by Thomas Wirth on 15.11.2017.
@@ -9,5 +9,5 @@ import io.reactivex.Single;
 
 public interface GetAccountMatchlistInteractor {
 
-  Single<Matchlist> execute(String accountId);
+  Observable<Match> execute(String accountId);
 }
