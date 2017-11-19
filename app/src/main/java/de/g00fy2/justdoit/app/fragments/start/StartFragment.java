@@ -5,7 +5,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.g00fy2.justdoit.R;
-import de.g00fy2.justdoit.app.activities.MainActivity;
 import de.g00fy2.justdoit.app.annotations.Layout;
 import de.g00fy2.justdoit.app.annotations.Title;
 import de.g00fy2.justdoit.app.fragments.base.BaseFragment;
@@ -47,7 +46,7 @@ import javax.inject.Inject;
   }
 
   @Override public void setDefaultSummoner(Summoner summoner) {
-    ((MainActivity) getBaseActivity()).setNavigationDrawerHeaderData(summoner);
+    getBaseActivity().getNavigationDrawer().setNavigationDrawerHeaderData(summoner);
   }
 
   @Override public void activateMatchsearch(boolean activate) {

@@ -29,7 +29,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginBottom="16dp"
-        android:src="@android:color/white"
+        android:src="@drawable/circle_placeholder"
         />
     <TextView
         android:id="@+id/navigation_header_summoner_name_textview"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
-        android:text="Level 30"
+        android:text="Level 0"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         />

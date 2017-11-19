@@ -50,6 +50,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
   public abstract View getFragmentContainer();
 
+  public NavigationDrawer getNavigationDrawer() {
+    return activityComponent.navigationDrawer();
+  }
+
   public Navigator getNavigator() {
     return activityComponent.navigator();
   }

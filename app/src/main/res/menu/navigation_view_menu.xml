@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/home"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="Home"/>
+  </group>
+  <item android:title="Misc">
+    <menu>
+      <item
+          android:id="@+id/fb"
+          android:icon="@android:drawable/ic_dialog_alert"
+          android:title="Settings"/>
+      <item
+          android:id="@+id/gplus"
+          android:icon="@android:drawable/ic_dialog_alert"
+          android:title="Info"/>
+    </menu>
+  </item>
+</menu>

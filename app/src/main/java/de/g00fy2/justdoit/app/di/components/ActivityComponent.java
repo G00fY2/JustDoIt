@@ -4,6 +4,7 @@ import android.content.Context;
 import dagger.Component;
 import de.g00fy2.justdoit.app.Navigator;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
+import de.g00fy2.justdoit.app.activities.NavigationDrawer;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.di.modules.ActivityModule;
@@ -29,6 +30,8 @@ import de.g00fy2.model.datastores.SummonerDataStore;
   Context context();
 
   Navigator navigator();
+
+  NavigationDrawer navigationDrawer();
 
   // Controllers
 

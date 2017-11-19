@@ -5,6 +5,7 @@ import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.Navigator;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
+import de.g00fy2.justdoit.app.activities.NavigationDrawer;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
 
 /**
@@ -29,5 +30,9 @@ import de.g00fy2.justdoit.app.di.scopes.PerActivity;
 
   @Provides @PerActivity Navigator provideNavigator() {
     return new Navigator(activity);
+  }
+
+  @Provides @PerActivity NavigationDrawer provideNavigationDrawerHelper() {
+    return new NavigationDrawer(activity);
   }
 }
