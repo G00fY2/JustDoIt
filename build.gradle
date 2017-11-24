@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
     }
 }
 
@@ -19,7 +19,7 @@ allprojects {
         // version numbers
         compileSdk = 27
         supportLibraryVersion = '27.0.1'
-        daggerVersion = '2.12'
+        daggerVersion = '2.13'
         butterknifeVersion = '8.8.1'
         retrofitVersion = '2.3.0'
 
