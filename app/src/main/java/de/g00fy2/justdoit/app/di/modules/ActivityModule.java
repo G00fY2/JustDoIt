@@ -3,7 +3,8 @@ package de.g00fy2.justdoit.app.di.modules;
 import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
-import de.g00fy2.justdoit.app.Navigator;
+import de.g00fy2.justdoit.app.navigation.Navigator;
+import de.g00fy2.justdoit.app.navigation.NavigatorImpl;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
 import de.g00fy2.justdoit.app.activities.NavigationDrawer;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
@@ -29,7 +30,7 @@ import de.g00fy2.justdoit.app.di.scopes.PerActivity;
   }
 
   @Provides @PerActivity Navigator provideNavigator() {
-    return new Navigator(activity);
+    return new NavigatorImpl(activity);
   }
 
   @Provides @PerActivity NavigationDrawer provideNavigationDrawerHelper() {

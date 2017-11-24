@@ -23,8 +23,10 @@ import de.g00fy2.justdoit.app.annotations.Layout;
 
     setSupportActionBar(toolbar);
     final ActionBar ab = getSupportActionBar();
-    ab.setDisplayHomeAsUpEnabled(true);
-    ab.setHomeButtonEnabled(true);
+    if (ab != null) {
+      ab.setDisplayHomeAsUpEnabled(true);
+      ab.setHomeButtonEnabled(true);
+    }
   }
 
   @Override protected void onResume() {
@@ -35,6 +37,7 @@ import de.g00fy2.justdoit.app.annotations.Layout;
 
   @Override protected void onStop() {
     super.onStop();
+    getNavigationDrawer().unbind();
   }
 
   @Override protected void onDestroy() {

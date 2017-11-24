@@ -2,7 +2,7 @@ package de.g00fy2.justdoit.app.di.components;
 
 import android.content.Context;
 import dagger.Component;
-import de.g00fy2.justdoit.app.Navigator;
+import de.g00fy2.justdoit.app.navigation.Navigator;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
 import de.g00fy2.justdoit.app.activities.NavigationDrawer;
 import de.g00fy2.justdoit.app.controllers.ErrorController;

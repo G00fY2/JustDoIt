@@ -1,4 +1,4 @@
-package de.g00fy2.justdoit.app.fragments.start.interactors;
+package de.g00fy2.justdoit.app.fragments.matchhistory.interactors;
 
 import de.g00fy2.justdoit.app.fragments.base.BaseInteractor;
 import de.g00fy2.model.datastores.MatchDataStore;

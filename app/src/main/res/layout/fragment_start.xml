@@ -30,7 +30,7 @@
         android:textColor="@android:color/white"
         />
     <TextView
-        android:id="@+id/search_matches_textview"
+        android:id="@+id/open_matchhistory_textview"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="4dp"

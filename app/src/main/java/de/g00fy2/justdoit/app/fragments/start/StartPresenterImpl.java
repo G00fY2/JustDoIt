@@ -1,14 +1,13 @@
 package de.g00fy2.justdoit.app.fragments.start;
 
+import de.g00fy2.justdoit.app.navigation.Navigator;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
-import de.g00fy2.justdoit.app.fragments.start.interactors.GetAccountMatchlistInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetStaticDataVersionsInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInteractor;
 import de.g00fy2.model.models.Summoner;
 import javax.inject.Inject;
-import timber.log.Timber;
 
 /**
  * Created by Thomas Wirth on 04.10.2017.
@@ -20,21 +19,21 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
 
   @Inject GetStaticDataVersionsInteractor getStaticDataVersionsInteractor;
   @Inject GetSummonerByNameInteractor getSummonerByNameInteractor;
-  @Inject GetAccountMatchlistInteractor getAccountMatchlistInteractor;
   @Inject ErrorController errorController;
   @Inject SnackbarController snackbarController;
+  @Inject Navigator navigator;
 
   @Inject public StartPresenterImpl() {
 
   }
 
-  private Summoner lastSummoner;
+  private Summoner summoner;
 
   @Override public void onResume() {
     super.onResume();
 
     bind(getStaticDataVersionsInteractor.execute().subscribe(versionList -> {
-      if (versionList != null && versionList.size() > 0) {
+      if (versionList.size() > 0) {
         view.showCurrentVersion(versionList.get(0));
       }
     }, errorController::onError));
@@ -42,7 +41,7 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
 
   @Override public void searchSummoner(String summonerName) {
     bind(getSummonerByNameInteractor.execute(summonerName).subscribe(summoner -> {
-      lastSummoner = summoner;
+      this.summoner = summoner;
       view.activateMatchsearch(true);
       view.setDefaultSummoner(summoner);
       snackbarController.showSuccess(summoner.name + " was found!");
@@ -52,12 +51,7 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
     }));
   }
 
-  @Override public void searchMatches() {
-    if (lastSummoner != null) {
-      String accountId = Long.toString(lastSummoner.accountId);
-      bind(getAccountMatchlistInteractor.execute(accountId)
-          .subscribe(match -> Timber.d("Game duration: " + Long.toString(match.gameDuration)),
-              errorController::onError, () -> Timber.d("onCompleted")));
-    }
+  @Override public void openMatchhistory() {
+    navigator.showMatchhistoryFragment(summoner);
   }
 }

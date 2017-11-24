@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import butterknife.Unbinder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import de.g00fy2.justdoit.R;
@@ -22,9 +23,10 @@ import timber.log.Timber;
  * Created by Thomas Wirth on 19.11.2017.
  */
 
-public class NavigationDrawer implements NavigationView.OnNavigationItemSelectedListener {
+public class NavigationDrawer implements NavigationView.OnNavigationItemSelectedListener, Unbinder {
 
   private BaseActivity baseActivity;
+
   private DrawerLayout drawerLayout;
   private ImageView summonerIconImageView;
   private TextView summonerNameTextView;
@@ -79,11 +81,30 @@ public class NavigationDrawer implements NavigationView.OnNavigationItemSelected
   }
 
   @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-    int id = item.getItemId();
-    if (id == R.id.home) {
-      Timber.d("Home clicked");
+    switch (item.getItemId()) {
+      case R.id.home:
+        Timber.d("Home clicked");
+      case R.id.favourites:
+        Timber.d("Favourites clicked");
+        break;
+      case R.id.settings:
+        Timber.d("Settings clicked");
+        break;
+      case R.id.info:
+        Timber.d("Info clicked");
+        break;
     }
     drawerLayout.closeDrawer(Gravity.START);
     return true;
+  }
+
+  @Override public void unbind() {
+    if (baseActivity == null) throw new IllegalStateException("Bindings already cleared.");
+    this.baseActivity = null;
+
+    drawerLayout = null;
+    summonerIconImageView = null;
+    summonerNameTextView = null;
+    summonerLevelTextView = null;
   }
 }

@@ -1,4 +1,4 @@
-package de.g00fy2.justdoit.app.fragments.start.interactors;
+package de.g00fy2.justdoit.app.fragments.matchhistory.interactors;
 
 import de.g00fy2.model.models.Match;
 import io.reactivex.Observable;

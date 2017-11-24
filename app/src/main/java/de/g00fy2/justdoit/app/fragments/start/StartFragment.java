@@ -23,19 +23,25 @@ import javax.inject.Inject;
 
   @BindView(R.id.summoner_name_edittext) EditText summonerNameEditText;
   @BindView(R.id.start_current_version_textview) TextView currentVersionTextView;
-  @BindView(R.id.search_matches_textview) TextView searchMatchesTextView;
+  @BindView(R.id.open_matchhistory_textview) TextView openMatchhistoryTextView;
 
   @OnClick(R.id.search_summoner_textview) void onSearchSummonerClick() {
     presenter.searchSummoner(summonerNameEditText.getText().toString());
   }
 
-  @OnClick(R.id.search_matches_textview) void onSearchMatchesClick() {
-    presenter.searchMatches();
+  @OnClick(R.id.open_matchhistory_textview) void onSearchMatchesClick() {
+    presenter.openMatchhistory();
   }
 
   @Override protected void initializeViews() {
 
   }
+
+  @Override public void onResume() {
+    super.onResume();
+    summonerNameEditText.setText("");
+  }
+
 
   @Override protected BasePresenter registerPresenter() {
     return presenter;
@@ -50,7 +56,7 @@ import javax.inject.Inject;
   }
 
   @Override public void activateMatchsearch(boolean activate) {
-    searchMatchesTextView.setEnabled(activate);
-    searchMatchesTextView.setAlpha(activate ? 1f : 0.5f);
+    openMatchhistoryTextView.setEnabled(activate);
+    openMatchhistoryTextView.setAlpha(activate ? 1f : 0.5f);
   }
 }

@@ -6,11 +6,11 @@ import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import de.g00fy2.justdoit.app.MyApplication;
-import de.g00fy2.justdoit.app.Navigator;
+import de.g00fy2.justdoit.app.navigation.Navigator;
 import de.g00fy2.justdoit.app.annotations.Layout;
 import de.g00fy2.justdoit.app.di.components.ActivityComponent;
-import de.g00fy2.justdoit.app.di.modules.ActivityModule;
 import de.g00fy2.justdoit.app.di.components.DaggerActivityComponent;
+import de.g00fy2.justdoit.app.di.modules.ActivityModule;
 import java.lang.annotation.Annotation;
 
 /**

@@ -14,7 +14,7 @@ public interface StartContract {
 
     void searchSummoner(String summonerName);
 
-    void searchMatches();
+    void openMatchhistory();
   }
 
   interface StartView extends BaseView {
