@@ -1,8 +1,6 @@
 package de.g00fy2.model.controllers;
 
 import io.reactivex.Single;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Thomas Wirth on 01.11.2017.

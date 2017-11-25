@@ -1,6 +1,7 @@
 package de.g00fy2.justdoit.app.fragments.base;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -28,7 +29,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     this.presenter = registerPresenter();
   }
 
-  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
+  @Nullable @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     View view = inflater.inflate(getLayoutResId(), container, false);
     unbinder = ButterKnife.bind(this, view);
@@ -36,7 +37,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     return view;
   }
 
-  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+  @Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     initializeViews();
     if (presenter != null) {
@@ -84,7 +85,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
   private String setTitle() {
     Annotation annotation = this.getClass().getAnnotation(Title.class);
-    if (annotation != null) {
+    if (annotation != null && getContext() != null) {
       int stringResId = ((Title) annotation).value();
       return getContext().getString(stringResId);
     }
