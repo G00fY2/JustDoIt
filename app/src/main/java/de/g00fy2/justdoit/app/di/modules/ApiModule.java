@@ -2,7 +2,7 @@ package de.g00fy2.justdoit.app.di.modules;
 
 import dagger.Module;
 import dagger.Provides;
-import de.g00fy2.model.BuildConfig;
+import de.g00fy2.justdoit.BuildConfig;
 import de.g00fy2.model.api.RiotApi;
 import javax.inject.Singleton;
 import okhttp3.HttpUrl;
@@ -35,7 +35,8 @@ import timber.log.Timber;
   @Provides @Singleton public OkHttpClient provideOkHttpClient() {
     OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder().addInterceptor(chain -> {
       Request request = chain.request();
-      HttpUrl url = request.url().newBuilder().addQueryParameter("api_key", "value").build();
+      HttpUrl url =
+          request.url().newBuilder().addQueryParameter("api_key", BuildConfig.API_KEY).build();
       request = request.newBuilder().url(url).build();
       return chain.proceed(request);
     });

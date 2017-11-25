@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+// read custom keystore file
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(rootProject.file("keystore.properties")))
+
 android {
     compileSdkVersion project.ext.compileSdk
     defaultConfig {
@@ -17,6 +21,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_KEY", keystoreProperties['riotAPIKey']
+        }
+        debug {
+            buildConfigField "String", "API_KEY", keystoreProperties['riotAPIKey']
         }
     }
 }
