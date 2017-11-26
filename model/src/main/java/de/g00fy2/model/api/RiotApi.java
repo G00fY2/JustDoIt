@@ -1,5 +1,7 @@
 package de.g00fy2.model.api;
 
+import de.g00fy2.model.entities.web.LeagueListWebEntity;
+import de.g00fy2.model.entities.web.LeaguePositionWebEntity;
 import de.g00fy2.model.entities.web.MatchWebEntity;
 import de.g00fy2.model.entities.web.MatchlistWebEntity;
 import de.g00fy2.model.entities.web.SummonerWebEntity;
@@ -39,4 +41,12 @@ public interface RiotApi {
 
   @GET("/lol/match/v3/matchlists/by-account/{accountId}/recent")
   Single<MatchlistWebEntity> getMatchlistByAccountIdRecent(@Path("accountId") String accountId);
+
+  // LEAGUE-V3
+
+  @GET("/lol/league/v3/positions/by-summoner/{summonerId}")
+  Single<Set<LeaguePositionWebEntity>> getLeaguePositions(@Path("summonerId") String summonerId);
+
+  @GET("/lol/league/v3/leagues/{leagueId}")
+  Single<LeagueListWebEntity> getLeagueLists(@Path("leagueId") String leagueId);
 }
