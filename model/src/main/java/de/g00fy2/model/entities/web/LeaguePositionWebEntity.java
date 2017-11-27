@@ -9,7 +9,7 @@ public class LeaguePositionWebEntity {
   public String rank;
   public Boolean hotStreak;
   public MiniSeriesWebEntity miniSeries;
-  public int wins;
+  public Integer wins;
   public Boolean veteran;
   public Integer losses;
   public Boolean freshBlood;

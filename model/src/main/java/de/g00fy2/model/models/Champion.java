@@ -9,7 +9,7 @@ public class Champion {
   public String name;
   public String title;
   public String key;
-  public Integer id;
+  public int id;
 
   @Override public String toString() {
     return "Champion{"
