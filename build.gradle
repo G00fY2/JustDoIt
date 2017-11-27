@@ -22,6 +22,7 @@ allprojects {
         daggerVersion = '2.13'
         butterknifeVersion = '8.8.1'
         retrofitVersion = '2.3.0'
+        glideVersion = '4.3.1'
 
 
         // support libs
@@ -48,8 +49,9 @@ allprojects {
         rxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
         // images
-        glide =  'com.github.bumptech.glide:glide:4.3.1'
-        glideCompiler = 'com.github.bumptech.glide:compiler:4.3.1'
+        glide = "com.github.bumptech.glide:glide:$glideVersion"
+        glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
+        glideIntegration = "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
 
         // json
         moshi = 'com.squareup.moshi:moshi:1.5.0'
