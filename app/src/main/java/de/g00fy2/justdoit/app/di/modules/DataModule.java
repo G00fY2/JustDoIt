@@ -3,12 +3,16 @@ package de.g00fy2.justdoit.app.di.modules;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
+import de.g00fy2.model.datasources.web.LeagueWebDataSource;
+import de.g00fy2.model.datasources.web.LeagueWebDataSourceImpl;
 import de.g00fy2.model.datasources.web.MatchWebDataSource;
 import de.g00fy2.model.datasources.web.MatchWebDataSourceImpl;
 import de.g00fy2.model.datasources.web.StaticDataWebDataSource;
 import de.g00fy2.model.datasources.web.StaticDataWebDataSourceImpl;
 import de.g00fy2.model.datasources.web.SummonerWebDataSource;
 import de.g00fy2.model.datasources.web.SummonerWebDataSourceImpl;
+import de.g00fy2.model.datastores.LeagueDataStore;
+import de.g00fy2.model.datastores.LeagueDataStoreImpl;
 import de.g00fy2.model.datastores.MatchDataStore;
 import de.g00fy2.model.datastores.MatchDataStoreImpl;
 import de.g00fy2.model.datastores.StaticDataDataStore;
@@ -39,6 +43,11 @@ import de.g00fy2.model.datastores.SummonerDataStoreImpl;
     return matchWebDataSourceImpl;
   }
 
+  @Provides @PerActivity public LeagueWebDataSource provideLeagueWebDataSourceImpl(
+      LeagueWebDataSourceImpl leagueWebDataSourceImpl) {
+    return leagueWebDataSourceImpl;
+  }
+
   // DataStores
 
   @Provides @PerActivity public StaticDataDataStore provideStaticDataDataStore(
@@ -54,5 +63,10 @@ import de.g00fy2.model.datastores.SummonerDataStoreImpl;
   @Provides @PerActivity
   public MatchDataStore provideMatchDataStore(MatchDataStoreImpl matchDataStoreImpl) {
     return matchDataStoreImpl;
+  }
+
+  @Provides @PerActivity
+  public LeagueDataStore provideLeagueDataStore(LeagueDataStoreImpl leagueDataStoreImpl) {
+    return leagueDataStoreImpl;
   }
 }

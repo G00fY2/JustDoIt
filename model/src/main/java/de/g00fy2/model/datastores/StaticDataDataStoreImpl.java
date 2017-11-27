@@ -1,6 +1,7 @@
 package de.g00fy2.model.datastores;
 
 import de.g00fy2.model.datasources.web.StaticDataWebDataSource;
+import de.g00fy2.model.models.Champion;
 import io.reactivex.Single;
 import java.util.List;
 import javax.inject.Inject;
@@ -11,10 +12,23 @@ import javax.inject.Inject;
 
 public class StaticDataDataStoreImpl implements StaticDataDataStore {
 
+  private List<Champion> cachedChampionList;
+
   @Inject StaticDataWebDataSource staticDataWebDataSource;
 
   @Inject public StaticDataDataStoreImpl() {
 
+  }
+
+  @Override public Single<List<Champion>> getChampions() {
+    // TODO proper database caching
+    if (cachedChampionList == null || cachedChampionList.size() == 0) {
+      return staticDataWebDataSource.getChampions().flatMap(champions -> {
+        cachedChampionList = champions;
+        return Single.just(champions);
+      });
+    }
+    return Single.just(cachedChampionList);
   }
 
   @Override public Single<List<String>> getVersions() {

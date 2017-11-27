@@ -21,7 +21,7 @@ public interface RiotApi {
 
   // LOL-STATIC-DATA-V3
 
-  @GET("/lol/static-data/v3/champions") Single<List<ChampionListWebEntity>> getChampionList();
+  @GET("/lol/static-data/v3/champions") Single<ChampionListWebEntity> getChampionList();
 
   @GET("lol/static-data/v3/versions") Single<List<String>> getVersions();
 

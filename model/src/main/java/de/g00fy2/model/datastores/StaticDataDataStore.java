@@ -1,5 +1,6 @@
 package de.g00fy2.model.datastores;
 
+import de.g00fy2.model.models.Champion;
 import io.reactivex.Single;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import java.util.List;
  */
 
 public interface StaticDataDataStore {
+
+  Single<List<Champion>> getChampions();
 
   Single<List<String>> getVersions();
 }
