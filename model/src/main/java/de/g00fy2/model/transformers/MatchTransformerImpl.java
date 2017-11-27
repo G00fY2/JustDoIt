@@ -8,7 +8,6 @@ import de.g00fy2.model.models.Match;
 import de.g00fy2.model.models.Participant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import javax.inject.Inject;
 
 /**
@@ -21,7 +20,7 @@ public class MatchTransformerImpl implements MatchTransformer {
 
   }
 
-  @Override public Match toModel(MatchWebEntity matchWebEntity) {
+  @Override public Match toModel(String accountId, MatchWebEntity matchWebEntity) {
     if (matchWebEntity != null) {
       Match match = new Match();
       match.seasonId = matchWebEntity.seasonId;
@@ -51,9 +50,10 @@ public class MatchTransformerImpl implements MatchTransformer {
             Participant participant = new Participant();
             participant.participantId = participantIdentitiesWeb.get(i).participantId;
             participant.summonerName = participantIdentitiesWeb.get(i).player.summonerName;
+            participant.accountId = participantIdentitiesWeb.get(i).player.accountId;
             participant.profileIcon = participantIdentitiesWeb.get(i).player.profileIcon;
 
-            if (Objects.equals(participantIdentitiesWeb.get(i).participantId,
+            if (participantIdentitiesWeb.get(i).participantId.equals(
                 participantsWeb.get(i).participantId)) {
               participant.championId = participantsWeb.get(i).championId;
               participant.teamId = participantsWeb.get(i).teamId;
@@ -69,9 +69,15 @@ public class MatchTransformerImpl implements MatchTransformer {
               }
             }
 
-            if (teamsWeb.size() == 2) {
-              participant.win = teamsWeb.get(0).teamId == participant.teamId ? teamsWeb.get(0).win
-                  : teamsWeb.get(1).win;
+            for (TeamStatsWebEnitity teamStatsWebEnitity : teamsWeb) {
+              if (teamStatsWebEnitity.teamId == participant.teamId) {
+                participant.win = teamStatsWebEnitity.win;
+                break;
+              }
+            }
+
+            if (Long.toString(participant.accountId).equals(accountId)) {
+              match.win = participant.win;
             }
 
             match.participants.add(participant);

@@ -27,7 +27,8 @@ public class MatchWebDataSourceImpl implements MatchWebDataSource {
         .map(matchlistTransformer::toModel);
   }
 
-  @Override public Single<Match> getMatchByMatchId(String matchId) {
-    return riotApi.getMatchByMatchId(matchId).map(matchTransformer::toModel);
+  @Override public Single<Match> getMatchByMatchId(String accountId, String matchId) {
+    return riotApi.getMatchByMatchId(matchId)
+        .map(matchWebEntity -> matchTransformer.toModel(accountId, matchWebEntity));
   }
 }

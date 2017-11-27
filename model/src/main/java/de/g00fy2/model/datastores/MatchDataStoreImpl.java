@@ -23,14 +23,14 @@ public class MatchDataStoreImpl implements MatchDataStore {
     return matchWebDataSource.getMatchlistByAccountId(accountId);
   }
 
-  @Override public Single<Match> getMatchByMatchId(String matchId) {
-    return matchWebDataSource.getMatchByMatchId(matchId);
+  @Override public Single<Match> getMatchByMatchId(String accountId, String matchId) {
+    return matchWebDataSource.getMatchByMatchId(accountId, matchId);
   }
 
   @Override public Observable<Match> getMatchesByAccountId(String accountId, int count) {
     return matchWebDataSource.getMatchlistByAccountId(accountId)
         .flatMapObservable(matchlist -> Observable.fromIterable(matchlist.matches))
-        .flatMapSingle(matchReferenceWebEntity -> getMatchByMatchId(
+        .flatMapSingle(matchReferenceWebEntity -> getMatchByMatchId(accountId,
             Long.toString(matchReferenceWebEntity.gameId)))
         .take(count);
   }

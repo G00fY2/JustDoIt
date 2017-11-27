@@ -14,7 +14,7 @@ public interface MatchDataStore {
 
   Single<Matchlist> getMatchlistByAccountId(String accountId);
 
-  Single<Match> getMatchByMatchId(String matchId);
+  Single<Match> getMatchByMatchId(String accountId, String matchId);
 
   Observable<Match> getMatchesByAccountId(String accountId, @IntRange(from = 1, to = 20) int count);
 }

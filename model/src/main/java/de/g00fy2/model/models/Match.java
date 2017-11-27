@@ -11,6 +11,7 @@ public class Match {
   public int seasonId;
   public int queueId;
   public long gameId;
+  public String win;
   public String gameVersion;
   public String platformId;
   public String gameMode;

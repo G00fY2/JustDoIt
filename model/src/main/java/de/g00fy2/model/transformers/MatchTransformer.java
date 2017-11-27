@@ -9,5 +9,5 @@ import de.g00fy2.model.models.Match;
 
 public interface MatchTransformer {
 
-  Match toModel(MatchWebEntity matchWebEntity);
+  Match toModel(String accountId, MatchWebEntity matchWebEntity);
 }

@@ -12,5 +12,5 @@ public interface MatchWebDataSource {
 
   Single<Matchlist> getMatchlistByAccountId(String accountId);
 
-  Single<Match> getMatchByMatchId(String matchId);
+  Single<Match> getMatchByMatchId(String accountId, String matchId);
 }
