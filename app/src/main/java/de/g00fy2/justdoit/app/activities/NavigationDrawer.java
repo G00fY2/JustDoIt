@@ -72,7 +72,7 @@ public class NavigationDrawer implements NavigationView.OnNavigationItemSelected
   public void setNavigationDrawerHeaderData(Summoner summoner) {
     if (baseActivity != null && summoner != null) {
       Glide.with(baseActivity)
-          .load(APIUtils.generateProfileIconUrl(summoner.profileIconId))
+          .load(APIUtils.generateProfileImageUrl(summoner.profileIconId))
           .apply(RequestOptions.circleCropTransform())
           .into(summonerIconImageView);
       summonerNameTextView.setText(summoner.name);

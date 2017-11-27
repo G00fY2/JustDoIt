@@ -6,10 +6,17 @@ package de.g00fy2.justdoit.app.utils;
 
 public class APIUtils {
 
-  public static String generateProfileIconUrl(int iconId) {
-    // TODO add to constants and dynamically update version path
-    String url = "http://ddragon.leagueoflegends.com/cdn/7.21.1/img/profileicon/";
+  private final static String BASE_URL = "http://ddragon.leagueoflegends.com/cdn/";
+  // TODO dynamically update latest version
+  private static String latestVersion = "7.23.1";
 
+  public static String generateProfileImageUrl(int iconId) {
+    String url = BASE_URL + latestVersion + "/img/profileicon/";
     return url + String.valueOf(iconId) + ".png";
+  }
+
+  public static String generateChampionImageUrl(String name) {
+    String url = BASE_URL + latestVersion + "/img/champion/";
+    return url + name + ".png";
   }
 }
