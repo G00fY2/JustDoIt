@@ -13,6 +13,8 @@ import de.g00fy2.model.transformers.MatchTransformer;
 import de.g00fy2.model.transformers.MatchTransformerImpl;
 import de.g00fy2.model.transformers.MatchlistTransformer;
 import de.g00fy2.model.transformers.MatchlistTransformerImpl;
+import de.g00fy2.model.transformers.SummonerSpellTransformer;
+import de.g00fy2.model.transformers.SummonerSpellTransformerImpl;
 import de.g00fy2.model.transformers.SummonerTransformer;
 import de.g00fy2.model.transformers.SummonerTransformerImpl;
 
@@ -50,5 +52,10 @@ import de.g00fy2.model.transformers.SummonerTransformerImpl;
   @Provides @PerActivity public ChampionListTransformer provideChampionListTransformer(
       ChampionListTransformerImpl championListTransformerImpl) {
     return championListTransformerImpl;
+  }
+
+  @Provides @PerActivity public SummonerSpellTransformer provideSummonerSpellTransformer(
+      SummonerSpellTransformerImpl summonerSpellTransformerImpl) {
+    return summonerSpellTransformerImpl;
   }
 }

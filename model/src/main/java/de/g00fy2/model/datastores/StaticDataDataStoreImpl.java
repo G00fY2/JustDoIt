@@ -2,6 +2,7 @@ package de.g00fy2.model.datastores;
 
 import de.g00fy2.model.datasources.web.StaticDataWebDataSource;
 import de.g00fy2.model.models.Champion;
+import de.g00fy2.model.models.SummonerSpell;
 import io.reactivex.Single;
 import java.util.List;
 import javax.inject.Inject;
@@ -13,6 +14,7 @@ import javax.inject.Inject;
 public class StaticDataDataStoreImpl implements StaticDataDataStore {
 
   private List<Champion> cachedChampionList;
+  private List<SummonerSpell> cachedSummonerSpellList;
 
   @Inject StaticDataWebDataSource staticDataWebDataSource;
 
@@ -29,6 +31,17 @@ public class StaticDataDataStoreImpl implements StaticDataDataStore {
       });
     }
     return Single.just(cachedChampionList);
+  }
+
+  @Override public Single<List<SummonerSpell>> getSummonerSpells() {
+    // TODO proper database caching
+    if (cachedSummonerSpellList == null || cachedSummonerSpellList.size() == 0) {
+      return staticDataWebDataSource.getSummonerSpells().flatMap(summonerSpells -> {
+        cachedSummonerSpellList = summonerSpells;
+        return Single.just(summonerSpells);
+      });
+    }
+    return Single.just(cachedSummonerSpellList);
   }
 
   @Override public Single<List<String>> getVersions() {

@@ -5,6 +5,7 @@ import de.g00fy2.model.entities.web.LeagueListWebEntity;
 import de.g00fy2.model.entities.web.LeaguePositionWebEntity;
 import de.g00fy2.model.entities.web.MatchWebEntity;
 import de.g00fy2.model.entities.web.MatchlistWebEntity;
+import de.g00fy2.model.entities.web.SummonerSpellListWebEntity;
 import de.g00fy2.model.entities.web.SummonerWebEntity;
 import io.reactivex.Single;
 import java.util.List;
@@ -22,6 +23,8 @@ public interface RiotApi {
   // LOL-STATIC-DATA-V3
 
   @GET("/lol/static-data/v3/champions") Single<ChampionListWebEntity> getChampionList();
+
+  @GET("/lol/static-data/v3/summoner-spells") Single<SummonerSpellListWebEntity> getSummonerSpellList();
 
   @GET("lol/static-data/v3/versions") Single<List<String>> getVersions();
 
