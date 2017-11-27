@@ -2,7 +2,6 @@ package de.g00fy2.justdoit.app.di.components;
 
 import android.content.Context;
 import dagger.Component;
-import de.g00fy2.justdoit.app.navigation.Navigator;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
 import de.g00fy2.justdoit.app.activities.NavigationDrawer;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
@@ -12,7 +11,9 @@ import de.g00fy2.justdoit.app.di.modules.ControllerModule;
 import de.g00fy2.justdoit.app.di.modules.DataModule;
 import de.g00fy2.justdoit.app.di.modules.TransformerModule;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
+import de.g00fy2.justdoit.app.navigation.Navigator;
 import de.g00fy2.model.controllers.MoshiController;
+import de.g00fy2.model.datastores.LeagueDataStore;
 import de.g00fy2.model.datastores.MatchDataStore;
 import de.g00fy2.model.datastores.StaticDataDataStore;
 import de.g00fy2.model.datastores.SummonerDataStore;
@@ -42,6 +43,8 @@ import de.g00fy2.model.datastores.SummonerDataStore;
   SnackbarController snackbarController();
 
   // DataStores
+
+  LeagueDataStore leagueDataStore();
 
   StaticDataDataStore staticDataStore();
 
