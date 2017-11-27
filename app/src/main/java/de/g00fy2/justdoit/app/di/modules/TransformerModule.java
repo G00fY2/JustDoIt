@@ -3,6 +3,12 @@ package de.g00fy2.justdoit.app.di.modules;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
+import de.g00fy2.model.transformers.ChampionListTransformer;
+import de.g00fy2.model.transformers.ChampionListTransformerImpl;
+import de.g00fy2.model.transformers.LeagueListTransformer;
+import de.g00fy2.model.transformers.LeagueListTransformerImpl;
+import de.g00fy2.model.transformers.LeaguePositionTransformer;
+import de.g00fy2.model.transformers.LeaguePositionTransformerImpl;
 import de.g00fy2.model.transformers.MatchTransformer;
 import de.g00fy2.model.transformers.MatchTransformerImpl;
 import de.g00fy2.model.transformers.MatchlistTransformer;
@@ -29,5 +35,20 @@ import de.g00fy2.model.transformers.SummonerTransformerImpl;
   @Provides @PerActivity
   public MatchTransformer provideMatchTransformer(MatchTransformerImpl matchTransformerImpl) {
     return matchTransformerImpl;
+  }
+
+  @Provides @PerActivity public LeagueListTransformer provideLeagueListTransformer(
+      LeagueListTransformerImpl leagueListTransformerImpl) {
+    return leagueListTransformerImpl;
+  }
+
+  @Provides @PerActivity public LeaguePositionTransformer provideLeaguePositionTransformer(
+      LeaguePositionTransformerImpl leaguePositionTransformerImpl) {
+    return leaguePositionTransformerImpl;
+  }
+
+  @Provides @PerActivity public ChampionListTransformer provideChampionListTransformer(
+      ChampionListTransformerImpl championListTransformerImpl) {
+    return championListTransformerImpl;
   }
 }
