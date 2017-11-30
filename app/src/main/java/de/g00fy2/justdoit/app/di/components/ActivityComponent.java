@@ -5,6 +5,7 @@ import dagger.Component;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
 import de.g00fy2.justdoit.app.activities.NavigationDrawer;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
+import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.di.modules.ActivityModule;
 import de.g00fy2.justdoit.app.di.modules.ControllerModule;
@@ -41,6 +42,8 @@ import de.g00fy2.model.datastores.SummonerDataStore;
   ErrorController errorController();
 
   SnackbarController snackbarController();
+
+  ImageLoaderController imageLoaderController();
 
   // DataStores
 

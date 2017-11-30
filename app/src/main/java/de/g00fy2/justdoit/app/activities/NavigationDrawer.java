@@ -11,10 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.Unbinder;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import de.g00fy2.justdoit.R;
-import de.g00fy2.justdoit.app.utils.APIUtils;
 import de.g00fy2.model.models.Summoner;
 import javax.inject.Inject;
 import timber.log.Timber;
@@ -71,10 +68,8 @@ public class NavigationDrawer implements NavigationView.OnNavigationItemSelected
 
   public void setNavigationDrawerHeaderData(Summoner summoner) {
     if (baseActivity != null && summoner != null) {
-      Glide.with(baseActivity)
-          .load(APIUtils.generateProfileImageUrl(summoner.profileIconId))
-          .apply(RequestOptions.circleCropTransform())
-          .into(summonerIconImageView);
+      baseActivity.activityComponent.imageLoaderController()
+          .loadProfileIcon(summoner.profileIconId, summonerIconImageView, true);
       summonerNameTextView.setText(summoner.name);
       summonerLevelTextView.setText("Level " + String.valueOf(summoner.summonerLevel));
     }

@@ -4,6 +4,8 @@ import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.controllers.ErrorControllerImpl;
+import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
+import de.g00fy2.justdoit.app.controllers.ImageLoaderControllerImpl;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.controllers.SnackbarControllerImpl;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
@@ -29,5 +31,10 @@ import de.g00fy2.model.controllers.MoshiControllerImpl;
   @Provides @PerActivity public SnackbarController provideSnackbarController(
       SnackbarControllerImpl snackbarControllerImpl) {
     return snackbarControllerImpl;
+  }
+
+  @Provides @PerActivity ImageLoaderController provideImageLoaderController(
+      ImageLoaderControllerImpl imageLoaderControllerImpl) {
+    return imageLoaderControllerImpl;
   }
 }
