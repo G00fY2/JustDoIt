@@ -1,5 +1,6 @@
 package de.g00fy2.justdoit.app.adapters.matchhistory;
 
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -25,5 +26,8 @@ public class MatchhistoryViewHolder
     Match match = presenter.getMatchInPosition(getAdapterPosition());
 
     matchhistoryTextView.setText(match.gameMode);
+    matchhistoryTextView.setBackgroundColor(
+        ResourcesCompat.getColor(this.itemView.getContext().getResources(),
+            (match.win.contains("Win")) ? R.color.win : R.color.loss, null));
   }
 }

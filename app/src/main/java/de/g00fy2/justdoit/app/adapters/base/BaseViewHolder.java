@@ -12,6 +12,8 @@ import de.g00fy2.justdoit.app.fragments.base.BasePresenter;
 public abstract class BaseViewHolder<Presenter extends BasePresenter>
     extends RecyclerView.ViewHolder {
 
+  protected BaseAdapter.OnItemClickListener onItemClickListener;
+
   public BaseViewHolder(View view) {
     super(view);
     ButterKnife.bind(this, view);

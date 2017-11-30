@@ -15,6 +15,7 @@ public abstract class BaseAdapter<Presenter extends BasePresenter, ViewHolder ex
     extends RecyclerView.Adapter<ViewHolder> {
 
   private final Presenter presenter;
+  protected OnItemClickListener onItemClickListener;
 
   public BaseAdapter(Presenter presenter) {
     this.presenter = presenter;
@@ -26,5 +27,13 @@ public abstract class BaseAdapter<Presenter extends BasePresenter, ViewHolder ex
 
   protected View inflate(ViewGroup parent, @LayoutRes int layout) {
     return LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
+  }
+
+  public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+    this.onItemClickListener = onItemClickListener;
+  }
+
+  public interface OnItemClickListener {
+    void onItemClicked(View view, int position);
   }
 }
