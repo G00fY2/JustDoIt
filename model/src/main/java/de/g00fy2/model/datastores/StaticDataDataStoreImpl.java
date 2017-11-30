@@ -1,8 +1,10 @@
 package de.g00fy2.model.datastores;
 
+import de.g00fy2.model.datasources.local.SharedPreferencesDataSource;
 import de.g00fy2.model.datasources.web.StaticDataWebDataSource;
 import de.g00fy2.model.models.Champion;
 import de.g00fy2.model.models.SummonerSpell;
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import java.util.List;
 import javax.inject.Inject;
@@ -17,6 +19,7 @@ public class StaticDataDataStoreImpl implements StaticDataDataStore {
   private List<SummonerSpell> cachedSummonerSpellList;
 
   @Inject StaticDataWebDataSource staticDataWebDataSource;
+  @Inject SharedPreferencesDataSource sharedPreferencesDataSource;
 
   @Inject public StaticDataDataStoreImpl() {
 
@@ -46,5 +49,13 @@ public class StaticDataDataStoreImpl implements StaticDataDataStore {
 
   @Override public Single<List<String>> getVersions() {
     return staticDataWebDataSource.getVersions();
+  }
+
+  @Override public Completable setLatestVersion(String version) {
+    return sharedPreferencesDataSource.setLatestPatchVersion(version);
+  }
+
+  @Override public String getLatestVersion() {
+    return sharedPreferencesDataSource.getLatestPatchVersion();
   }
 }

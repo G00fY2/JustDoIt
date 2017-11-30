@@ -2,6 +2,7 @@ package de.g00fy2.model.datastores;
 
 import de.g00fy2.model.models.Champion;
 import de.g00fy2.model.models.SummonerSpell;
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import java.util.List;
 
@@ -16,4 +17,8 @@ public interface StaticDataDataStore {
   Single<List<SummonerSpell>> getSummonerSpells();
 
   Single<List<String>> getVersions();
+
+  Completable setLatestVersion(String version);
+
+  String getLatestVersion();
 }

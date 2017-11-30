@@ -3,6 +3,8 @@ package de.g00fy2.justdoit.app.di.modules;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
+import de.g00fy2.model.datasources.local.SharedPreferencesDataSource;
+import de.g00fy2.model.datasources.local.SharedPreferencesDataSourceImpl;
 import de.g00fy2.model.datasources.web.LeagueWebDataSource;
 import de.g00fy2.model.datasources.web.LeagueWebDataSourceImpl;
 import de.g00fy2.model.datasources.web.MatchWebDataSource;
@@ -46,6 +48,11 @@ import de.g00fy2.model.datastores.SummonerDataStoreImpl;
   @Provides @PerActivity public LeagueWebDataSource provideLeagueWebDataSourceImpl(
       LeagueWebDataSourceImpl leagueWebDataSourceImpl) {
     return leagueWebDataSourceImpl;
+  }
+
+  @Provides @PerActivity public SharedPreferencesDataSource provideSharedPreferencesDataSourceImpl(
+      SharedPreferencesDataSourceImpl sharedPreferencesDataSourceImpl) {
+    return sharedPreferencesDataSourceImpl;
   }
 
   // DataStores
