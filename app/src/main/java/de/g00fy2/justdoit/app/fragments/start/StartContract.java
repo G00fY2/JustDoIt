@@ -14,7 +14,11 @@ public interface StartContract {
 
     void searchSummoner(String summonerName);
 
-    void openMatchhistory();
+    void openMatchhistory(int position);
+
+    Summoner getSummonerInPosition(int positon);
+
+    int getDataSize();
   }
 
   interface StartView extends BaseView {
@@ -23,6 +27,6 @@ public interface StartContract {
 
     void setDefaultSummoner(Summoner summmoner);
 
-    void activateMatchsearch(boolean activate);
+    void notifyDataChanged();
   }
 }

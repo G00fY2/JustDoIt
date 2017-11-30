@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Thomas Wirth on 05.11.2017.
  */
 
-public interface GetStaticDataVersionsInteractor {
+public interface GetVersionsInteractor {
 
   Single<List<String>> execute();
 }

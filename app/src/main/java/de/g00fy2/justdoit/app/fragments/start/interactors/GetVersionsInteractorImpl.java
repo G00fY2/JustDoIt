@@ -10,12 +10,12 @@ import javax.inject.Inject;
  * Created by Thomas Wirth on 05.11.2017.
  */
 
-public class GetStaticDataVersionsInteractorImpl extends BaseInteractor
-    implements GetStaticDataVersionsInteractor {
+public class GetVersionsInteractorImpl extends BaseInteractor
+    implements GetVersionsInteractor {
 
   @Inject StaticDataDataStore staticDataDataStore;
 
-  @Inject public GetStaticDataVersionsInteractorImpl() {
+  @Inject public GetVersionsInteractorImpl() {
   }
 
   @Override public Single<List<String>> execute() {
