@@ -7,6 +7,7 @@ import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.adapters.matchhistory.MatchhistoryAdapter;
 import de.g00fy2.justdoit.app.annotations.Layout;
 import de.g00fy2.justdoit.app.annotations.Title;
+import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.fragments.base.BaseFragment;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenter;
 import javax.inject.Inject;
@@ -21,6 +22,7 @@ import javax.inject.Inject;
   private MatchhistoryAdapter matchhistoryAdapter;
 
   @Inject MatchhistoryContract.MatchhistoryPresenter presenter;
+  @Inject ImageLoaderController imageLoaderController;
 
   @BindView(R.id.matchhistory_recyclerview) RecyclerView matchhistoryRecylerView;
 
@@ -28,7 +30,7 @@ import javax.inject.Inject;
 
     matchhistoryRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     matchhistoryRecylerView.setHasFixedSize(true);
-    matchhistoryAdapter = new MatchhistoryAdapter(presenter);
+    matchhistoryAdapter = new MatchhistoryAdapter(presenter, imageLoaderController);
     matchhistoryRecylerView.setAdapter(matchhistoryAdapter);
   }
 

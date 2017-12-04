@@ -36,12 +36,26 @@ public class ImageLoaderControllerImpl implements ImageLoaderController {
     }
   }
 
-  @Override public void loadChampionIcon(String name, ImageView imageView, Boolean circleCrop) {
-    String url = generateChampionImageUrl(name);
-    if (circleCrop) {
-      loadCircleTransformed(url).into(imageView);
-    } else {
-      load(url).into(imageView);
+  @Override
+  public void loadChampionIcon(String championKey, ImageView imageView, Boolean circleCrop) {
+    if (championKey != null && imageView != null) {
+      String url = generateChampionImageUrl(championKey);
+      if (circleCrop) {
+        loadCircleTransformed(url).into(imageView);
+      } else {
+        load(url).into(imageView);
+      }
+    }
+  }
+
+  @Override public void loadSpellIcon(String spellKey, ImageView imageView, Boolean circleCrop) {
+    if (spellKey != null && imageView != null) {
+      String url = generateSpellImageUrl(spellKey);
+      if (circleCrop) {
+        loadCircleTransformed(url).into(imageView);
+      } else {
+        load(url).into(imageView);
+      }
     }
   }
 
@@ -60,6 +74,11 @@ public class ImageLoaderControllerImpl implements ImageLoaderController {
 
   private String generateChampionImageUrl(String name) {
     String url = BASE_URL + latestVersion + "/img/champion/";
+    return url + name + ".png";
+  }
+
+  private String generateSpellImageUrl(String name) {
+    String url = BASE_URL + latestVersion + "/img/spell/";
     return url + name + ".png";
   }
 }

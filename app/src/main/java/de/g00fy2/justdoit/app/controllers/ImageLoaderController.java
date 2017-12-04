@@ -12,5 +12,7 @@ public interface ImageLoaderController {
 
   void loadProfileIcon(int profileIconId, ImageView imageView, Boolean circleCrop);
 
-  void loadChampionIcon(String name, ImageView imageView, Boolean circleCrop);
+  void loadChampionIcon(String championKey, ImageView imageView, Boolean circleCrop);
+
+  void loadSpellIcon(String spellKey, ImageView imageView, Boolean circleCrop);
 }
