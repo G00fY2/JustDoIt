@@ -27,17 +27,17 @@ import de.g00fy2.justdoit.app.annotations.Layout;
       ab.setDisplayHomeAsUpEnabled(true);
       ab.setHomeButtonEnabled(true);
     }
+    getNavigationDrawer().setDrawerLayout(toolbar);
   }
 
   @Override protected void onResume() {
     super.onResume();
-    getNavigationDrawer().setDrawerLayout(toolbar);
     getNavigator().showStartFragment();
   }
 
   @Override protected void onStop() {
     super.onStop();
-    getNavigationDrawer().unbind();
+    //getNavigationDrawer().unbind();
   }
 
   @Override protected void onDestroy() {
