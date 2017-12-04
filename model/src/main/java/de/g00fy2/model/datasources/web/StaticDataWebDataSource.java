@@ -4,6 +4,7 @@ import de.g00fy2.model.models.Champion;
 import de.g00fy2.model.models.SummonerSpell;
 import io.reactivex.Single;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Thomas Wirth on 05.11.2017.
@@ -11,9 +12,9 @@ import java.util.List;
 
 public interface StaticDataWebDataSource {
 
-  Single<List<Champion>> getChampions();
+  Single<Map<Integer, Champion>> getChampions();
 
-  Single<List<SummonerSpell>> getSummonerSpells();
+  Single<Map<Integer, SummonerSpell>> getSummonerSpells();
 
   Single<List<String>> getVersions();
 }

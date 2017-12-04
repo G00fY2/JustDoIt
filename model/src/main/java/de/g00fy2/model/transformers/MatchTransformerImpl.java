@@ -77,7 +77,7 @@ public class MatchTransformerImpl implements MatchTransformer {
             }
 
             if (Long.toString(participant.accountId).equals(accountId)) {
-              match.win = participant.win;
+              match.playerParticipantsIndex = i;
             }
 
             match.participants.add(participant);

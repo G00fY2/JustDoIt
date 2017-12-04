@@ -11,10 +11,16 @@ public class Participant {
   public long accountId;
   public int profileIcon;
   public int championId;
+  public String championName;
+  public String championKey;
   public int teamId;
   public String win;
   public int spell1Id;
+  public String spell1Name;
+  public String spell1Key;
   public int spell2Id;
+  public String spell2Name;
+  public String spell2Key;
   public String lane;
   public int kills;
   public int deaths;
@@ -33,6 +39,12 @@ public class Participant {
         + profileIcon
         + ", championId="
         + championId
+        + ", championName='"
+        + championName
+        + '\''
+        + ", championKey='"
+        + championKey
+        + '\''
         + ", teamId="
         + teamId
         + ", win='"
@@ -40,8 +52,20 @@ public class Participant {
         + '\''
         + ", spell1Id="
         + spell1Id
+        + ", spell1Name='"
+        + spell1Name
+        + '\''
+        + ", spell1Key='"
+        + spell1Key
+        + '\''
         + ", spell2Id="
         + spell2Id
+        + ", spell2Name='"
+        + spell2Name
+        + '\''
+        + ", spell2Key='"
+        + spell2Key
+        + '\''
         + ", lane='"
         + lane
         + '\''

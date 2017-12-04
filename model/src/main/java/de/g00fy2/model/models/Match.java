@@ -11,7 +11,7 @@ public class Match {
   public int seasonId;
   public int queueId;
   public long gameId;
-  public String win;
+  public int playerParticipantsIndex;
   public String gameVersion;
   public String platformId;
   public String gameMode;
@@ -30,6 +30,9 @@ public class Match {
         + queueId
         + ", gameId="
         + gameId
+        + ", playerParticipantsIndex='"
+        + playerParticipantsIndex
+        + '\''
         + ", gameVersion='"
         + gameVersion
         + '\''

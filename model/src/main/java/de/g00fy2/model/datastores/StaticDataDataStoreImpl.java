@@ -6,7 +6,9 @@ import de.g00fy2.model.models.Champion;
 import de.g00fy2.model.models.SummonerSpell;
 import io.reactivex.Completable;
 import io.reactivex.Single;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.inject.Inject;
 
 /**
@@ -15,8 +17,8 @@ import javax.inject.Inject;
 
 public class StaticDataDataStoreImpl implements StaticDataDataStore {
 
-  private List<Champion> cachedChampionList;
-  private List<SummonerSpell> cachedSummonerSpellList;
+  private Map<Integer, Champion> cachedChampionList;
+  private Map<Integer, SummonerSpell> cachedSummonerSpellList;
 
   @Inject StaticDataWebDataSource staticDataWebDataSource;
   @Inject SharedPreferencesDataSource sharedPreferencesDataSource;
@@ -25,7 +27,7 @@ public class StaticDataDataStoreImpl implements StaticDataDataStore {
 
   }
 
-  @Override public Single<List<Champion>> getChampions() {
+  @Override public Single<Map<Integer, Champion>> getChampions() {
     // TODO proper database caching
     if (cachedChampionList == null || cachedChampionList.size() == 0) {
       return staticDataWebDataSource.getChampions().flatMap(champions -> {
@@ -36,13 +38,15 @@ public class StaticDataDataStoreImpl implements StaticDataDataStore {
     return Single.just(cachedChampionList);
   }
 
-  @Override public Single<List<SummonerSpell>> getSummonerSpells() {
+  @Override public Single<Map<Integer, SummonerSpell>> getSummonerSpells() {
     // TODO proper database caching
     if (cachedSummonerSpellList == null || cachedSummonerSpellList.size() == 0) {
-      return staticDataWebDataSource.getSummonerSpells().flatMap(summonerSpells -> {
-        cachedSummonerSpellList = summonerSpells;
-        return Single.just(summonerSpells);
-      });
+      return staticDataWebDataSource.getSummonerSpells()
+          .onErrorReturnItem(new HashMap<>())
+          .flatMap(summonerSpells -> {
+            cachedSummonerSpellList = summonerSpells;
+            return Single.just(summonerSpells);
+          });
     }
     return Single.just(cachedSummonerSpellList);
   }

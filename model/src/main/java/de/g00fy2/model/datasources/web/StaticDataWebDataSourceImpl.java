@@ -7,6 +7,7 @@ import de.g00fy2.model.transformers.ChampionListTransformer;
 import de.g00fy2.model.transformers.SummonerSpellTransformer;
 import io.reactivex.Single;
 import java.util.List;
+import java.util.Map;
 import javax.inject.Inject;
 
 /**
@@ -23,11 +24,11 @@ public class StaticDataWebDataSourceImpl implements StaticDataWebDataSource {
 
   }
 
-  @Override public Single<List<Champion>> getChampions() {
+  @Override public Single<Map<Integer, Champion>> getChampions() {
     return riotApi.getChampionList().map(championListTransformer::toModel);
   }
 
-  @Override public Single<List<SummonerSpell>> getSummonerSpells() {
+  @Override public Single<Map<Integer, SummonerSpell>> getSummonerSpells() {
     return riotApi.getSummonerSpellList().map(summonerSpellTransformer::toModel);
   }
 
