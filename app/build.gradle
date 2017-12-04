@@ -34,6 +34,8 @@ dependencies {
 
     implementation project.ext.appcompat
     implementation project.ext.design
+    implementation project.ext.cardView
+    implementation project.ext.recyclerView
     implementation project.ext.constraintLayout
 
     annotationProcessor project.ext.daggerCompiler
