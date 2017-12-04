@@ -18,7 +18,7 @@ allprojects {
     project.ext {
         // version numbers
         compileSdk = 27
-        supportLibraryVersion = '27.0.1'
+        supportLibraryVersion = '27.0.2'
         daggerVersion = '2.13'
         butterknifeVersion = '8.8.1'
         retrofitVersion = '2.3.0'
@@ -29,6 +29,8 @@ allprojects {
         appcompat = "com.android.support:appcompat-v7:$supportLibraryVersion"
         design = "com.android.support:design:$supportLibraryVersion"
         annotations = "com.android.support:support-annotations:$supportLibraryVersion"
+        cardView = "com.android.support:cardview-v7:$supportLibraryVersion"
+        recyclerView = "com.android.support:recyclerview-v7:$supportLibraryVersion"
         constraintLayout = 'com.android.support.constraint:constraint-layout:1.1.0-beta3'
 
         // reactiveX
