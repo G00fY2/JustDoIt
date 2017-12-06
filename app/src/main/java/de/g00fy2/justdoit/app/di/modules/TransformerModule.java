@@ -5,6 +5,8 @@ import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
 import de.g00fy2.model.transformers.ChampionListTransformer;
 import de.g00fy2.model.transformers.ChampionListTransformerImpl;
+import de.g00fy2.model.transformers.LeagueItemTransformer;
+import de.g00fy2.model.transformers.LeagueItemTransformerImpl;
 import de.g00fy2.model.transformers.LeagueListTransformer;
 import de.g00fy2.model.transformers.LeagueListTransformerImpl;
 import de.g00fy2.model.transformers.LeaguePositionTransformer;
@@ -42,6 +44,11 @@ import de.g00fy2.model.transformers.SummonerTransformerImpl;
   @Provides @PerActivity public LeagueListTransformer provideLeagueListTransformer(
       LeagueListTransformerImpl leagueListTransformerImpl) {
     return leagueListTransformerImpl;
+  }
+
+  @Provides @PerActivity public LeagueItemTransformer provideLeagueItemTransformer(
+      LeagueItemTransformerImpl leagueItemTransformerImpl) {
+    return leagueItemTransformerImpl;
   }
 
   @Provides @PerActivity public LeaguePositionTransformer provideLeaguePositionTransformer(
