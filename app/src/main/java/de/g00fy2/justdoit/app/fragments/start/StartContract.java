@@ -14,7 +14,7 @@ public interface StartContract {
 
     void searchSummoner(String summonerName);
 
-    void openMatchhistory(int position);
+    void selectFavouriteSummoner(int position);
 
     Summoner getSummonerInPosition(int positon);
 

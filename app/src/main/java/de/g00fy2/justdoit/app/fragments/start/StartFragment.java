@@ -73,6 +73,6 @@ import javax.inject.Inject;
   }
 
   @Override public void onItemClicked(View view, int position) {
-    presenter.openMatchhistory(position);
+    presenter.selectFavouriteSummoner(position);
   }
 }

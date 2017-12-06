@@ -3,6 +3,11 @@ package de.g00fy2.justdoit.app.navigation;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
+import de.g00fy2.justdoit.app.fragments.league_position.DaggerLeaguePositionComponent;
+import de.g00fy2.justdoit.app.fragments.league_position.LeaguePositionComponent;
+import de.g00fy2.justdoit.app.fragments.league_position.LeaguePositionFragment;
+import de.g00fy2.justdoit.app.fragments.league_position.LeaguePositionModule;
+import de.g00fy2.justdoit.app.fragments.league_position.LeaguePositionPresenterImpl;
 import de.g00fy2.justdoit.app.fragments.matchhistory.DaggerMatchhistoryComponent;
 import de.g00fy2.justdoit.app.fragments.matchhistory.MatchhistoryComponent;
 import de.g00fy2.justdoit.app.fragments.matchhistory.MatchhistoryFragment;
@@ -49,6 +54,21 @@ public class NavigatorImpl implements Navigator {
     MatchhistoryComponent component = DaggerMatchhistoryComponent.builder()
         .activityComponent(baseActivity.getActivityComponent())
         .matchhistoryModule(new MatchhistoryModule(fragment, presenter))
+        .build();
+
+    component.inject(fragment);
+    component.inject(presenter);
+
+    transist(fragment, true);
+  }
+
+  @Override public void showLeaguePositionFragment(Summoner summoner) {
+    LeaguePositionFragment fragment = new LeaguePositionFragment();
+    LeaguePositionPresenterImpl presenter = new LeaguePositionPresenterImpl();
+    presenter.setSummoner(summoner);
+    LeaguePositionComponent component = DaggerLeaguePositionComponent.builder()
+        .activityComponent(baseActivity.getActivityComponent())
+        .leaguePositionModule(new LeaguePositionModule(fragment, presenter))
         .build();
 
     component.inject(fragment);

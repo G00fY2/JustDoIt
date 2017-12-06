@@ -1,5 +1,6 @@
 package de.g00fy2.justdoit.app.fragments.start;
 
+import de.g00fy2.justdoit.app.activities.NavigationDrawer;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
@@ -18,6 +19,8 @@ import javax.inject.Inject;
 
 public class StartPresenterImpl extends BasePresenterImpl implements StartContract.StartPresenter {
 
+  private List<Summoner> favouriteSummoners = new ArrayList<>();
+
   @Inject StartContract.StartView view;
 
   @Inject GetVersionsInteractor getVersionsInteractor;
@@ -26,12 +29,11 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
   @Inject SnackbarController snackbarController;
   @Inject Navigator navigator;
   @Inject ImageLoaderController imageLoaderController;
+  @Inject NavigationDrawer navigationDrawer;
 
   @Inject public StartPresenterImpl() {
 
   }
-
-  private List<Summoner> favouriteSummoners = new ArrayList<>();
 
   @Override public void onResume() {
     super.onResume();
@@ -53,8 +55,8 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
     }, throwable -> errorController.onError(throwable)));
   }
 
-  @Override public void openMatchhistory(int position) {
-    navigator.showMatchhistoryFragment(favouriteSummoners.get(position));
+  @Override public void selectFavouriteSummoner(int position) {
+    navigationDrawer.setNavigationDrawerHeaderData(favouriteSummoners.get(position));
   }
 
   @Override public Summoner getSummonerInPosition(int positon) {

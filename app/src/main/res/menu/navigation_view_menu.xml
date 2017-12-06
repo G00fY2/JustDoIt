@@ -6,9 +6,13 @@
         android:icon="@android:drawable/ic_dialog_info"
         android:title="Home"/>
     <item
-        android:id="@+id/favourites"
+        android:id="@+id/match_history"
         android:icon="@android:drawable/ic_dialog_info"
-        android:title="Favourites"/>
+        android:title="Match History"/>
+    <item
+        android:id="@+id/league_positon"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="League Position"/>
   </group>
   <item android:title="Misc">
     <menu>

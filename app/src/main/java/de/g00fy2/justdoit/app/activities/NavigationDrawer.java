@@ -29,6 +29,9 @@ public class NavigationDrawer implements NavigationView.OnNavigationItemSelected
   private TextView summonerNameTextView;
   private TextView summonerLevelTextView;
 
+  // TODO remove test variable
+  private Summoner summoner;
+
   @Inject public NavigationDrawer(BaseActivity baseActivity) {
     this.baseActivity = baseActivity;
   }
@@ -67,6 +70,7 @@ public class NavigationDrawer implements NavigationView.OnNavigationItemSelected
   }
 
   public void setNavigationDrawerHeaderData(Summoner summoner) {
+    this.summoner = summoner;
     if (baseActivity != null && summoner != null) {
       baseActivity.activityComponent.imageLoaderController()
           .loadProfileIcon(summoner.profileIconId, summonerIconImageView, true);
@@ -79,8 +83,18 @@ public class NavigationDrawer implements NavigationView.OnNavigationItemSelected
     switch (item.getItemId()) {
       case R.id.home:
         Timber.d("Home clicked");
-      case R.id.favourites:
-        Timber.d("Favourites clicked");
+        break;
+      case R.id.match_history:
+        if (summoner != null) {
+          baseActivity.getNavigator().showMatchhistoryFragment(summoner);
+        }
+        Timber.d("Match History clicked");
+        break;
+      case R.id.league_positon:
+        if (summoner != null) {
+          baseActivity.getNavigator().showLeaguePositionFragment(summoner);
+        }
+        Timber.d("League Positon clicked");
         break;
       case R.id.settings:
         Timber.d("Settings clicked");

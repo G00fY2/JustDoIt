@@ -11,4 +11,6 @@ public interface Navigator {
   void showStartFragment();
 
   void showMatchhistoryFragment(Summoner summoner);
+
+  void showLeaguePositionFragment(Summoner summoner);
 }
