@@ -1,39 +1,32 @@
 package de.g00fy2.model.entities.web;
 
 /**
- * Created by Thomas Wirth on 06.12.2017.
+ * Created by Thomas Wirth on 26.11.2017.
  */
 
-public class LeaguePositionWebEntity {
+public class LeagueItemWebEntity {
 
   public String rank;
-  public String queueType;
   public Boolean hotStreak;
-  public String leagueName;
+  public MiniSeriesWebEntity miniSeries;
   public Integer wins;
   public Boolean veteran;
   public Integer losses;
   public Boolean freshBlood;
-  public String leagueId;
   public String playerOrTeamName;
   public Boolean inactive;
   public String playerOrTeamId;
-  public String tier;
   public Integer leaguePoints;
 
   @Override public String toString() {
-    return "LeaguePositionWebEntity{"
+    return "LeagueItemWebEntity{"
         + "rank='"
         + rank
         + '\''
-        + ", queueType='"
-        + queueType
-        + '\''
         + ", hotStreak="
         + hotStreak
-        + ", leagueName='"
-        + leagueName
-        + '\''
+        + ", miniSeries="
+        + miniSeries
         + ", wins="
         + wins
         + ", veteran="
@@ -42,9 +35,6 @@ public class LeaguePositionWebEntity {
         + losses
         + ", freshBlood="
         + freshBlood
-        + ", leagueId='"
-        + leagueId
-        + '\''
         + ", playerOrTeamName='"
         + playerOrTeamName
         + '\''
@@ -52,9 +42,6 @@ public class LeaguePositionWebEntity {
         + inactive
         + ", playerOrTeamId='"
         + playerOrTeamId
-        + '\''
-        + ", tier='"
-        + tier
         + '\''
         + ", leaguePoints="
         + leaguePoints

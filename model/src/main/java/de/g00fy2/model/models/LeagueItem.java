@@ -1,38 +1,32 @@
 package de.g00fy2.model.models;
 
 /**
- * Created by Thomas Wirth on 06.12.2017.
+ * Created by Thomas Wirth on 27.11.2017.
  */
 
-public class LeaguePosition {
+public class LeagueItem {
 
-  public int rank;
-  public String queueType;
+  public String rank;
   public boolean hotStreak;
-  public String leagueName;
+  public MiniSeries miniSeries;
   public int wins;
   public boolean veteran;
   public int losses;
   public boolean freshBlood;
-  public String leagueId;
   public String playerOrTeamName;
   public boolean inactive;
   public String playerOrTeamId;
-  public String tier;
   public int leaguePoints;
 
   @Override public String toString() {
-    return "LeaguePosition{"
-        + "rank="
+    return "LeagueItem{"
+        + "rank='"
         + rank
-        + ", queueType='"
-        + queueType
         + '\''
         + ", hotStreak="
         + hotStreak
-        + ", leagueName='"
-        + leagueName
-        + '\''
+        + ", miniSeries="
+        + miniSeries
         + ", wins="
         + wins
         + ", veteran="
@@ -41,9 +35,6 @@ public class LeaguePosition {
         + losses
         + ", freshBlood="
         + freshBlood
-        + ", leagueId='"
-        + leagueId
-        + '\''
         + ", playerOrTeamName='"
         + playerOrTeamName
         + '\''
@@ -51,9 +42,6 @@ public class LeaguePosition {
         + inactive
         + ", playerOrTeamId='"
         + playerOrTeamId
-        + '\''
-        + ", tier='"
-        + tier
         + '\''
         + ", leaguePoints="
         + leaguePoints

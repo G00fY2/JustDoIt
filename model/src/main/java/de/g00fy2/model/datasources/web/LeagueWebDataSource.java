@@ -13,5 +13,5 @@ public interface LeagueWebDataSource {
 
   Single<Set<LeaguePosition>> getLeaguePositions(String summonerId);
 
-  Single<LeagueList> getLeagueLists(String leagueId);
+  Single<LeagueList> getLeague(String leagueId);
 }

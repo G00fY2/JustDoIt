@@ -53,6 +53,6 @@ public interface RiotApi {
   @GET("/lol/league/v3/positions/by-summoner/{summonerId}")
   Single<Set<LeaguePositionWebEntity>> getLeaguePositions(@Path("summonerId") String summonerId);
 
-  @GET("/lol/league/v3/leagues/{leagueId}") Single<LeagueListWebEntity> getLeagueLists(
+  @GET("/lol/league/v3/leagues/{leagueId}") Single<LeagueListWebEntity> getLeague(
       @Path("leagueId") String leagueId);
 }

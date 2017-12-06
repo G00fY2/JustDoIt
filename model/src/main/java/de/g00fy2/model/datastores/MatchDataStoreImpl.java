@@ -5,6 +5,7 @@ import de.g00fy2.model.models.Champion;
 import de.g00fy2.model.models.Match;
 import de.g00fy2.model.models.Matchlist;
 import de.g00fy2.model.models.Participant;
+import de.g00fy2.model.models.SummonerSpell;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class MatchDataStoreImpl implements MatchDataStore {
     return Single.zip(matchWebDataSource.getMatchByMatchId(accountId, matchId),
         staticDataDataStore.getChampions(), staticDataDataStore.getSummonerSpells(),
         (match, champions, spells) -> {
-          addNames(match, champions);
+          addNames(match, champions, spells);
           return match;
         });
   }
@@ -44,11 +45,15 @@ public class MatchDataStoreImpl implements MatchDataStore {
         .take(count);
   }
 
-  private void addNames(Match match, Map<Integer, Champion> championMap) {
+  private void addNames(Match match, Map<Integer, Champion> championMap, Map<Integer, SummonerSpell> summonerSpellMap) {
     for (Participant participant : match.participants) {
       if (championMap.get(participant.championId) != null) {
         participant.championName = championMap.get(participant.championId).name;
         participant.championKey = championMap.get(participant.championId).key;
+        participant.spell1Name = summonerSpellMap.get(participant.spell1Id).name;
+        participant.spell1Key = summonerSpellMap.get(participant.spell1Id).key;
+        participant.spell2Name = summonerSpellMap.get(participant.spell2Id).name;
+        participant.spell2Key = summonerSpellMap.get(participant.spell2Id).key;
       }
     }
   }

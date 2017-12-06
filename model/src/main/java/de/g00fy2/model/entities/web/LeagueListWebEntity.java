@@ -11,7 +11,7 @@ public class LeagueListWebEntity {
   public String tier;
   public String queue;
   public String name;
-  public List<LeaguePositionWebEntity> entries;
+  public List<LeagueItemWebEntity> entries;
 
   @Override public String toString() {
     return "LeagueListWebEntity{"

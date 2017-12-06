@@ -11,7 +11,7 @@ public class LeagueList {
   public String tier;
   public String queue;
   public String name;
-  public List<LeaguePosition> entries;
+  public List<LeagueItem> entries;
 
   @Override public String toString() {
     return "LeagueList{"

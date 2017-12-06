@@ -1,7 +1,7 @@
 package de.g00fy2.model.transformers;
 
 import de.g00fy2.model.entities.web.LeagueListWebEntity;
-import de.g00fy2.model.entities.web.LeaguePositionWebEntity;
+import de.g00fy2.model.entities.web.LeagueItemWebEntity;
 import de.g00fy2.model.models.LeagueList;
 import java.util.ArrayList;
 import javax.inject.Inject;
@@ -12,7 +12,7 @@ import javax.inject.Inject;
 
 public class LeagueListTransformerImpl implements LeagueListTransformer {
 
-  @Inject LeaguePositionTransformer leaguePositionTransformer;
+  @Inject LeagueItemTransformer leagueItemTransformer;
 
   @Inject LeagueListTransformerImpl() {
 
@@ -26,8 +26,8 @@ public class LeagueListTransformerImpl implements LeagueListTransformer {
       leagueList.name = leagueListWebEntity.name;
       if (leagueListWebEntity.entries != null) {
         leagueList.entries = new ArrayList<>();
-        for (LeaguePositionWebEntity leaguePositionWebEntity : leagueListWebEntity.entries) {
-          leagueList.entries.add(leaguePositionTransformer.toModel(leaguePositionWebEntity));
+        for (LeagueItemWebEntity leagueItemWebEntity : leagueListWebEntity.entries) {
+          leagueList.entries.add(leagueItemTransformer.toModel(leagueItemWebEntity));
         }
       }
 

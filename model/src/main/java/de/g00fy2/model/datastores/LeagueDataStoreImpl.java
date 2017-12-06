@@ -24,6 +24,6 @@ public class LeagueDataStoreImpl implements LeagueDataStore {
   }
 
   @Override public Single<LeagueList> getLeagueLists(String leagueId) {
-    return leagueWebDataSource.getLeagueLists(leagueId);
+    return leagueWebDataSource.getLeague(leagueId);
   }
 }
