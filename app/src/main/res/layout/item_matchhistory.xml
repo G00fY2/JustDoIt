@@ -99,7 +99,7 @@
               android:text="Champ"
               />
           <TextView
-              android:id="@+id/item_matchhistroy_champion_textview2"
+              android:id="@+id/item_matchhistroy_kda"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_marginStart="4dp"

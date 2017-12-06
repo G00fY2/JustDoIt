@@ -27,7 +27,6 @@ import javax.inject.Inject;
   @BindView(R.id.matchhistory_recyclerview) RecyclerView matchhistoryRecylerView;
 
   @Override protected void initializeViews() {
-
     matchhistoryRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     matchhistoryRecylerView.setHasFixedSize(true);
     matchhistoryAdapter = new MatchhistoryAdapter(presenter, imageLoaderController);

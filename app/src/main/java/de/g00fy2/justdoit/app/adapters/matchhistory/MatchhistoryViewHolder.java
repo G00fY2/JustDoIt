@@ -10,6 +10,7 @@ import de.g00fy2.justdoit.app.adapters.base.BaseViewHolder;
 import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.fragments.matchhistory.MatchhistoryContract;
 import de.g00fy2.model.models.Match;
+import de.g00fy2.model.models.Participant;
 import java.util.List;
 
 /**
@@ -27,6 +28,8 @@ public class MatchhistoryViewHolder
   @BindView(R.id.item_matchhistroy_champion_imageview) ImageView championImageView;
   @BindView(R.id.item_matchhistroy_summonerspell_1) ImageView summonerspell1ImageView;
   @BindView(R.id.item_matchhistroy_summonerspell_2) ImageView summonerspell2ImageView;
+  @BindView(R.id.item_matchhistroy_champion_textview) TextView championNameTextView;
+  @BindView(R.id.item_matchhistroy_kda) TextView kdaTextView;
   @BindViews({
       R.id.item_matchhistroy_summoner1_textview, R.id.item_matchhistroy_summoner2_textview,
       R.id.item_matchhistroy_summoner3_textview, R.id.item_matchhistroy_summoner4_textview,
@@ -52,6 +55,9 @@ public class MatchhistoryViewHolder
     matchtypeTextview.setText(match.gameType);
     resultTextview.setText(match.participants.get(match.playerParticipantsIndex).win);
     durationTextview.setText(Long.toString(match.gameDuration));
+    championNameTextView.setText(match.participants.get(match.playerParticipantsIndex).championName);
+    kdaTextView.setText(buildKDAString(match.participants.get(match.playerParticipantsIndex)));
+
     imageLoaderController.loadChampionIcon(
         match.participants.get(match.playerParticipantsIndex).championKey, championImageView, true);
     imageLoaderController.loadSpellIcon(
@@ -78,5 +84,16 @@ public class MatchhistoryViewHolder
         }
       }
     }
+  }
+
+  private String buildKDAString(Participant participant) {
+    StringBuilder sb = new StringBuilder();
+    sb.append(participant.kills);
+    sb.append(" / ");
+    sb.append(participant.deaths);
+    sb.append(" / ");
+    sb.append(participant.assists);
+
+    return sb.toString();
   }
 }
