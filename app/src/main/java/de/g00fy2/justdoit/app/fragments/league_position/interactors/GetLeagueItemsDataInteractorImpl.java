@@ -20,9 +20,7 @@ public class GetLeagueItemsDataInteractorImpl extends BaseInteractor
 
   }
 
-  @Override public Single<List<LeagueItem>> execute(String leagueId) {
-    return leagueDataStore.getLeagueLists(leagueId)
-        .map(leagueList -> leagueList.entries)
-        .compose(single());
+  @Override public Single<List<LeagueItem>> execute(String leagueId, int division) {
+    return leagueDataStore.getLeagueItems(leagueId, division).compose(single());
   }
 }

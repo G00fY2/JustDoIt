@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface GetLeagueItemsDataInteractor {
 
-  Single<List<LeagueItem>> execute(String leagueId);
+  Single<List<LeagueItem>> execute(String leagueId, int division);
 }
