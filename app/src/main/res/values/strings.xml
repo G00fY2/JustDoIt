@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">JustDoIt</string>
-    <string name="navigation_drawer_open">Drawer Open</string>
-    <string name="navigation_drawer_close">Drawer Closed</string>
+  <string name="app_name">League Friend</string>
+  <string name="navigation_drawer_open">Drawer Open</string>
+  <string name="navigation_drawer_close">Drawer Closed</string>
+  <string name="start">Home</string>
+  <string name="league_position">League position</string>
+  <string name="match_history">Match history</string>
 </resources>
