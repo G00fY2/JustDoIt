@@ -20,6 +20,7 @@ public class LeaguePositionPresenterImpl extends BasePresenterImpl
     implements LeaguePositionContract.LeaguePositionPresenter {
 
   private List<LeagueItem> leagueItemList = new ArrayList<>();
+  private String leagueId;
   private Summoner summoner;
 
   @Inject LeaguePositionContract.LeaguePositionView view;
@@ -50,14 +51,18 @@ public class LeaguePositionPresenterImpl extends BasePresenterImpl
     return leagueItemList.size();
   }
 
+  @Override public void loadDivision(int division) {
+    getCurrentLeagueItems(leagueId, division);
+  }
+
   private void getCurrentLeaguePosition() {
     bind(getLeaguePositionsDataInteractor.execute(Long.toString(summoner.id))
         .subscribe(this::setLeagueData, errorController::onError));
   }
 
-  private void getCurrentLeagueItems(String leagueId) {
+  private void getCurrentLeagueItems(String leagueId, int division) {
     leagueItemList.clear();
-    bind(getLeagueItemsDataInteractor.execute(leagueId).subscribe(leagueItems -> {
+    bind(getLeagueItemsDataInteractor.execute(leagueId, division).subscribe(leagueItems -> {
       leagueItemList = leagueItems;
       view.dataChanged();
     }, errorController::onError));
@@ -76,10 +81,12 @@ public class LeaguePositionPresenterImpl extends BasePresenterImpl
       }
     }
     if (rankedPosition != null) {
-      getCurrentLeagueItems(rankedPosition.leagueId);
+      leagueId = rankedPosition.leagueId;
+      getCurrentLeagueItems(rankedPosition.leagueId, rankedPosition.rank);
       view.setLeagueData(rankedPosition);
     } else if (flexPosition != null) {
-      getCurrentLeagueItems(rankedPosition.leagueId);
+      leagueId = flexPosition.leagueId;
+      getCurrentLeagueItems(flexPosition.leagueId, flexPosition.rank);
       view.setLeagueData(flexPosition);
     }
   }

@@ -20,6 +20,8 @@ public interface LeaguePositionContract {
 
     int getDataSize();
 
+    void loadDivision(int division);
+
   }
 
   interface LeaguePositionView extends BaseView {
