@@ -6,7 +6,7 @@ package de.g00fy2.model.models;
 
 public class LeagueItem {
 
-  public String rank;
+  public int rank;
   public boolean hotStreak;
   public MiniSeries miniSeries;
   public int wins;
@@ -20,9 +20,8 @@ public class LeagueItem {
 
   @Override public String toString() {
     return "LeagueItem{"
-        + "rank='"
+        + "rank="
         + rank
-        + '\''
         + ", hotStreak="
         + hotStreak
         + ", miniSeries="

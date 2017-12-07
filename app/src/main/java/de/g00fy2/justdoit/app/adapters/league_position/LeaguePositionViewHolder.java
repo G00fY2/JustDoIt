@@ -6,6 +6,7 @@ import butterknife.BindView;
 import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.adapters.base.BaseViewHolder;
 import de.g00fy2.justdoit.app.fragments.league_position.LeaguePositionContract;
+import de.g00fy2.model.Utils.LeagueUtils;
 import de.g00fy2.model.models.LeagueItem;
 
 /**
@@ -26,8 +27,8 @@ public class LeaguePositionViewHolder
   @Override public void setDataInViews(LeaguePositionContract.LeaguePositionPresenter presenter) {
     LeagueItem leagueItem = presenter.getLeaguePositionInPosition(getAdapterPosition());
 
-    rankTextView.setText(leagueItem.rank);
+    rankTextView.setText(LeagueUtils.transformRankToString(leagueItem.rank));
     nameTextView.setText(leagueItem.playerOrTeamName);
-    pointsTextView.setText(Integer.toString(leagueItem.leaguePoints));
+    pointsTextView.setText(String.valueOf(leagueItem.leaguePoints));
   }
 }
