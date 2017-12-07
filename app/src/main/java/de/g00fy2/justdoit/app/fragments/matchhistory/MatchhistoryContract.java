@@ -18,10 +18,14 @@ public interface MatchhistoryContract {
     Match getMatchInPosition(int positon);
 
     int getDataSize();
+
+    void onRefresh();
   }
 
   interface MatchhistoryView extends BaseView {
 
     void dataChanged();
+
+    void showLoading(boolean show);
   }
 }
