@@ -6,11 +6,12 @@ import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import de.g00fy2.justdoit.app.MyApplication;
-import de.g00fy2.justdoit.app.navigation.Navigator;
 import de.g00fy2.justdoit.app.annotations.Layout;
 import de.g00fy2.justdoit.app.di.components.ActivityComponent;
 import de.g00fy2.justdoit.app.di.components.DaggerActivityComponent;
 import de.g00fy2.justdoit.app.di.modules.ActivityModule;
+import de.g00fy2.justdoit.app.navigation.NavigationDrawer;
+import de.g00fy2.justdoit.app.navigation.Navigator;
 import java.lang.annotation.Annotation;
 
 /**
@@ -33,6 +34,14 @@ public abstract class BaseActivity extends AppCompatActivity {
   @Override protected void onDestroy() {
     super.onDestroy();
     unbinder.unbind();
+  }
+
+  @Override public void onBackPressed() {
+    if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+      getSupportFragmentManager().popBackStack();
+    } else {
+      super.onBackPressed();
+    }
   }
 
   private void initializeInjector() {

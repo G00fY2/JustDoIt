@@ -1,9 +1,11 @@
 package de.g00fy2.justdoit.app.fragments.league_position;
 
+import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
 import de.g00fy2.justdoit.app.fragments.league_position.interactors.GetLeagueItemsDataInteractor;
 import de.g00fy2.justdoit.app.fragments.league_position.interactors.GetLeaguePositionsDataInteractor;
+import de.g00fy2.justdoit.app.navigation.NavigationDrawerImpl;
 import de.g00fy2.model.models.LeagueItem;
 import de.g00fy2.model.models.LeaguePosition;
 import de.g00fy2.model.models.Summoner;
@@ -25,6 +27,7 @@ public class LeaguePositionPresenterImpl extends BasePresenterImpl
 
   @Inject LeaguePositionContract.LeaguePositionView view;
 
+  @Inject NavigationDrawerImpl navigationDrawerImpl;
   @Inject GetLeaguePositionsDataInteractor getLeaguePositionsDataInteractor;
   @Inject GetLeagueItemsDataInteractor getLeagueItemsDataInteractor;
   @Inject ErrorController errorController;
@@ -35,6 +38,7 @@ public class LeaguePositionPresenterImpl extends BasePresenterImpl
 
   @Override public void onResume() {
     super.onResume();
+    navigationDrawerImpl.setCheckedItem(R.id.league_position);
     view.setSummonerData(summoner);
     getCurrentLeaguePosition();
   }

@@ -5,8 +5,9 @@ import android.content.SharedPreferences;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
-import de.g00fy2.justdoit.app.activities.NavigationDrawer;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
+import de.g00fy2.justdoit.app.navigation.NavigationDrawer;
+import de.g00fy2.justdoit.app.navigation.NavigationDrawerImpl;
 import de.g00fy2.justdoit.app.navigation.Navigator;
 import de.g00fy2.justdoit.app.navigation.NavigatorImpl;
 import de.g00fy2.model.datasources.local.SharedPreferencesDataSourceImpl;
@@ -36,7 +37,7 @@ import de.g00fy2.model.datasources.local.SharedPreferencesDataSourceImpl;
   }
 
   @Provides @PerActivity NavigationDrawer provideNavigationDrawerHelper() {
-    return new NavigationDrawer(activity);
+    return new NavigationDrawerImpl(activity);
   }
 
   @Provides @PerActivity public SharedPreferences provideSharedPreferences() {

@@ -10,7 +10,7 @@
         android:icon="@android:drawable/ic_dialog_info"
         android:title="@string/match_history"/>
     <item
-        android:id="@+id/league_positon"
+        android:id="@+id/league_position"
         android:icon="@android:drawable/ic_dialog_info"
         android:title="@string/league_position"/>
   </group>
@@ -19,11 +19,11 @@
       <item
           android:id="@+id/settings"
           android:icon="@android:drawable/ic_dialog_alert"
-          android:title="Settings"/>
+          android:title="Settings (Dummy)"/>
       <item
           android:id="@+id/info"
           android:icon="@android:drawable/ic_dialog_alert"
-          android:title="Info"/>
+          android:title="Info (Dummy)"/>
     </menu>
   </item>
 </menu>
