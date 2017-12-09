@@ -28,6 +28,8 @@ allprojects {
         // support libs
         appcompat = "com.android.support:appcompat-v7:$supportLibraryVersion"
         design = "com.android.support:design:$supportLibraryVersion"
+        preferencesV7 = "com.android.support:preference-v7:$supportLibraryVersion"
+        preferencesV14 = "com.android.support:preference-v14:$supportLibraryVersion"
         annotations = "com.android.support:support-annotations:$supportLibraryVersion"
         cardView = "com.android.support:cardview-v7:$supportLibraryVersion"
         recyclerView = "com.android.support:recyclerview-v7:$supportLibraryVersion"

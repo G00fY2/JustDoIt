@@ -5,4 +5,7 @@
   <string name="start">Home</string>
   <string name="league_position">League position</string>
   <string name="match_history">Match history</string>
+  <string name="settings">Settings</string>
+  <string name="api_settings">API settings</string>
+  <string name="info">Info</string>
 </resources>

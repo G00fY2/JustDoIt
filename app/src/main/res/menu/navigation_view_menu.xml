@@ -19,11 +19,7 @@
       <item
           android:id="@+id/settings"
           android:icon="@android:drawable/ic_dialog_alert"
-          android:title="Settings (Dummy)"/>
-      <item
-          android:id="@+id/info"
-          android:icon="@android:drawable/ic_dialog_alert"
-          android:title="Info (Dummy)"/>
+          android:title="@string/settings"/>
     </menu>
   </item>
 </menu>

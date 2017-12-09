@@ -11,7 +11,7 @@ android {
         minSdkVersion 19
         targetSdkVersion project.ext.compileSdk
         versionCode 1
-        versionName "1.0"
+        versionName "1.0-alpha"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -37,6 +37,8 @@ dependencies {
     implementation project.ext.cardView
     implementation project.ext.recyclerView
     implementation project.ext.constraintLayout
+    implementation project.ext.preferencesV7
+    implementation project.ext.preferencesV14
 
     annotationProcessor project.ext.daggerCompiler
 

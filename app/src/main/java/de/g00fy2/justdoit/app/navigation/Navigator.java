@@ -13,4 +13,6 @@ public interface Navigator {
   void showMatchhistoryFragment(Summoner summoner);
 
   void showLeaguePositionFragment(Summoner summoner);
+
+  void showSettingsFragment();
 }

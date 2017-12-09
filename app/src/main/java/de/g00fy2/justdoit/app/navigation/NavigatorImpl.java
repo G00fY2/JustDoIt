@@ -13,6 +13,11 @@ import de.g00fy2.justdoit.app.fragments.matchhistory.MatchhistoryComponent;
 import de.g00fy2.justdoit.app.fragments.matchhistory.MatchhistoryFragment;
 import de.g00fy2.justdoit.app.fragments.matchhistory.MatchhistoryModule;
 import de.g00fy2.justdoit.app.fragments.matchhistory.MatchhistoryPresenterImpl;
+import de.g00fy2.justdoit.app.fragments.settings.DaggerSettingsComponent;
+import de.g00fy2.justdoit.app.fragments.settings.SettingsComponent;
+import de.g00fy2.justdoit.app.fragments.settings.SettingsFragment;
+import de.g00fy2.justdoit.app.fragments.settings.SettingsModule;
+import de.g00fy2.justdoit.app.fragments.settings.SettingsPresenterImpl;
 import de.g00fy2.justdoit.app.fragments.start.DaggerStartComponent;
 import de.g00fy2.justdoit.app.fragments.start.StartComponent;
 import de.g00fy2.justdoit.app.fragments.start.StartFragment;
@@ -69,6 +74,20 @@ public class NavigatorImpl implements Navigator {
     LeaguePositionComponent component = DaggerLeaguePositionComponent.builder()
         .activityComponent(baseActivity.getActivityComponent())
         .leaguePositionModule(new LeaguePositionModule(fragment, presenter))
+        .build();
+
+    component.inject(fragment);
+    component.inject(presenter);
+
+    transist(fragment, true);
+  }
+
+  @Override public void showSettingsFragment() {
+    SettingsFragment fragment = new SettingsFragment();
+    SettingsPresenterImpl presenter = new SettingsPresenterImpl();
+    SettingsComponent component = DaggerSettingsComponent.builder()
+        .activityComponent(baseActivity.getActivityComponent())
+        .settingsModule(new SettingsModule(fragment, presenter))
         .build();
 
     component.inject(fragment);

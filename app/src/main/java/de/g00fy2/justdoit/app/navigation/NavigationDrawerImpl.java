@@ -64,10 +64,8 @@ public class NavigationDrawerImpl
         Timber.d("League Positon clicked");
         break;
       case R.id.settings:
+        baseActivity.getNavigator().showSettingsFragment();
         Timber.d("Settings clicked");
-        break;
-      case R.id.info:
-        Timber.d("Info clicked");
         break;
     }
     drawerLayout.closeDrawer(Gravity.START);
