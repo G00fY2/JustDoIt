@@ -1,4 +1,4 @@
-package de.g00fy2.model.Utils;
+package de.g00fy2.model.utils;
 
 /**
  * Created by Thomas Wirth on 07.12.2017.

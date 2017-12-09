@@ -17,7 +17,7 @@ import de.g00fy2.justdoit.app.annotations.Title;
 import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.fragments.base.BaseFragment;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenter;
-import de.g00fy2.model.Utils.LeagueUtils;
+import de.g00fy2.model.utils.LeagueUtils;
 import de.g00fy2.model.models.LeaguePosition;
 import de.g00fy2.model.models.Summoner;
 import java.util.List;

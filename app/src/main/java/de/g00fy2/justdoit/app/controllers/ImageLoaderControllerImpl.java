@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
+import de.g00fy2.model.utils.Constants;
 import javax.inject.Inject;
 
 /**
@@ -16,7 +17,7 @@ public class ImageLoaderControllerImpl implements ImageLoaderController {
 
   private final BaseActivity baseActivity;
   private final String BASE_URL = "http://ddragon.leagueoflegends.com/cdn/";
-  private String latestVersion = "7.23.1";
+  private String latestVersion = Constants.fallbackLolVersion;
 
   @Inject public ImageLoaderControllerImpl(BaseActivity baseActivity) {
     this.baseActivity = baseActivity;

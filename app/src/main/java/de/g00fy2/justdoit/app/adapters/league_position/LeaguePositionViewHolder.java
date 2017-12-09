@@ -6,7 +6,7 @@ import butterknife.BindView;
 import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.adapters.base.BaseViewHolder;
 import de.g00fy2.justdoit.app.fragments.league_position.LeaguePositionContract;
-import de.g00fy2.model.Utils.LeagueUtils;
+import de.g00fy2.model.utils.LeagueUtils;
 import de.g00fy2.model.models.LeagueItem;
 
 /**

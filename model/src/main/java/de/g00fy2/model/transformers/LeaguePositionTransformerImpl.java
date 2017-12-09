@@ -1,6 +1,6 @@
 package de.g00fy2.model.transformers;
 
-import de.g00fy2.model.Utils.LeagueUtils;
+import de.g00fy2.model.utils.LeagueUtils;
 import de.g00fy2.model.entities.web.LeaguePositionWebEntity;
 import de.g00fy2.model.models.LeaguePosition;
 import java.util.HashSet;
