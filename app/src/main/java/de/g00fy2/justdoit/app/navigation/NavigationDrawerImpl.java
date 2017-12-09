@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.Unbinder;
 import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
 import de.g00fy2.model.models.Summoner;
@@ -22,11 +21,12 @@ import timber.log.Timber;
  */
 
 public class NavigationDrawerImpl
-    implements NavigationDrawer, NavigationView.OnNavigationItemSelectedListener, Unbinder {
+    implements NavigationDrawer, NavigationView.OnNavigationItemSelectedListener {
 
   private BaseActivity baseActivity;
 
   private DrawerLayout drawerLayout;
+  private NavigationView navigationView;
   private ImageView summonerIconImageView;
   private TextView summonerNameTextView;
   private TextView summonerLevelTextView;
@@ -42,6 +42,7 @@ public class NavigationDrawerImpl
     switch (item.getItemId()) {
       case R.id.home:
         Timber.d("Home clicked");
+        baseActivity.getNavigator().showStartFragment();
         break;
       case R.id.match_history:
         if (summoner != null) {
@@ -72,20 +73,10 @@ public class NavigationDrawerImpl
     return false;
   }
 
-  @Override public void unbind() {
-    if (baseActivity == null) throw new IllegalStateException("Bindings already cleared.");
-    this.baseActivity = null;
-
-    drawerLayout = null;
-    summonerIconImageView = null;
-    summonerNameTextView = null;
-    summonerLevelTextView = null;
-  }
-
-  public void setDrawerLayout(Toolbar toolbar) {
+  @Override public void setDrawerLayout(Toolbar toolbar) {
     if (drawerLayout == null && toolbar != null) {
       drawerLayout = baseActivity.findViewById(R.id.drawer_layout);
-      NavigationView navigationView = baseActivity.findViewById(R.id.navigation_view);
+      navigationView = baseActivity.findViewById(R.id.navigation_view);
       navigationView.setNavigationItemSelectedListener(this);
       navigationView.setCheckedItem(R.id.home);
 
@@ -107,7 +98,7 @@ public class NavigationDrawerImpl
     }
   }
 
-  public boolean closeWhenOpened() {
+  @Override public boolean closeWhenOpened() {
     if (drawerLayout.isDrawerOpen(Gravity.START)) {
       drawerLayout.closeDrawer(Gravity.START);
       return true;
@@ -116,7 +107,7 @@ public class NavigationDrawerImpl
     }
   }
 
-  public void setNavigationDrawerHeaderData(Summoner summoner) {
+  @Override public void setNavigationDrawerHeaderData(Summoner summoner) {
     this.summoner = summoner;
     if (baseActivity != null && summoner != null) {
       baseActivity.getActivityComponent()
@@ -127,9 +118,9 @@ public class NavigationDrawerImpl
     }
   }
 
-  public void setCheckedItem(int itemId) {
-    if (baseActivity.findViewById(R.id.navigation_view) != null) {
-      ((NavigationView) baseActivity.findViewById(R.id.navigation_view)).setCheckedItem(itemId);
+  @Override public void setCheckedItem(int itemId) {
+    if (navigationView != null) {
+      navigationView.setCheckedItem(itemId);
     }
   }
 }

@@ -13,13 +13,15 @@
         android:id="@+id/league_position"
         android:icon="@android:drawable/ic_dialog_info"
         android:title="@string/league_position"/>
+    <item android:title="Misc">
+      <menu>
+        <group android:checkableBehavior="single">
+          <item
+              android:id="@+id/settings"
+              android:icon="@android:drawable/ic_dialog_alert"
+              android:title="@string/settings"/>
+        </group>
+      </menu>
+    </item>
   </group>
-  <item android:title="Misc">
-    <menu>
-      <item
-          android:id="@+id/settings"
-          android:icon="@android:drawable/ic_dialog_alert"
-          android:title="@string/settings"/>
-    </menu>
-  </item>
 </menu>

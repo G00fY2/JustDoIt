@@ -14,4 +14,6 @@ public interface NavigationDrawer {
   boolean closeWhenOpened();
 
   void setNavigationDrawerHeaderData(Summoner summoner);
+
+  void setCheckedItem(int itemId);
 }

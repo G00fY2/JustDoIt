@@ -1,9 +1,11 @@
 package de.g00fy2.justdoit.app.fragments.settings;
 
+import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
 import de.g00fy2.justdoit.app.fragments.settings.interactors.GetCurrentVersionInteractor;
+import de.g00fy2.justdoit.app.navigation.NavigationDrawer;
 import javax.inject.Inject;
 
 /**
@@ -15,6 +17,7 @@ public class SettingsPresenterImpl extends BasePresenterImpl
 
   @Inject SettingsContract.SetingsView view;
 
+  @Inject NavigationDrawer navigationDrawer;
   @Inject GetCurrentVersionInteractor getCurrentVersionInteractor;
   @Inject SnackbarController snackbarController;
   @Inject ErrorController errorController;
@@ -24,6 +27,8 @@ public class SettingsPresenterImpl extends BasePresenterImpl
   }
 
   @Override public void onResume() {
+    super.onResume();
+    navigationDrawer.setCheckedItem(R.id.settings);
     bind(getCurrentVersionInteractor.execute()
         .subscribe(currentVersion -> view.setPatchversionPreference(currentVersion),
             errorController::onError));

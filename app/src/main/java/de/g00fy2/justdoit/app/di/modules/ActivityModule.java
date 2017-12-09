@@ -24,20 +24,21 @@ import de.g00fy2.model.datasources.local.SharedPreferencesDataSourceImpl;
     this.activity = activity;
   }
 
-  @Provides @PerActivity BaseActivity provideBaseActivity() {
+  @Provides @PerActivity public BaseActivity provideBaseActivity() {
     return activity;
   }
 
-  @Provides @PerActivity Context provideContext() {
+  @Provides @PerActivity public Context provideContext() {
     return activity;
   }
 
-  @Provides @PerActivity Navigator provideNavigator() {
-    return new NavigatorImpl(activity);
+  @Provides @PerActivity public Navigator provideNavigator(NavigatorImpl navigatorImpl) {
+    return navigatorImpl;
   }
 
-  @Provides @PerActivity NavigationDrawer provideNavigationDrawerHelper() {
-    return new NavigationDrawerImpl(activity);
+  @Provides @PerActivity
+  public NavigationDrawer provideNavigationDrawer(NavigationDrawerImpl navigationDrawerImpl) {
+    return navigationDrawerImpl;
   }
 
   @Provides @PerActivity public SharedPreferences provideSharedPreferences() {

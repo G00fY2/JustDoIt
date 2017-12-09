@@ -5,7 +5,7 @@ import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
 import de.g00fy2.justdoit.app.fragments.matchhistory.interactors.GetAccountMatchlistInteractor;
-import de.g00fy2.justdoit.app.navigation.NavigationDrawerImpl;
+import de.g00fy2.justdoit.app.navigation.NavigationDrawer;
 import de.g00fy2.model.models.Match;
 import de.g00fy2.model.models.Summoner;
 import java.util.ArrayList;
@@ -24,13 +24,13 @@ public class MatchhistoryPresenterImpl extends BasePresenterImpl
 
   @Inject MatchhistoryContract.MatchhistoryView view;
 
-  @Inject NavigationDrawerImpl navigationDrawerImpl;
+  @Inject NavigationDrawer navigationDrawer;
   @Inject GetAccountMatchlistInteractor getAccountMatchlistInteractor;
   @Inject ErrorController errorController;
 
   @Override public void onResume() {
     super.onResume();
-    navigationDrawerImpl.setCheckedItem(R.id.match_history);
+    navigationDrawer.setCheckedItem(R.id.match_history);
     getLatestMatches();
   }
 
