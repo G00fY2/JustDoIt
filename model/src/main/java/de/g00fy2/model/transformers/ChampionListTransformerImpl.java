@@ -1,9 +1,11 @@
 package de.g00fy2.model.transformers;
 
+import de.g00fy2.model.entities.db.ChampionDbEntity;
 import de.g00fy2.model.entities.web.ChampionListWebEntity;
 import de.g00fy2.model.entities.web.ChampionWebEntity;
 import de.g00fy2.model.models.Champion;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
 
@@ -26,6 +28,24 @@ public class ChampionListTransformerImpl implements ChampionListTransformer {
         champion.title = championWebEntity.title;
         champion.key = championWebEntity.key;
         champion.id = championWebEntity.id;
+        championMap.put(champion.id, champion);
+      }
+
+      return championMap;
+    }
+
+    return null;
+  }
+
+  @Override public Map<Integer, Champion> toModel(List<ChampionDbEntity> championDbEntities) {
+    if (championDbEntities != null && championDbEntities.size() > 0) {
+      Map<Integer, Champion> championMap = new HashMap<>();
+      for (ChampionDbEntity championDbEntity : championDbEntities) {
+        Champion champion = new Champion();
+        champion.name = championDbEntity.name;
+        champion.title = championDbEntity.title;
+        champion.key = championDbEntity.key;
+        champion.id = championDbEntity.id;
         championMap.put(champion.id, champion);
       }
 

@@ -16,4 +16,22 @@ import de.g00fy2.model.db.AppDatabase;
   public long revisionDate;
   @PrimaryKey public long id;
   public long accountId;
+
+  @Override public String toString() {
+    return "SummonerDbEntity{"
+        + "profileIconId="
+        + profileIconId
+        + ", name='"
+        + name
+        + '\''
+        + ", summonerLevel="
+        + summonerLevel
+        + ", revisionDate="
+        + revisionDate
+        + ", id="
+        + id
+        + ", accountId="
+        + accountId
+        + '}';
+  }
 }
