@@ -6,7 +6,7 @@ import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInteractor;
-import de.g00fy2.justdoit.app.fragments.start.interactors.GetVersionsInteractor;
+import de.g00fy2.justdoit.app.fragments.start.interactors.GetVersionInteractor;
 import de.g00fy2.justdoit.app.navigation.NavigationDrawerImpl;
 import de.g00fy2.justdoit.app.navigation.Navigator;
 import de.g00fy2.model.models.Summoner;
@@ -24,7 +24,7 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
 
   @Inject StartContract.StartView view;
 
-  @Inject GetVersionsInteractor getVersionsInteractor;
+  @Inject GetVersionInteractor getVersionInteractor;
   @Inject GetSummonerByNameInteractor getSummonerByNameInteractor;
   @Inject ErrorController errorController;
   @Inject SnackbarController snackbarController;
@@ -40,11 +40,9 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
     super.onResume();
     navigationDrawerImpl.setCheckedItem(R.id.home);
 
-    bind(getVersionsInteractor.execute().subscribe(versionList -> {
-      if (versionList.size() > 0) {
-        view.showCurrentVersion(versionList.get(0));
-        imageLoaderController.setLatestVersion(versionList.get(0));
-      }
+    bind(getVersionInteractor.execute().subscribe(latestVersion -> {
+      view.showCurrentVersion(latestVersion);
+      imageLoaderController.setLatestVersion(latestVersion);
     }, errorController::onError));
   }
 

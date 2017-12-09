@@ -3,8 +3,8 @@ package de.g00fy2.justdoit.app.fragments.start;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerFragment;
-import de.g00fy2.justdoit.app.fragments.start.interactors.GetVersionsInteractor;
-import de.g00fy2.justdoit.app.fragments.start.interactors.GetVersionsInteractorImpl;
+import de.g00fy2.justdoit.app.fragments.start.interactors.GetVersionInteractor;
+import de.g00fy2.justdoit.app.fragments.start.interactors.GetVersionInteractorImpl;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInteractorImpl;
 
@@ -31,9 +31,9 @@ import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInter
   }
 
   @Provides @PerFragment
-  public GetVersionsInteractor provideGetVersionsInteractor(
-      GetVersionsInteractorImpl getGetVersionsInteractorImpl) {
-    return getGetVersionsInteractorImpl;
+  public GetVersionInteractor provideGetVersionsInteractor(
+      GetVersionInteractorImpl getGetVersionInteractorImpl) {
+    return getGetVersionInteractorImpl;
   }
 
   @Provides @PerFragment public GetSummonerByNameInteractor provideGetSummonerByNameInteractor(
