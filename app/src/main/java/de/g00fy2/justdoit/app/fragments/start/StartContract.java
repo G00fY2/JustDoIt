@@ -19,6 +19,8 @@ public interface StartContract {
     Summoner getSummonerInPosition(int positon);
 
     int getDataSize();
+
+    void deleteSummoner(int position);
   }
 
   interface StartView extends BaseView {

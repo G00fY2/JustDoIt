@@ -1,7 +1,9 @@
 package de.g00fy2.justdoit.app.fragments.base;
 
+import de.g00fy2.model.schedulers.CompletableScheduler;
 import de.g00fy2.model.schedulers.ObservableScheduler;
 import de.g00fy2.model.schedulers.SingleScheduler;
+import io.reactivex.CompletableTransformer;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.SingleTransformer;
 
@@ -16,5 +18,9 @@ public class BaseInteractor {
 
   protected <T> ObservableTransformer<T, T> observable() {
     return new ObservableScheduler<>();
+  }
+
+  protected CompletableTransformer completable() {
+    return new CompletableScheduler();
   }
 }

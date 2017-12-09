@@ -5,6 +5,7 @@ import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
+import de.g00fy2.justdoit.app.fragments.start.interactors.DeleteStoredSummonerInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetStoredSummonerInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetVersionInteractor;
@@ -24,6 +25,7 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
 
   @Inject StartContract.StartView view;
 
+  @Inject DeleteStoredSummonerInteractor deleteStoredSummonerInteractor;
   @Inject GetStoredSummonerInteractor getStoredSummonerInteractor;
   @Inject GetVersionInteractor getVersionInteractor;
   @Inject GetSummonerByNameInteractor getSummonerByNameInteractor;
@@ -63,6 +65,16 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
 
   @Override public int getDataSize() {
     return favouriteSummoners.size();
+  }
+
+  @Override public void deleteSummoner(int position) {
+    if (position < favouriteSummoners.size()) {
+      bind(deleteStoredSummonerInteractor.execute(favouriteSummoners.get(position).id)
+          .subscribe(() -> {
+            favouriteSummoners.remove(position);
+            view.notifyDataChanged();
+          }, errorController::onError));
+    }
   }
 
   private void loadStoredSummoners() {

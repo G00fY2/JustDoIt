@@ -16,7 +16,8 @@ public class StartAdapter extends BaseAdapter<StartContract.StartPresenter, Star
   }
 
   @Override public StartViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new StartViewHolder(inflate(parent, R.layout.item_start), onItemClickListener);
+    return new StartViewHolder(inflate(parent, R.layout.item_favourite_summoner),
+        onItemClickListener);
   }
 
   @Override public void onBindViewHolder(StartViewHolder holder, int position) {

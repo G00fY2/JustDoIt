@@ -6,6 +6,7 @@ import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.OnClick;
 import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.adapters.base.BaseAdapter;
 import de.g00fy2.justdoit.app.adapters.start.StartAdapter;
@@ -30,6 +31,10 @@ import javax.inject.Inject;
   @BindView(R.id.start_current_version_textview) TextView currentVersionTextView;
   @BindView(R.id.searchView) SearchView summonerSearchView;
   @BindView(R.id.recyclerView) RecyclerView summonerRecylerView;
+
+  @OnClick(R.id.searchView) void onSearchViewClick(View view) {
+    summonerSearchView.setIconified(false);
+  }
 
   @Override protected void initializeViews() {
 
@@ -73,6 +78,10 @@ import javax.inject.Inject;
   }
 
   @Override public void onItemClicked(View view, int position) {
-    presenter.selectFavouriteSummoner(position);
+    if (view.getTag() != null && view.getTag().equals("delete")) {
+      presenter.deleteSummoner(position);
+    } else {
+      presenter.selectFavouriteSummoner(position);
+    }
   }
 }

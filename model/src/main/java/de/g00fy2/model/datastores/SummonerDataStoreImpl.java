@@ -3,6 +3,7 @@ package de.g00fy2.model.datastores;
 import de.g00fy2.model.datasources.db.SummonerDbSource;
 import de.g00fy2.model.datasources.web.SummonerWebDataSource;
 import de.g00fy2.model.models.Summoner;
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import java.util.List;
 import javax.inject.Inject;
@@ -27,5 +28,9 @@ public class SummonerDataStoreImpl implements SummonerDataStore {
 
   @Override public Single<List<Summoner>> getStoredSummoners() {
     return summonerDbSource.getSummoners();
+  }
+
+  @Override public Completable deleteStoredSummoner(long id) {
+    return summonerDbSource.deleteSummoner(id);
   }
 }

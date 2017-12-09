@@ -1,6 +1,7 @@
 package de.g00fy2.model.datasources.db;
 
 import de.g00fy2.model.models.Summoner;
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface SummonerDbSource {
   Single<Summoner> getSummonerByName(String summonerName);
 
   Single<Summoner> saveSummoner(Summoner summoner);
+
+  Completable deleteSummoner(long id);
 }

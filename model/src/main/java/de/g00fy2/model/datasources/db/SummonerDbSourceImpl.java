@@ -3,8 +3,10 @@ package de.g00fy2.model.datasources.db;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import de.g00fy2.model.entities.db.SummonerDbEntity;
+import de.g00fy2.model.entities.db.SummonerDbEntity_Table;
 import de.g00fy2.model.models.Summoner;
 import de.g00fy2.model.transformers.SummonerTransformer;
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import java.util.List;
@@ -38,6 +40,16 @@ public class SummonerDbSourceImpl implements SummonerDbSource {
       FlowManager.getModelAdapter(SummonerDbEntity.class)
           .save(summonerTransformer.toModel(summoner1));
       return summoner1;
+    });
+  }
+
+  @Override public Completable deleteSummoner(long id) {
+    return Completable.create(emitter -> {
+      SQLite.delete()
+          .from(SummonerDbEntity.class)
+          .where(SummonerDbEntity_Table.id.is(id))
+          .execute();
+      emitter.onComplete();
     });
   }
 }
