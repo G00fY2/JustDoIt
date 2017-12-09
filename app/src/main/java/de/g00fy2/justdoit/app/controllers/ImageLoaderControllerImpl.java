@@ -29,17 +29,19 @@ public class ImageLoaderControllerImpl implements ImageLoaderController {
 
   @Override
   public void loadProfileIcon(int profileIconId, ImageView imageView, Boolean circleCrop) {
-    String url = generateProfileImageUrl(profileIconId);
-    if (circleCrop) {
-      loadCircleTransformed(url).into(imageView);
-    } else {
-      load(url).into(imageView);
+    if (imageView != null) {
+      String url = generateProfileImageUrl(profileIconId);
+      if (circleCrop) {
+        loadCircleTransformed(url).into(imageView);
+      } else {
+        load(url).into(imageView);
+      }
     }
   }
 
   @Override
   public void loadChampionIcon(String championKey, ImageView imageView, Boolean circleCrop) {
-    if (championKey != null && imageView != null) {
+    if (imageView != null && championKey != null) {
       String url = generateChampionImageUrl(championKey);
       if (circleCrop) {
         loadCircleTransformed(url).into(imageView);
@@ -50,7 +52,7 @@ public class ImageLoaderControllerImpl implements ImageLoaderController {
   }
 
   @Override public void loadSpellIcon(String spellKey, ImageView imageView, Boolean circleCrop) {
-    if (spellKey != null && imageView != null) {
+    if (imageView != null && spellKey != null) {
       String url = generateSpellImageUrl(spellKey);
       if (circleCrop) {
         loadCircleTransformed(url).into(imageView);
