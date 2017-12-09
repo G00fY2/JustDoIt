@@ -13,6 +13,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://www.jitpack.io" }
     }
 
     project.ext {
@@ -23,6 +24,7 @@ allprojects {
         butterknifeVersion = '8.8.1'
         retrofitVersion = '2.3.0'
         glideVersion = '4.3.1'
+        dbflowVersion = '4.1.2'
 
 
         // support libs
@@ -63,6 +65,11 @@ allprojects {
 
         // timber
         timber = 'com.jakewharton.timber:timber:4.5.1'
+
+        // dbflow
+        dbflow = "com.github.Raizlabs.DBFlow:dbflow:$dbflowVersion"
+        dbflowCore = "com.github.Raizlabs.DBFlow:dbflow-core:$dbflowVersion"
+        dbflowCompiler = "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflowVersion"
     }
 }
 

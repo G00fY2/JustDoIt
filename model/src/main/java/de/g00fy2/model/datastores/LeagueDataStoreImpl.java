@@ -30,7 +30,7 @@ public class LeagueDataStoreImpl implements LeagueDataStore {
   }
 
   @Override public Single<List<LeagueItem>> getLeagueItems(String leagueId, int division) {
-    return leagueWebDataSource.getLeague(leagueId)
+  return leagueWebDataSource.getLeague(leagueId)
         .flatMapObservable(Observable::fromIterable)
         .filter(leagueItem -> leagueItem.rank == division)
         .toSortedList((item, nextItem) -> {

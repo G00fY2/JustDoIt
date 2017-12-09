@@ -3,6 +3,8 @@ package de.g00fy2.justdoit.app.di.modules;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
+import de.g00fy2.model.datasources.db.SummonerDbSource;
+import de.g00fy2.model.datasources.db.SummonerDbSourceImpl;
 import de.g00fy2.model.datasources.local.SharedPreferencesDataSource;
 import de.g00fy2.model.datasources.local.SharedPreferencesDataSourceImpl;
 import de.g00fy2.model.datasources.web.LeagueWebDataSource;
@@ -53,6 +55,11 @@ import de.g00fy2.model.datastores.SummonerDataStoreImpl;
   @Provides @PerActivity public SharedPreferencesDataSource provideSharedPreferencesDataSourceImpl(
       SharedPreferencesDataSourceImpl sharedPreferencesDataSourceImpl) {
     return sharedPreferencesDataSourceImpl;
+  }
+
+  @Provides @PerActivity
+  public SummonerDbSource provideSummonerDbSource(SummonerDbSourceImpl summonerDbSourceImpl) {
+    return summonerDbSourceImpl;
   }
 
   // DataStores

@@ -5,10 +5,10 @@ import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
+import de.g00fy2.justdoit.app.fragments.start.interactors.GetStoredSummonerInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetSummonerByNameInteractor;
 import de.g00fy2.justdoit.app.fragments.start.interactors.GetVersionInteractor;
-import de.g00fy2.justdoit.app.navigation.NavigationDrawerImpl;
-import de.g00fy2.justdoit.app.navigation.Navigator;
+import de.g00fy2.justdoit.app.navigation.NavigationDrawer;
 import de.g00fy2.model.models.Summoner;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +24,13 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
 
   @Inject StartContract.StartView view;
 
+  @Inject GetStoredSummonerInteractor getStoredSummonerInteractor;
   @Inject GetVersionInteractor getVersionInteractor;
   @Inject GetSummonerByNameInteractor getSummonerByNameInteractor;
   @Inject ErrorController errorController;
   @Inject SnackbarController snackbarController;
-  @Inject Navigator navigator;
   @Inject ImageLoaderController imageLoaderController;
-  @Inject NavigationDrawerImpl navigationDrawerImpl;
+  @Inject NavigationDrawer navigationDrawer;
 
   @Inject public StartPresenterImpl() {
 
@@ -38,12 +38,10 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
 
   @Override public void onResume() {
     super.onResume();
-    navigationDrawerImpl.setCheckedItem(R.id.home);
+    navigationDrawer.setCheckedItem(R.id.home);
 
-    bind(getVersionInteractor.execute().subscribe(latestVersion -> {
-      view.showCurrentVersion(latestVersion);
-      imageLoaderController.setLatestVersion(latestVersion);
-    }, errorController::onError));
+    loadStoredSummoners();
+    showLatestDataVersion();
   }
 
   @Override public void searchSummoner(String summonerName) {
@@ -56,7 +54,7 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
   }
 
   @Override public void selectFavouriteSummoner(int position) {
-    navigationDrawerImpl.setNavigationDrawerHeaderData(favouriteSummoners.get(position));
+    navigationDrawer.setNavigationDrawerHeaderData(favouriteSummoners.get(position));
   }
 
   @Override public Summoner getSummonerInPosition(int positon) {
@@ -65,5 +63,19 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
 
   @Override public int getDataSize() {
     return favouriteSummoners.size();
+  }
+
+  private void loadStoredSummoners() {
+    bind(getStoredSummonerInteractor.execute().subscribe(summoners -> {
+      favouriteSummoners = summoners;
+      view.notifyDataChanged();
+    }, errorController::onError));
+  }
+
+  private void showLatestDataVersion() {
+    bind(getVersionInteractor.execute().subscribe(latestVersion -> {
+      view.showCurrentVersion(latestVersion);
+      imageLoaderController.setLatestVersion(latestVersion);
+    }, errorController::onError));
   }
 }

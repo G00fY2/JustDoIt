@@ -34,5 +34,9 @@ dependencies {
     api project.ext.rxJavaAdapter
     api project.ext.loggingInterceptor
 
+    api project.ext.dbflow
+    api project.ext.dbflowCore
+    annotationProcessor project.ext.dbflowCompiler
+
     implementation project.ext.moshi
 }
