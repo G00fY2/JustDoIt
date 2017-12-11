@@ -43,15 +43,14 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
     navigationDrawer.setCheckedItem(R.id.home);
 
     loadStoredSummoners();
-    showLatestDataVersion();
+    getLatestDataVersion();
   }
 
   @Override public void searchSummoner(String summonerName) {
     bind(getSummonerByNameInteractor.execute(summonerName).subscribe(summoner -> {
-      favouriteSummoners.add(summoner);
       view.setDefaultSummoner(summoner);
-      view.notifyDataChanged();
       snackbarController.showSuccess(summoner.name + " was found!");
+      loadStoredSummoners();
     }, throwable -> errorController.onError(throwable)));
   }
 
@@ -84,7 +83,7 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
     }, errorController::onError));
   }
 
-  private void showLatestDataVersion() {
+  private void getLatestDataVersion() {
     bind(getVersionInteractor.execute().subscribe(latestVersion -> {
       view.showCurrentVersion(latestVersion);
       imageLoaderController.setLatestVersion(latestVersion);

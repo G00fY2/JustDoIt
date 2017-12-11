@@ -4,10 +4,9 @@ import de.g00fy2.model.datasources.local.SharedPreferencesDataSource;
 import de.g00fy2.model.datasources.web.StaticDataWebDataSource;
 import de.g00fy2.model.models.Champion;
 import de.g00fy2.model.models.SummonerSpell;
-import io.reactivex.Completable;
+import io.reactivex.Observable;
 import io.reactivex.Single;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
 
@@ -51,15 +50,18 @@ public class StaticDataDataStoreImpl implements StaticDataDataStore {
     return Single.just(cachedSummonerSpellList);
   }
 
-  @Override public Single<List<String>> getVersions() {
-    return staticDataWebDataSource.getVersions();
+  @Override public Single<String> getLatestDataVersionFromWeb() {
+    return staticDataWebDataSource.getVersions()
+        .flatMapObservable(Observable::fromIterable)
+        .firstOrError()
+        .flatMap(this::setLatestVersion);
   }
 
-  @Override public Completable setLatestVersion(String version) {
+  @Override public Single<String> setLatestVersion(String version) {
     return sharedPreferencesDataSource.setLatestPatchVersion(version);
   }
 
-  @Override public String getLatestVersion() {
+  @Override public Single<String> getDataVersion() {
     return sharedPreferencesDataSource.getLatestPatchVersion();
   }
 }

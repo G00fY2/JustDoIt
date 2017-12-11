@@ -34,10 +34,7 @@ import javax.inject.Inject;
 
   @Override protected void initializeViews() {
     regionPreference = findPreference("region");
-    regionPreference.setOnPreferenceClickListener(preference -> {
-      presenter.showNotAvailableNotice();
-      return true;
-    });
+    regionPreference.setEnabled(false);
     apikeyPreference = findPreference("apikey");
     apikeyPreference.setOnPreferenceChangeListener((preference, newValue) -> {
       presenter.changeAPIKey((String) newValue);

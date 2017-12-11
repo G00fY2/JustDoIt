@@ -8,28 +8,56 @@
     android:orientation="vertical"
     >
 
-  <FrameLayout
-      android:id="@+id/frameLayout"
+  <LinearLayout
+      android:id="@+id/linearHeaderLayout"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:background="@color/colorPrimary"
+      android:orientation="vertical"
       app:layout_constraintDimensionRatio="21:9"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Welcome summoner!"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Display4"
+        android:textColor="@android:color/white"
+        android:textSize="24dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Search your League of Legends friends to get started!"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Display4"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        />
 
-  </FrameLayout>
+  </LinearLayout>
   <TextView
       android:id="@+id/start_current_version_textview"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginBottom="8dp"
       android:layout_marginStart="16dp"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Display4"
       android:textColor="@android:color/white"
-      app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
-      app:layout_constraintStart_toStartOf="@+id/frameLayout"
+      android:textSize="12dp"
+      android:visibility="invisible"
+      app:layout_constraintBottom_toBottomOf="@+id/linearHeaderLayout"
+      app:layout_constraintStart_toStartOf="@+id/linearHeaderLayout"
       />
   <android.support.v7.widget.RecyclerView
       android:id="@+id/recyclerView"
@@ -53,7 +81,7 @@
       android:background="@drawable/search_background"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+      app:layout_constraintTop_toBottomOf="@+id/linearHeaderLayout"
       />
 
 </android.support.constraint.ConstraintLayout>

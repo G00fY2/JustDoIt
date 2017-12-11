@@ -3,22 +3,22 @@
   <group android:checkableBehavior="single">
     <item
         android:id="@+id/home"
-        android:icon="@android:drawable/ic_dialog_info"
+        android:icon="@drawable/ic_menu_dashboard"
         android:title="@string/start"/>
     <item
         android:id="@+id/match_history"
-        android:icon="@android:drawable/ic_dialog_info"
+        android:icon="@drawable/ic_menu_history"
         android:title="@string/match_history"/>
     <item
         android:id="@+id/league_position"
-        android:icon="@android:drawable/ic_dialog_info"
+        android:icon="@drawable/ic_menu_rank"
         android:title="@string/league_position"/>
     <item android:title="Misc">
       <menu>
         <group android:checkableBehavior="single">
           <item
               android:id="@+id/settings"
-              android:icon="@android:drawable/ic_dialog_alert"
+              android:icon="@drawable/ic_menu_settings"
               android:title="@string/settings"/>
         </group>
       </menu>

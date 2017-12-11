@@ -4,7 +4,7 @@ import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
-import de.g00fy2.justdoit.app.fragments.settings.interactors.GetCurrentVersionInteractor;
+import de.g00fy2.justdoit.app.fragments.settings.interactors.GetDataVersionInteractor;
 import de.g00fy2.justdoit.app.navigation.NavigationDrawer;
 import de.g00fy2.model.api.APIKeyInterceptor;
 import javax.inject.Inject;
@@ -20,7 +20,7 @@ public class SettingsPresenterImpl extends BasePresenterImpl
 
   @Inject APIKeyInterceptor apiKeyInterceptor;
   @Inject NavigationDrawer navigationDrawer;
-  @Inject GetCurrentVersionInteractor getCurrentVersionInteractor;
+  @Inject GetDataVersionInteractor getDataVersionInteractor;
   @Inject SnackbarController snackbarController;
   @Inject ErrorController errorController;
 
@@ -31,7 +31,7 @@ public class SettingsPresenterImpl extends BasePresenterImpl
   @Override public void onResume() {
     super.onResume();
     navigationDrawer.setCheckedItem(R.id.settings);
-    bind(getCurrentVersionInteractor.execute()
+    bind(getDataVersionInteractor.execute()
         .subscribe(currentVersion -> view.setPatchversionPreference(currentVersion),
             errorController::onError));
   }

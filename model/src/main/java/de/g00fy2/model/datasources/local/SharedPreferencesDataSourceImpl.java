@@ -1,7 +1,8 @@
 package de.g00fy2.model.datasources.local;
 
 import android.content.SharedPreferences;
-import io.reactivex.Completable;
+import de.g00fy2.model.utils.Constants;
+import io.reactivex.Single;
 import javax.inject.Inject;
 
 /**
@@ -19,14 +20,14 @@ public class SharedPreferencesDataSourceImpl implements SharedPreferencesDataSou
 
   }
 
-  @Override public Completable setLatestPatchVersion(String version) {
-    return Completable.create(emitter -> {
-      sharedPreferences.edit().putString(PATCH_VERSION, version).apply();
-      emitter.onComplete();
+  @Override public Single<String> setLatestPatchVersion(String version) {
+    return Single.just(version).map(ver -> {
+      sharedPreferences.edit().putString(PATCH_VERSION, ver).apply();
+      return ver;
     });
   }
 
-  @Override public String getLatestPatchVersion() {
-    return sharedPreferences.getString(PATCH_VERSION, "7.23.1");
+  @Override public Single<String> getLatestPatchVersion() {
+    return Single.just(sharedPreferences.getString(PATCH_VERSION, Constants.fallbackLolVersion));
   }
 }

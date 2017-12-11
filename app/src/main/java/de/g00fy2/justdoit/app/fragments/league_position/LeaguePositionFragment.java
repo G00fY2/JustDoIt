@@ -77,14 +77,14 @@ public class LeaguePositionFragment extends BaseFragment
 
   @Override public void setSummonerData(Summoner summoner) {
     if (summoner != null) {
-      imageLoaderController.loadProfileIcon(summoner.profileIconId, leaguePositionProfileImageView,
-          true);
       leaguePositionProfileTextView.setText(summoner.name);
     }
   }
 
   @Override public void setLeagueData(LeaguePosition leaguePosition) {
     if (leaguePosition != null) {
+      imageLoaderController.loadDivisionIcon(leaguePosition.tier, leaguePosition.rank,
+          leaguePositionProfileImageView);
       leaguePositionLeagueTextView.setText(
           leaguePosition.tier + " " + LeagueAPIUtils.transformRankToString(leaguePosition.rank));
       leaguePositionNameTextView.setText(leaguePosition.leagueName);

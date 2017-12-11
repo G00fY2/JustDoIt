@@ -1,5 +1,6 @@
 package de.g00fy2.justdoit.app.controllers;
 
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
@@ -7,6 +8,7 @@ import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
 import de.g00fy2.model.utils.Constants;
+import de.g00fy2.model.utils.LeagueAPIUtils;
 import javax.inject.Inject;
 
 /**
@@ -62,6 +64,13 @@ public class ImageLoaderControllerImpl implements ImageLoaderController {
     }
   }
 
+  @Override public void loadDivisionIcon(String tier, int rank, ImageView imageView) {
+    int drawableId = getIconRessourceForPosition(tier, rank);
+    if (imageView != null && drawableId != 0) {
+      Glide.with(baseActivity).load(drawableId).into(imageView);
+    }
+  }
+
   private RequestBuilder<Drawable> load(String url) {
     return Glide.with(baseActivity).load(url);
   }
@@ -83,5 +92,18 @@ public class ImageLoaderControllerImpl implements ImageLoaderController {
   private String generateSpellImageUrl(String name) {
     String url = BASE_URL + latestVersion + "/img/spell/";
     return url + name + ".png";
+  }
+
+  private int getIconRessourceForPosition(String tier, int rank) {
+    tier = tier.toLowerCase();
+    String imagename = tier + "_" + LeagueAPIUtils.transformRankToString(rank).toLowerCase();
+    Resources res = baseActivity.getResources();
+    int resId = res.getIdentifier(imagename, "drawable", baseActivity.getPackageName());
+
+    if (resId != 0) {
+      return resId;
+    } else {
+      return res.getIdentifier(tier, "drawable", baseActivity.getPackageName());
+    }
   }
 }

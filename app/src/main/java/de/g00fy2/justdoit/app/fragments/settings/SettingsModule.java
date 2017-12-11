@@ -3,8 +3,8 @@ package de.g00fy2.justdoit.app.fragments.settings;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerFragment;
-import de.g00fy2.justdoit.app.fragments.settings.interactors.GetCurrentVersionInteractor;
-import de.g00fy2.justdoit.app.fragments.settings.interactors.GetCurrentVersionInteractorImpl;
+import de.g00fy2.justdoit.app.fragments.settings.interactors.GetDataVersionInteractor;
+import de.g00fy2.justdoit.app.fragments.settings.interactors.GetDataVersionInteractorImpl;
 
 /**
  * Created by Thomas Wirth on 08.12.2017.
@@ -29,8 +29,8 @@ import de.g00fy2.justdoit.app.fragments.settings.interactors.GetCurrentVersionIn
     return presenter;
   }
 
-  @Provides @PerFragment public GetCurrentVersionInteractor provideGetCurrentVersionInteractor(
-      GetCurrentVersionInteractorImpl getCurrentVersionInteractorImpl) {
-    return getCurrentVersionInteractorImpl;
+  @Provides @PerFragment public GetDataVersionInteractor provideGetDataVersionInteractor(
+      GetDataVersionInteractorImpl getDataVersionInteractorImpl) {
+    return getDataVersionInteractorImpl;
   }
 }

@@ -15,4 +15,6 @@ public interface ImageLoaderController {
   void loadChampionIcon(String championKey, ImageView imageView, Boolean circleCrop);
 
   void loadSpellIcon(String spellKey, ImageView imageView, Boolean circleCrop);
+
+  void loadDivisionIcon(String tier, int rank, ImageView imageView);
 }

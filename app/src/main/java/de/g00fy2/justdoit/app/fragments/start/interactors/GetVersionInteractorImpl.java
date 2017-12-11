@@ -2,7 +2,6 @@ package de.g00fy2.justdoit.app.fragments.start.interactors;
 
 import de.g00fy2.justdoit.app.fragments.base.BaseInteractor;
 import de.g00fy2.model.datastores.StaticDataDataStore;
-import io.reactivex.Observable;
 import io.reactivex.Single;
 import javax.inject.Inject;
 
@@ -18,9 +17,6 @@ public class GetVersionInteractorImpl extends BaseInteractor implements GetVersi
   }
 
   @Override public Single<String> execute() {
-    return staticDataDataStore.getVersions()
-        .flatMapObservable(Observable::fromIterable)
-        .firstOrError()
-        .compose(single());
+    return staticDataDataStore.getLatestDataVersionFromWeb().compose(single());
   }
 }
