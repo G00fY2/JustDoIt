@@ -3,6 +3,7 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_matchhistroy_root_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
@@ -24,23 +25,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:orientation="vertical"
         >
       <TextView
           android:id="@+id/item_matchhistroy_matchtype"
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginBottom="4dp"
           android:text="Match type"
-          />
-      <TextView
-          android:id="@+id/item_matchhistroy_result"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="4dp"
-          android:text="Win"
           />
       <TextView
           android:id="@+id/item_matchhistroy_duration"
@@ -52,8 +43,6 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center"
-          android:layout_marginBottom="8dp"
-          android:layout_marginTop="8dp"
           android:gravity="center"
           android:orientation="vertical"
           >
@@ -88,21 +77,20 @@
           </LinearLayout>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             >
           <TextView
               android:id="@+id/item_matchhistroy_champion_textview"
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="Champ"
               />
           <TextView
               android:id="@+id/item_matchhistroy_kda"
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_marginStart="4dp"
               android:text="KDA"
               />
         </LinearLayout>
@@ -133,6 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:maxLines="1"
             android:text="Summoner1"
             android:textSize="13dp"
             />
@@ -153,6 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:maxLines="1"
             android:text="Summoner2"
             android:textSize="13dp"
             />
@@ -173,6 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:maxLines="1"
             android:text="Summoner3"
             android:textSize="13dp"
             />
@@ -193,6 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:maxLines="1"
             android:text="Summoner4"
             android:textSize="13dp"
             />
@@ -213,6 +205,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:maxLines="1"
             android:text="Summoner5"
             android:textSize="13dp"
             />
@@ -241,6 +234,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:maxLines="1"
             android:text="Summoner1"
             android:textSize="13dp"
             />
@@ -261,6 +255,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:maxLines="1"
             android:text="Summoner2"
             android:textSize="13dp"
             />
@@ -281,6 +276,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:maxLines="1"
             android:text="Summoner3"
             android:textSize="13dp"
             />
@@ -301,6 +297,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:maxLines="1"
             android:text="Summoner4"
             android:textSize="13dp"
             />

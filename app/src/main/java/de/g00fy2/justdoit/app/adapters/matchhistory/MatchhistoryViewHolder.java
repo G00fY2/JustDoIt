@@ -1,5 +1,7 @@
 package de.g00fy2.justdoit.app.adapters.matchhistory;
 
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,7 +12,7 @@ import de.g00fy2.justdoit.app.adapters.base.BaseViewHolder;
 import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.fragments.matchhistory.MatchhistoryContract;
 import de.g00fy2.model.models.Match;
-import de.g00fy2.model.models.Participant;
+import de.g00fy2.model.utils.LeagueAPIUtils;
 import java.util.List;
 
 /**
@@ -22,8 +24,8 @@ public class MatchhistoryViewHolder
 
   private ImageLoaderController imageLoaderController;
 
+  @BindView(R.id.item_matchhistroy_root_cardview) CardView rootCardView;
   @BindView(R.id.item_matchhistroy_matchtype) TextView matchtypeTextview;
-  @BindView(R.id.item_matchhistroy_result) TextView resultTextview;
   @BindView(R.id.item_matchhistroy_duration) TextView durationTextview;
   @BindView(R.id.item_matchhistroy_champion_imageview) ImageView championImageView;
   @BindView(R.id.item_matchhistroy_summonerspell_1) ImageView summonerspell1ImageView;
@@ -52,11 +54,16 @@ public class MatchhistoryViewHolder
 
   @Override public void setDataInViews(MatchhistoryContract.MatchhistoryPresenter presenter) {
     Match match = presenter.getMatchInPosition(getAdapterPosition());
-    matchtypeTextview.setText(match.gameType);
-    resultTextview.setText(match.participants.get(match.playerParticipantsIndex).win);
-    durationTextview.setText(Long.toString(match.gameDuration));
-    championNameTextView.setText(match.participants.get(match.playerParticipantsIndex).championName);
-    kdaTextView.setText(buildKDAString(match.participants.get(match.playerParticipantsIndex)));
+    matchtypeTextview.setText(LeagueAPIUtils.queueIdToGamemode(match.queueId));
+    rootCardView.setCardBackgroundColor(
+        match.participants.get(match.playerParticipantsIndex).win.toLowerCase().equals("win")
+            ? ContextCompat.getColor(this.itemView.getContext(), R.color.win)
+            : ContextCompat.getColor(this.itemView.getContext(), R.color.loss));
+    durationTextview.setText(LeagueAPIUtils.transfromGameDuration(match.gameDuration) + " min");
+    championNameTextView.setText(
+        match.participants.get(match.playerParticipantsIndex).championName);
+    kdaTextView.setText(
+        LeagueAPIUtils.buildKDAString(match.participants.get(match.playerParticipantsIndex)));
 
     imageLoaderController.loadChampionIcon(
         match.participants.get(match.playerParticipantsIndex).championKey, championImageView, true);
@@ -66,34 +73,26 @@ public class MatchhistoryViewHolder
     imageLoaderController.loadSpellIcon(
         match.participants.get(match.playerParticipantsIndex).spell2Key, summonerspell2ImageView,
         false);
-    setSummonersData(match);
 
+    setSummonersData(match);
   }
 
   private void setSummonersData(Match match) {
     int summonerCount = match.participants.size();
-
     int offset = (10 - summonerCount) / 2;
 
     for (int i = 0; i < summonerCount; i++) {
       if (summonerCount == 10) {
         summonersTextViews.get(i).setText(match.participants.get(i).summonerName);
+        imageLoaderController.loadChampionIcon(match.participants.get(i).championKey,
+            summonersImageViews.get(i), true);
       } else {
         if (i + 1 > summonerCount / 2) {
           summonersTextViews.get(i + offset).setText(match.participants.get(i).summonerName);
+          imageLoaderController.loadChampionIcon(match.participants.get(i + offset).championKey,
+              summonersImageViews.get(i), true);
         }
       }
     }
-  }
-
-  private String buildKDAString(Participant participant) {
-    StringBuilder sb = new StringBuilder();
-    sb.append(participant.kills);
-    sb.append(" / ");
-    sb.append(participant.deaths);
-    sb.append(" / ");
-    sb.append(participant.assists);
-
-    return sb.toString();
   }
 }

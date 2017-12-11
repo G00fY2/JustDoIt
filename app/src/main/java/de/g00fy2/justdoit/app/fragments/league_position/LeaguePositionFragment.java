@@ -17,7 +17,7 @@ import de.g00fy2.justdoit.app.annotations.Title;
 import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.fragments.base.BaseFragment;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenter;
-import de.g00fy2.model.utils.LeagueUtils;
+import de.g00fy2.model.utils.LeagueAPIUtils;
 import de.g00fy2.model.models.LeaguePosition;
 import de.g00fy2.model.models.Summoner;
 import java.util.List;
@@ -86,7 +86,7 @@ public class LeaguePositionFragment extends BaseFragment
   @Override public void setLeagueData(LeaguePosition leaguePosition) {
     if (leaguePosition != null) {
       leaguePositionLeagueTextView.setText(
-          leaguePosition.tier + " " + LeagueUtils.transformRankToString(leaguePosition.rank));
+          leaguePosition.tier + " " + LeagueAPIUtils.transformRankToString(leaguePosition.rank));
       leaguePositionNameTextView.setText(leaguePosition.leagueName);
       int rank = leaguePosition.rank;
       if (rank > 0 && rank < leaguePositionDivisionCardViews.size()) {

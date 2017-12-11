@@ -1,6 +1,6 @@
 package de.g00fy2.model.transformers;
 
-import de.g00fy2.model.utils.LeagueUtils;
+import de.g00fy2.model.utils.LeagueAPIUtils;
 import de.g00fy2.model.entities.web.LeagueItemWebEntity;
 import de.g00fy2.model.models.LeagueItem;
 import de.g00fy2.model.models.MiniSeries;
@@ -19,7 +19,7 @@ public class LeagueItemTransformerImpl implements LeagueItemTransformer {
   @Override public LeagueItem toModel(LeagueItemWebEntity leagueItemWebEntity) {
     if (leagueItemWebEntity != null) {
       LeagueItem leagueItem = new LeagueItem();
-      leagueItem.rank = LeagueUtils.transformRankToInteger(leagueItemWebEntity.rank);
+      leagueItem.rank = LeagueAPIUtils.transformRankToInteger(leagueItemWebEntity.rank);
       leagueItem.hotStreak = leagueItemWebEntity.hotStreak;
       leagueItem.wins = leagueItemWebEntity.wins;
       leagueItem.veteran = leagueItemWebEntity.veteran;

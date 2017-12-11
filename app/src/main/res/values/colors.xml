@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#00796B</color>
     <color name="colorPrimaryLight">#B2DFDB</color>
     <color name="colorAccent">#009688</color>
-    <color name="loss">#DB5941</color>
-    <color name="win">#138CC5</color>
+    <color name="loss">#ffdcdc</color>
+    <color name="win">#d9f4d9</color>
 </resources>

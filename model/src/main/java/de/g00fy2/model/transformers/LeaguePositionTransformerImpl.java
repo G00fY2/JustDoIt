@@ -1,6 +1,6 @@
 package de.g00fy2.model.transformers;
 
-import de.g00fy2.model.utils.LeagueUtils;
+import de.g00fy2.model.utils.LeagueAPIUtils;
 import de.g00fy2.model.entities.web.LeaguePositionWebEntity;
 import de.g00fy2.model.models.LeaguePosition;
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class LeaguePositionTransformerImpl implements LeaguePositionTransformer 
       Set<LeaguePosition> leaguePositionSet = new HashSet<>();
       for (LeaguePositionWebEntity leaguePositionWebEntity : leaguePositionWebEntitySet) {
         LeaguePosition leaguePosition = new LeaguePosition();
-        leaguePosition.rank = LeagueUtils.transformRankToInteger(leaguePositionWebEntity.rank);
+        leaguePosition.rank = LeagueAPIUtils.transformRankToInteger(leaguePositionWebEntity.rank);
         leaguePosition.queueType = leaguePositionWebEntity.queueType;
         leaguePosition.hotStreak = leaguePositionWebEntity.hotStreak;
         leaguePosition.leagueName = leaguePositionWebEntity.leagueName;
