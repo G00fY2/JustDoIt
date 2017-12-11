@@ -25,6 +25,8 @@ public class APIKeyInterceptor implements Interceptor {
   }
 
   public void setApiKey(String apiKey) {
-    this.apiKey = apiKey;
+    if (apiKey != null && !apiKey.isEmpty()) {
+      this.apiKey = apiKey;
+    }
   }
 }
