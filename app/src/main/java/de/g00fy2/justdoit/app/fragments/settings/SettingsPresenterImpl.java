@@ -6,6 +6,7 @@ import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
 import de.g00fy2.justdoit.app.fragments.settings.interactors.GetCurrentVersionInteractor;
 import de.g00fy2.justdoit.app.navigation.NavigationDrawer;
+import de.g00fy2.model.api.APIKeyInterceptor;
 import javax.inject.Inject;
 
 /**
@@ -17,6 +18,7 @@ public class SettingsPresenterImpl extends BasePresenterImpl
 
   @Inject SettingsContract.SetingsView view;
 
+  @Inject APIKeyInterceptor apiKeyInterceptor;
   @Inject NavigationDrawer navigationDrawer;
   @Inject GetCurrentVersionInteractor getCurrentVersionInteractor;
   @Inject SnackbarController snackbarController;
@@ -36,5 +38,9 @@ public class SettingsPresenterImpl extends BasePresenterImpl
 
   @Override public void showNotAvailableNotice() {
     snackbarController.showError("Setting currently not available.");
+  }
+
+  @Override public void changeAPIKey(String newAPIKey) {
+    apiKeyInterceptor.setApiKey(newAPIKey);
   }
 }

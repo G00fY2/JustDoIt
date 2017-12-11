@@ -3,11 +3,10 @@ package de.g00fy2.justdoit.app.di.modules;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.BuildConfig;
+import de.g00fy2.model.api.APIKeyInterceptor;
 import de.g00fy2.model.api.RiotApi;
 import javax.inject.Singleton;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -32,14 +31,10 @@ import timber.log.Timber;
         .build();
   }
 
-  @Provides @Singleton public OkHttpClient provideOkHttpClient() {
-    OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder().addInterceptor(chain -> {
-      Request request = chain.request();
-      HttpUrl url =
-          request.url().newBuilder().addQueryParameter("api_key", BuildConfig.API_KEY).build();
-      request = request.newBuilder().url(url).build();
-      return chain.proceed(request);
-    });
+  @Provides @Singleton
+  public OkHttpClient provideOkHttpClient(APIKeyInterceptor apiKeyInterceptor) {
+    OkHttpClient.Builder okHttpClientBuilder =
+        new OkHttpClient.Builder().addInterceptor(apiKeyInterceptor);
 
     if (BuildConfig.DEBUG) {
       okHttpClientBuilder.addNetworkInterceptor(
@@ -48,5 +43,9 @@ import timber.log.Timber;
     }
 
     return okHttpClientBuilder.build();
+  }
+
+  @Provides @Singleton public APIKeyInterceptor provideAPIKeyInterceptor() {
+    return new APIKeyInterceptor(BuildConfig.API_KEY);
   }
 }

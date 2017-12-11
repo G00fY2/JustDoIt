@@ -39,12 +39,8 @@ import javax.inject.Inject;
       return true;
     });
     apikeyPreference = findPreference("apikey");
-    apikeyPreference.setOnPreferenceClickListener(preference -> {
-      presenter.showNotAvailableNotice();
-      return true;
-    });
     apikeyPreference.setOnPreferenceChangeListener((preference, newValue) -> {
-      presenter.showNotAvailableNotice();
+      presenter.changeAPIKey((String) newValue);
       return true;
     });
     patchversionPreference = findPreference("patchversion");

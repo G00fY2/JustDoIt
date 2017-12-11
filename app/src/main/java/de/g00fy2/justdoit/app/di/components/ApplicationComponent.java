@@ -4,6 +4,7 @@ import dagger.Component;
 import de.g00fy2.justdoit.app.MyApplication;
 import de.g00fy2.justdoit.app.di.modules.ApiModule;
 import de.g00fy2.justdoit.app.di.modules.ApplicationModule;
+import de.g00fy2.model.api.APIKeyInterceptor;
 import de.g00fy2.model.api.RiotApi;
 import javax.inject.Singleton;
 
@@ -17,4 +18,6 @@ public interface ApplicationComponent {
   MyApplication application();
 
   RiotApi riotApi();
+
+  APIKeyInterceptor apiKeyInterceptor();
 }

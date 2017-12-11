@@ -13,6 +13,7 @@ import de.g00fy2.justdoit.app.di.modules.TransformerModule;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
 import de.g00fy2.justdoit.app.navigation.NavigationDrawer;
 import de.g00fy2.justdoit.app.navigation.Navigator;
+import de.g00fy2.model.api.APIKeyInterceptor;
 import de.g00fy2.model.controllers.MoshiController;
 import de.g00fy2.model.datastores.LeagueDataStore;
 import de.g00fy2.model.datastores.MatchDataStore;
@@ -30,6 +31,8 @@ import de.g00fy2.model.datastores.SummonerDataStore;
   BaseActivity baseActivity();
 
   Context context();
+
+  APIKeyInterceptor apiKeyInterceptor();
 
   Navigator navigator();
 

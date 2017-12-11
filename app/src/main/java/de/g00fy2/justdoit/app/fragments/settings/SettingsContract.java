@@ -13,11 +13,11 @@ public interface SettingsContract {
 
     void showNotAvailableNotice();
 
+    void changeAPIKey(String newAPIKey);
   }
 
   interface SetingsView extends BaseView {
 
     void setPatchversionPreference(String version);
-
   }
 }
