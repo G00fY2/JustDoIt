@@ -15,4 +15,6 @@ public interface ChampionListTransformer {
   Map<Integer, Champion> toModel(ChampionListWebEntity championListWebEntity);
 
   Map<Integer, Champion> toModel(List<ChampionDbEntity> championDbEntities);
+
+  List<ChampionDbEntity> toModel(Map<Integer, Champion> championMap);
 }

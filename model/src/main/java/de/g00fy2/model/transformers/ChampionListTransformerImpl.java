@@ -4,6 +4,7 @@ import de.g00fy2.model.entities.db.ChampionDbEntity;
 import de.g00fy2.model.entities.web.ChampionListWebEntity;
 import de.g00fy2.model.entities.web.ChampionWebEntity;
 import de.g00fy2.model.models.Champion;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,24 @@ public class ChampionListTransformerImpl implements ChampionListTransformer {
       }
 
       return championMap;
+    }
+
+    return new HashMap<>();
+  }
+
+  @Override public List<ChampionDbEntity> toModel(Map<Integer, Champion> championMap) {
+    if (championMap != null && championMap.size() > 0) {
+      List<ChampionDbEntity> championDbEntities = new ArrayList<>();
+      for (Champion champion : championMap.values()) {
+        ChampionDbEntity championDbEntity = new ChampionDbEntity();
+        championDbEntity.name = champion.name;
+        championDbEntity.title = champion.title;
+        championDbEntity.key = champion.key;
+        championDbEntity.id = champion.id;
+        championDbEntities.add(championDbEntity);
+      }
+
+      return championDbEntities;
     }
 
     return null;

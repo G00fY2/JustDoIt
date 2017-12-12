@@ -15,4 +15,6 @@ public interface SummonerSpellTransformer {
   Map<Integer, SummonerSpell> toModel(SummonerSpellListWebEntity summonerSpellListWebEntity);
 
   Map<Integer, SummonerSpell> toModel(List<SummonerSpellDbEntity> summonerSpellDbEntities);
+
+  List<SummonerSpellDbEntity> toModel(Map<Integer, SummonerSpell> summonerSpellMap);
 }

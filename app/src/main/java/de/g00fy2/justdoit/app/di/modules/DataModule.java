@@ -3,6 +3,8 @@ package de.g00fy2.justdoit.app.di.modules;
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
+import de.g00fy2.model.datasources.db.StaticDataDbSource;
+import de.g00fy2.model.datasources.db.StaticDataDbSourceImpl;
 import de.g00fy2.model.datasources.db.SummonerDbSource;
 import de.g00fy2.model.datasources.db.SummonerDbSourceImpl;
 import de.g00fy2.model.datasources.local.SharedPreferencesDataSource;
@@ -60,6 +62,11 @@ import de.g00fy2.model.datastores.SummonerDataStoreImpl;
   @Provides @PerActivity
   public SummonerDbSource provideSummonerDbSource(SummonerDbSourceImpl summonerDbSourceImpl) {
     return summonerDbSourceImpl;
+  }
+
+  @Provides @PerActivity
+  public StaticDataDbSource provideStaticDataDbSource(StaticDataDbSourceImpl staticDataDbSourceImpl) {
+    return staticDataDbSourceImpl;
   }
 
   // DataStores

@@ -4,6 +4,7 @@ import de.g00fy2.model.entities.db.SummonerSpellDbEntity;
 import de.g00fy2.model.entities.web.SummonerSpellListWebEntity;
 import de.g00fy2.model.entities.web.SummonerSpellWebEntity;
 import de.g00fy2.model.models.SummonerSpell;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class SummonerSpellTransformerImpl implements SummonerSpellTransformer {
       return summonerSpellMap;
     }
 
-    return null;
+    return new HashMap<>();
   }
 
   @Override
@@ -56,6 +57,27 @@ public class SummonerSpellTransformerImpl implements SummonerSpellTransformer {
       }
 
       return summonerSpellMap;
+    }
+
+    return new HashMap<>();
+  }
+
+  @Override
+  public List<SummonerSpellDbEntity> toModel(Map<Integer, SummonerSpell> summonerSpellMap) {
+    if (summonerSpellMap != null && summonerSpellMap.size() > 0) {
+      List<SummonerSpellDbEntity> summonerSpellDbEntities = new ArrayList<>();
+      for (SummonerSpell summonerSpell : summonerSpellMap.values()) {
+        SummonerSpellDbEntity summonerSpellDbEntity = new SummonerSpellDbEntity();
+        summonerSpellDbEntity.id = summonerSpell.id;
+        summonerSpellDbEntity.summonerLevel = summonerSpell.summonerLevel;
+        summonerSpellDbEntity.name = summonerSpell.name;
+        summonerSpellDbEntity.key = summonerSpell.key;
+        summonerSpellDbEntity.description = summonerSpell.description;
+
+        summonerSpellDbEntities.add(summonerSpellDbEntity);
+      }
+
+      return summonerSpellDbEntities;
     }
 
     return null;
