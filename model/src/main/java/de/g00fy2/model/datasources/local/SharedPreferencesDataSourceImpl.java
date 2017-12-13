@@ -28,6 +28,6 @@ public class SharedPreferencesDataSourceImpl implements SharedPreferencesDataSou
   }
 
   @Override public Single<String> getLatestPatchVersion() {
-    return Single.just(sharedPreferences.getString(PATCH_VERSION, Constants.fallbackLolVersion));
+    return Single.just(sharedPreferences.getString(PATCH_VERSION, Constants.fallbackDataVersion));
   }
 }

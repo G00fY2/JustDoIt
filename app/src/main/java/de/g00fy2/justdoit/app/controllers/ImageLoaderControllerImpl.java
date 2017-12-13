@@ -19,7 +19,7 @@ public class ImageLoaderControllerImpl implements ImageLoaderController {
 
   private final BaseActivity baseActivity;
   private final String BASE_URL = "http://ddragon.leagueoflegends.com/cdn/";
-  private String latestVersion = Constants.fallbackLolVersion;
+  private String latestVersion = Constants.fallbackDataVersion;
 
   @Inject public ImageLoaderControllerImpl(BaseActivity baseActivity) {
     this.baseActivity = baseActivity;
