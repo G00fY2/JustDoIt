@@ -16,8 +16,8 @@ import javax.inject.Inject;
 
 public class StaticDataDataStoreImpl implements StaticDataDataStore {
 
-  private Map<Integer, Champion> cachedChampionList;
-  private Map<Integer, SummonerSpell> cachedSummonerSpellList;
+  private Map<Integer, Champion> cachedChampionMap;
+  private Map<Integer, SummonerSpell> cachedSummonerSpellMap;
 
   @Inject StaticDataWebDataSource staticDataWebDataSource;
   @Inject StaticDataDbSource staticDataDbSource;
@@ -28,31 +28,58 @@ public class StaticDataDataStoreImpl implements StaticDataDataStore {
   }
 
   @Override public Single<Map<Integer, Champion>> getChampions() {
-    if (cachedChampionList == null || cachedChampionList.size() == 0) {
-      return Single.concat(staticDataDbSource.getChampions(),
-          staticDataWebDataSource.getChampions())
-          .filter(championMap -> championMap.size() > 0)
-          .firstOrError()
+    return getChampions(false);
+  }
+
+  @Override public Single<Map<Integer, Champion>> getChampions(boolean forceWebUpdate) {
+    if (forceWebUpdate) {
+      return staticDataWebDataSource.getChampions()
+          .flatMap(staticDataDbSource::saveChampions)
           .flatMap(championMap -> {
-            cachedChampionList = championMap;
+            cachedChampionMap = championMap;
             return Single.just(championMap);
           });
     }
-    return Single.just(cachedChampionList);
+
+    if (cachedChampionMap == null || cachedChampionMap.size() == 0) {
+      return Single.concat(staticDataDbSource.getChampions(),
+          staticDataWebDataSource.getChampions().flatMap(staticDataDbSource::saveChampions))
+          .filter(championMap -> championMap.size() > 0)
+          .firstOrError()
+          .flatMap(championMap -> {
+            cachedChampionMap = championMap;
+            return Single.just(championMap);
+          });
+    }
+    return Single.just(cachedChampionMap);
   }
 
   @Override public Single<Map<Integer, SummonerSpell>> getSummonerSpells() {
-    if (cachedSummonerSpellList == null || cachedSummonerSpellList.size() == 0) {
-      return Single.concat(staticDataDbSource.getSummonerSpells(),
-          staticDataWebDataSource.getSummonerSpells())
-          .filter(summonerSpells -> summonerSpells.size() > 0)
-          .firstOrError()
-          .flatMap(summonerSpells -> {
-            cachedSummonerSpellList = summonerSpells;
-            return Single.just(summonerSpells);
+    return getSummonerSpells(false);
+  }
+
+  @Override public Single<Map<Integer, SummonerSpell>> getSummonerSpells(boolean forceWebUpdate) {
+    if (forceWebUpdate) {
+      return staticDataWebDataSource.getSummonerSpells()
+          .flatMap(staticDataDbSource::saveSummonerSpells)
+          .flatMap(summonerSpellMap -> {
+            cachedSummonerSpellMap = summonerSpellMap;
+            return Single.just(summonerSpellMap);
           });
     }
-    return Single.just(cachedSummonerSpellList);
+
+    if (cachedSummonerSpellMap == null || cachedSummonerSpellMap.size() == 0) {
+      return Single.concat(staticDataDbSource.getSummonerSpells(),
+          staticDataWebDataSource.getSummonerSpells()
+              .flatMap(staticDataDbSource::saveSummonerSpells))
+          .filter(summonerSpellMap -> summonerSpellMap.size() > 0)
+          .firstOrError()
+          .flatMap(summonerSpellMap -> {
+            cachedSummonerSpellMap = summonerSpellMap;
+            return Single.just(summonerSpellMap);
+          });
+    }
+    return Single.just(cachedSummonerSpellMap);
   }
 
   @Override public Single<String> getLatestDataVersionFromWeb() {

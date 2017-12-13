@@ -1,6 +1,7 @@
 package de.g00fy2.model.datasources.db;
 
 import com.raizlabs.android.dbflow.config.FlowManager;
+import com.raizlabs.android.dbflow.rx2.language.RXSQLite;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.database.transaction.FastStoreModelTransaction;
 import de.g00fy2.model.entities.db.ChampionDbEntity;
@@ -29,7 +30,8 @@ public class StaticDataDbSourceImpl implements StaticDataDbSource {
   }
 
   @Override public Single<Map<Integer, Champion>> getChampions() {
-    return Single.just(SQLite.select().from(ChampionDbEntity.class).queryList())
+    return RXSQLite.rx(SQLite.select().from(ChampionDbEntity.class))
+        .queryList()
         .map(championListTransformer::toModel);
   }
 
@@ -38,8 +40,7 @@ public class StaticDataDbSourceImpl implements StaticDataDbSource {
     return Single.just(championMap)
         .map(championListTransformer::toModel)
         .map(championDbEntities -> {
-          FastStoreModelTransaction.insertBuilder(
-              FlowManager.getModelAdapter(ChampionDbEntity.class))
+          FastStoreModelTransaction.saveBuilder(FlowManager.getModelAdapter(ChampionDbEntity.class))
               .addAll(championDbEntities)
               .build();
           return championMap;
@@ -47,14 +48,12 @@ public class StaticDataDbSourceImpl implements StaticDataDbSource {
   }
 
   @Override public Completable deleteChampions() {
-    return Completable.create(emitter -> {
-      SQLite.delete().from(ChampionDbEntity.class).execute();
-      emitter.onComplete();
-    });
+    return RXSQLite.rx(SQLite.delete().from(ChampionDbEntity.class)).execute();
   }
 
   @Override public Single<Map<Integer, SummonerSpell>> getSummonerSpells() {
-    return Single.just(SQLite.select().from(SummonerSpellDbEntity.class).queryList())
+    return RXSQLite.rx(SQLite.select().from(SummonerSpellDbEntity.class))
+        .queryList()
         .map(summonerSpellTransformer::toModel);
   }
 
@@ -63,7 +62,7 @@ public class StaticDataDbSourceImpl implements StaticDataDbSource {
     return Single.just(summonerSpellMap)
         .map(summonerSpellTransformer::toModel)
         .map(summonerSpellDbEntities -> {
-          FastStoreModelTransaction.insertBuilder(
+          FastStoreModelTransaction.saveBuilder(
               FlowManager.getModelAdapter(SummonerSpellDbEntity.class))
               .addAll(summonerSpellDbEntities)
               .build();
@@ -72,9 +71,6 @@ public class StaticDataDbSourceImpl implements StaticDataDbSource {
   }
 
   @Override public Completable deleteSummonerSpells() {
-    return Completable.create(emitter -> {
-      SQLite.delete().from(SummonerDbEntity.class).execute();
-      emitter.onComplete();
-    });
+    return RXSQLite.rx(SQLite.delete().from(SummonerDbEntity.class)).execute();
   }
 }

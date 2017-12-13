@@ -37,6 +37,7 @@ dependencies {
     api project.ext.dbflow
     api project.ext.dbflowCore
     annotationProcessor project.ext.dbflowCompiler
+    implementation project.ext.dbflowRx
 
     implementation project.ext.moshi
 }

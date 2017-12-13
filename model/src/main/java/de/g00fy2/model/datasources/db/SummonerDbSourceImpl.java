@@ -1,6 +1,7 @@
 package de.g00fy2.model.datasources.db;
 
 import com.raizlabs.android.dbflow.config.FlowManager;
+import com.raizlabs.android.dbflow.rx2.language.RXSQLite;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import de.g00fy2.model.entities.db.SummonerDbEntity;
 import de.g00fy2.model.entities.db.SummonerDbEntity_Table;
@@ -25,8 +26,9 @@ public class SummonerDbSourceImpl implements SummonerDbSource {
   }
 
   @Override public Single<List<Summoner>> getSummoners() {
-    return Observable.just(SQLite.select().from(SummonerDbEntity.class).queryList())
-        .flatMapIterable(summonerDbEntities -> summonerDbEntities)
+    return RXSQLite.rx(SQLite.select().from(SummonerDbEntity.class))
+        .queryList()
+        .flatMapObservable(Observable::fromIterable)
         .map(summonerTransformer::toModel)
         .toList();
   }
@@ -44,12 +46,8 @@ public class SummonerDbSourceImpl implements SummonerDbSource {
   }
 
   @Override public Completable deleteSummoner(long id) {
-    return Completable.create(emitter -> {
-      SQLite.delete()
-          .from(SummonerDbEntity.class)
-          .where(SummonerDbEntity_Table.id.is(id))
-          .execute();
-      emitter.onComplete();
-    });
+    return RXSQLite.rx(
+        SQLite.delete().from(SummonerDbEntity.class).where(SummonerDbEntity_Table.id.is(id)))
+        .execute();
   }
 }

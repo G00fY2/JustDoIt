@@ -13,7 +13,11 @@ public interface StaticDataDataStore {
 
   Single<Map<Integer, Champion>> getChampions();
 
+  Single<Map<Integer, Champion>> getChampions(boolean forceWebUpdate);
+
   Single<Map<Integer, SummonerSpell>> getSummonerSpells();
+
+  Single<Map<Integer, SummonerSpell>> getSummonerSpells(boolean forceWebUpdate);
 
   Single<String> getLatestDataVersionFromWeb();
 
