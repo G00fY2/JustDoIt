@@ -1,5 +1,5 @@
 # League friend
-**League friend** is a app uses the [**Riot Developer API**](https://developer.riotgames.com/api-methods/) to show player information from the game League of Legends. At the moment you can search players (summoners) by name, add them to your favourits and check their recent matches and current ranked league position.
+**League friend** is an app that uses the [**Riot Developer API**](https://developer.riotgames.com/api-methods/) to show player information from the game League of Legends. At the moment you can search players (summoners) by name, add them to your favourits and check their recent matches and current ranked league position.
 
 ## Motivation
 The motivation behind this project was to practise Android development by using MVP, Clean Architecture, best practices, Dagger2 and other common libraries (see below).
