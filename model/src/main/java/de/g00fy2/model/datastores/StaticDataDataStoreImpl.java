@@ -5,6 +5,7 @@ import de.g00fy2.model.datasources.local.SharedPreferencesDataSource;
 import de.g00fy2.model.datasources.web.StaticDataWebDataSource;
 import de.g00fy2.model.models.Champion;
 import de.g00fy2.model.models.SummonerSpell;
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import java.util.Map;
@@ -27,20 +28,14 @@ public class StaticDataDataStoreImpl implements StaticDataDataStore {
 
   }
 
-  @Override public Single<Map<Integer, Champion>> getChampions() {
-    return getChampions(false);
+  @Override public Completable updateChampionData() {
+    return staticDataWebDataSource.getChampions()
+        .flatMap(staticDataDbSource::saveChampions)
+        .map(championMap -> cachedChampionMap = championMap)
+        .toCompletable();
   }
 
-  @Override public Single<Map<Integer, Champion>> getChampions(boolean forceWebUpdate) {
-    if (forceWebUpdate) {
-      return staticDataWebDataSource.getChampions()
-          .flatMap(staticDataDbSource::saveChampions)
-          .flatMap(championMap -> {
-            cachedChampionMap = championMap;
-            return Single.just(championMap);
-          });
-    }
-
+  @Override public Single<Map<Integer, Champion>> getChampions() {
     if (cachedChampionMap == null || cachedChampionMap.size() == 0) {
       return Single.concat(staticDataDbSource.getChampions(),
           staticDataWebDataSource.getChampions().flatMap(staticDataDbSource::saveChampions))
@@ -54,20 +49,14 @@ public class StaticDataDataStoreImpl implements StaticDataDataStore {
     return Single.just(cachedChampionMap);
   }
 
-  @Override public Single<Map<Integer, SummonerSpell>> getSummonerSpells() {
-    return getSummonerSpells(false);
+  @Override public Completable updateSummonerSpellData() {
+    return staticDataWebDataSource.getSummonerSpells()
+        .flatMap(staticDataDbSource::saveSummonerSpells)
+        .map(summonerSpellMap -> cachedSummonerSpellMap = summonerSpellMap)
+        .toCompletable();
   }
 
-  @Override public Single<Map<Integer, SummonerSpell>> getSummonerSpells(boolean forceWebUpdate) {
-    if (forceWebUpdate) {
-      return staticDataWebDataSource.getSummonerSpells()
-          .flatMap(staticDataDbSource::saveSummonerSpells)
-          .flatMap(summonerSpellMap -> {
-            cachedSummonerSpellMap = summonerSpellMap;
-            return Single.just(summonerSpellMap);
-          });
-    }
-
+  @Override public Single<Map<Integer, SummonerSpell>> getSummonerSpells() {
     if (cachedSummonerSpellMap == null || cachedSummonerSpellMap.size() == 0) {
       return Single.concat(staticDataDbSource.getSummonerSpells(),
           staticDataWebDataSource.getSummonerSpells()

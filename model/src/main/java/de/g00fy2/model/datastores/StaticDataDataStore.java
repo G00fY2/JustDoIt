@@ -2,6 +2,7 @@ package de.g00fy2.model.datastores;
 
 import de.g00fy2.model.models.Champion;
 import de.g00fy2.model.models.SummonerSpell;
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import java.util.Map;
 
@@ -11,13 +12,13 @@ import java.util.Map;
 
 public interface StaticDataDataStore {
 
+  Completable updateChampionData();
+
   Single<Map<Integer, Champion>> getChampions();
 
-  Single<Map<Integer, Champion>> getChampions(boolean forceWebUpdate);
+  Completable updateSummonerSpellData();
 
   Single<Map<Integer, SummonerSpell>> getSummonerSpells();
-
-  Single<Map<Integer, SummonerSpell>> getSummonerSpells(boolean forceWebUpdate);
 
   Single<String> getLatestDataVersionFromWeb();
 

@@ -8,6 +8,7 @@ import android.view.View;
 import butterknife.BindView;
 import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.annotations.Layout;
+import timber.log.Timber;
 
 /**
  * Created by Thomas Wirth on 04.10.2017.
@@ -20,6 +21,11 @@ import de.g00fy2.justdoit.app.annotations.Layout;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    activityComponent.staticDataVersionController()
+        .setupStaticData()
+        .subscribe(() -> Timber.d("Static data set up"),
+            activityComponent.errorController()::onError);
 
     setSupportActionBar(toolbar);
     final ActionBar ab = getSupportActionBar();

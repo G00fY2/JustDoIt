@@ -43,7 +43,7 @@ public class StartPresenterImpl extends BasePresenterImpl implements StartContra
     navigationDrawer.setCheckedItem(R.id.home);
 
     loadStoredSummoners();
-    getLatestDataVersion();
+    //getLatestDataVersion();
   }
 
   @Override public void searchSummoner(String summonerName) {

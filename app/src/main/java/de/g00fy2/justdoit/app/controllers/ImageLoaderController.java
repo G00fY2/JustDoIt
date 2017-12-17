@@ -1,6 +1,7 @@
 package de.g00fy2.justdoit.app.controllers;
 
 import android.widget.ImageView;
+import io.reactivex.Completable;
 
 /**
  * Created by Thomas Wirth on 29.11.2017.
@@ -8,7 +9,7 @@ import android.widget.ImageView;
 
 public interface ImageLoaderController {
 
-  void setLatestVersion(String latestVersion);
+  Completable setLatestVersion(String latestVersion);
 
   void loadProfileIcon(int profileIconId, ImageView imageView, Boolean circleCrop);
 

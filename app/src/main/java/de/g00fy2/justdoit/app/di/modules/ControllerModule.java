@@ -8,6 +8,8 @@ import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.controllers.ImageLoaderControllerImpl;
 import de.g00fy2.justdoit.app.controllers.SnackbarController;
 import de.g00fy2.justdoit.app.controllers.SnackbarControllerImpl;
+import de.g00fy2.justdoit.app.controllers.StaticDataVersionController;
+import de.g00fy2.justdoit.app.controllers.StaticDataVersionControllerImpl;
 import de.g00fy2.justdoit.app.di.scopes.PerActivity;
 import de.g00fy2.model.controllers.MoshiController;
 import de.g00fy2.model.controllers.MoshiControllerImpl;
@@ -36,5 +38,10 @@ import de.g00fy2.model.controllers.MoshiControllerImpl;
   @Provides @PerActivity ImageLoaderController provideImageLoaderController(
       ImageLoaderControllerImpl imageLoaderControllerImpl) {
     return imageLoaderControllerImpl;
+  }
+
+  @Provides @PerActivity StaticDataVersionController provideStaticDataVersionController(
+      StaticDataVersionControllerImpl staticDataVersionControllerImpl) {
+    return staticDataVersionControllerImpl;
   }
 }

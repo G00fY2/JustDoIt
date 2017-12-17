@@ -9,6 +9,7 @@ import com.bumptech.glide.request.RequestOptions;
 import de.g00fy2.justdoit.app.activities.BaseActivity;
 import de.g00fy2.model.utils.Constants;
 import de.g00fy2.model.utils.LeagueAPIUtils;
+import io.reactivex.Completable;
 import javax.inject.Inject;
 
 /**
@@ -25,8 +26,11 @@ public class ImageLoaderControllerImpl implements ImageLoaderController {
     this.baseActivity = baseActivity;
   }
 
-  @Override public void setLatestVersion(String latestVersion) {
-    this.latestVersion = latestVersion;
+  @Override public Completable setLatestVersion(String latestVersion) {
+    return Completable.create(emitter -> {
+      this.latestVersion = latestVersion;
+      emitter.onComplete();
+    });
   }
 
   @Override
