@@ -17,7 +17,7 @@ First core version working.
 * Show notification on player updates
 * Write tests :shipit:
 
-## Build the sources
+## Building sources
 After checking out the sourcecode you need to create a `keystore.properties` file in you root folder with `riotAPIKey="your_personal_api_token"` in it.
 
 ## Used open source libraries
