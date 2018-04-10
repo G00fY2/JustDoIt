@@ -16,7 +16,7 @@ import de.g00fy2.justdoit.app.fragments.start.interactors.GetVersionInteractorIm
  * Created by Thomas Wirth on 04.10.2017.
  */
 
-@PerFragment @Module public class StartModule {
+@Module public class StartModule {
 
   private StartContract.StartView view;
   private StartContract.StartPresenter presenter;

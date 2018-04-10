@@ -10,7 +10,7 @@ import de.g00fy2.justdoit.app.fragments.matchhistory.interactors.GetAccountMatch
  * Created by Thomas Wirth on 22.11.2017.
  */
 
-@PerFragment @Module public class MatchhistoryModule {
+@Module public class MatchhistoryModule {
 
   private MatchhistoryContract.MatchhistoryView view;
   private MatchhistoryContract.MatchhistoryPresenter presenter;
