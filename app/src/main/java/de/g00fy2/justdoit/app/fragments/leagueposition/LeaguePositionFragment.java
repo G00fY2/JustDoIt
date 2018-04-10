@@ -1,4 +1,4 @@
-package de.g00fy2.justdoit.app.fragments.league_position;
+package de.g00fy2.justdoit.app.fragments.leagueposition;
 
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
@@ -11,15 +11,15 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
 import de.g00fy2.justdoit.R;
-import de.g00fy2.justdoit.app.adapters.league_position.LeaguePositionAdapter;
+import de.g00fy2.justdoit.app.adapters.leagueposition.LeaguePositionAdapter;
 import de.g00fy2.justdoit.app.annotations.Layout;
 import de.g00fy2.justdoit.app.annotations.Title;
 import de.g00fy2.justdoit.app.controllers.ImageLoaderController;
 import de.g00fy2.justdoit.app.fragments.base.BaseFragment;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenter;
-import de.g00fy2.model.utils.LeagueAPIUtils;
 import de.g00fy2.model.models.LeaguePosition;
 import de.g00fy2.model.models.Summoner;
+import de.g00fy2.model.utils.LeagueAPIUtils;
 import java.util.List;
 import javax.inject.Inject;
 

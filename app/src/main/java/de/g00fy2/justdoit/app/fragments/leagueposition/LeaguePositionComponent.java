@@ -1,4 +1,4 @@
-package de.g00fy2.justdoit.app.fragments.league_position;
+package de.g00fy2.justdoit.app.fragments.leagueposition;
 
 import dagger.Component;
 import de.g00fy2.justdoit.app.di.components.ActivityComponent;

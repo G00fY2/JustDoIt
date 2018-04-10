@@ -1,12 +1,12 @@
-package de.g00fy2.justdoit.app.fragments.league_position;
+package de.g00fy2.justdoit.app.fragments.leagueposition;
 
 import dagger.Module;
 import dagger.Provides;
 import de.g00fy2.justdoit.app.di.scopes.PerFragment;
-import de.g00fy2.justdoit.app.fragments.league_position.interactors.GetLeagueItemsDataInteractor;
-import de.g00fy2.justdoit.app.fragments.league_position.interactors.GetLeagueItemsDataInteractorImpl;
-import de.g00fy2.justdoit.app.fragments.league_position.interactors.GetLeaguePositionsDataInteractor;
-import de.g00fy2.justdoit.app.fragments.league_position.interactors.GetLeaguePositionsDataInteractorImpl;
+import de.g00fy2.justdoit.app.fragments.leagueposition.interactors.GetLeagueItemsDataInteractor;
+import de.g00fy2.justdoit.app.fragments.leagueposition.interactors.GetLeagueItemsDataInteractorImpl;
+import de.g00fy2.justdoit.app.fragments.leagueposition.interactors.GetLeaguePositionsDataInteractor;
+import de.g00fy2.justdoit.app.fragments.leagueposition.interactors.GetLeaguePositionsDataInteractorImpl;
 
 /**
  * Created by Thomas Wirth on 05.12.2017.

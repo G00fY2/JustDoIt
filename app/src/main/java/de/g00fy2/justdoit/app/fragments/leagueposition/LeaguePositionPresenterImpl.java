@@ -1,10 +1,10 @@
-package de.g00fy2.justdoit.app.fragments.league_position;
+package de.g00fy2.justdoit.app.fragments.leagueposition;
 
 import de.g00fy2.justdoit.R;
 import de.g00fy2.justdoit.app.controllers.ErrorController;
 import de.g00fy2.justdoit.app.fragments.base.BasePresenterImpl;
-import de.g00fy2.justdoit.app.fragments.league_position.interactors.GetLeagueItemsDataInteractor;
-import de.g00fy2.justdoit.app.fragments.league_position.interactors.GetLeaguePositionsDataInteractor;
+import de.g00fy2.justdoit.app.fragments.leagueposition.interactors.GetLeagueItemsDataInteractor;
+import de.g00fy2.justdoit.app.fragments.leagueposition.interactors.GetLeaguePositionsDataInteractor;
 import de.g00fy2.justdoit.app.navigation.NavigationDrawer;
 import de.g00fy2.model.models.LeagueItem;
 import de.g00fy2.model.models.LeaguePosition;

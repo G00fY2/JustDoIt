@@ -1,4 +1,4 @@
-package de.g00fy2.justdoit.app.fragments.league_position.interactors;
+package de.g00fy2.justdoit.app.fragments.leagueposition.interactors;
 
 import de.g00fy2.justdoit.app.fragments.base.BaseInteractor;
 import de.g00fy2.model.datastores.LeagueDataStore;

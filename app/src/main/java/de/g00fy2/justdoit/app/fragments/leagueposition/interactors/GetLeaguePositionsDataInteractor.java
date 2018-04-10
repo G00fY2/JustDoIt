@@ -1,4 +1,4 @@
-package de.g00fy2.justdoit.app.fragments.league_position.interactors;
+package de.g00fy2.justdoit.app.fragments.leagueposition.interactors;
 
 import de.g00fy2.model.models.LeaguePosition;
 import io.reactivex.Single;
